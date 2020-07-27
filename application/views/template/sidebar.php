@@ -3,7 +3,7 @@
     <div id="sidebar-collapse">
         <div class="admin-block d-flex">
             <div>
-                <img src="./assets/img/admin-avatar.png" width="45px" />
+                <img src="<?= base_url('assets/') ?>/img/admin-avatar.png" width="45px" />
             </div>
             <div class="admin-info">
                 <div class="font-strong">James Brown</div><small>Administrator</small>
@@ -21,18 +21,18 @@
                     <span class="nav-label">Berita MPASI</span>
                 </a>
             </li>
-            <li <?= $this->uri->segment(1) == 'admin/bahan_mpasi' ? 'class="active"' : ''; ?>>
-                <a href="<?= base_url('admin/bahan_mpasi'); ?>"><i class="sidebar-item-icon fa fa-cutlery"></i>
+            <li <?= $this->uri->segment(1) == 'bahan' ? 'class="active"' : ''; ?>>
+                <a href="<?= base_url('bahan'); ?>"><i class="sidebar-item-icon fa fa-cutlery"></i>
                     <span class="nav-label">Bahan MPASI</span>
                 </a>
             </li>
-            <li <?= $this->uri->segment(1) == 'admin/menu_mpasi' ? 'class="active"' : ''; ?>>
-                <a href="<?= base_url('admin/menu_mpasi'); ?>"><i class="sidebar-item-icon fa fa-th-large"></i>
+            <li <?= $this->uri->segment(1) == 'menu' ? 'class="active"' : ''; ?>>
+                <a href="<?= base_url('menu'); ?>"><i class="sidebar-item-icon fa fa-th-large"></i>
                     <span class="nav-label">Menu MPASI</span>
                 </a>
             </li>
-            <li <?= $this->uri->segment(1) == 'admin/kalkulator_mpasi' ? 'class="active"' : ''; ?>>
-                <a href=<?= base_url('admin/kalkulator_mpasi'); ?>><i class="sidebar-item-icon fa fa-calculator"></i>
+            <li <?= $this->uri->segment(1) == 'kalkulator' ? 'class="active"' : ''; ?>>
+                <a href=<?= base_url('kalkulator'); ?>><i class="sidebar-item-icon fa fa-calculator"></i>
                     <span class="nav-label">Kalkulator MPASI</span>
                 </a>
             </li>

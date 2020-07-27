@@ -8,6 +8,6 @@ class Dashboard extends CI_Controller
         $data = array (
             'self' => base_url('dashboard')
         );
-        $this->template->back('back/index', $data);
+        $this->template->back('back/dashboard', $data);
     }
 }

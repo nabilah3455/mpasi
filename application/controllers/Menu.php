@@ -1,0 +1,74 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+
+class Menu extends CI_Controller
+{
+    public function index()
+    {
+        $data = array(
+            'tambah' => base_url('menu/tambah'),
+            'data_menu' => $this->modmenu->get_menu()
+        );
+        $this->template->back('back/menu_mpasi', $data);
+    }
+
+    public function tambah()
+    {
+        $data = array(
+            'back' => base_url('menu')
+        );
+        $this->template->back('back/tambah_menu_mpasi', $data);
+    }
+
+    public function edit()
+    {
+        $id = $this->input->get('id');
+        $data = array(
+            'data_menu' => $this->modmenu->data_menu($id),
+            'back' => base_url('menu')
+        );
+
+        $this->template->back('back/edit_menu_mpasi', $data);
+    }
+
+    public function insert_menu()
+    {
+        $data = array(
+            'id_menu' => $this->input->post('id_menu'),
+            'judul_menu' => $this->input->post('judul_menu'),
+            'bahan_menu' => $this->input->post('bahan'),
+            'resep_menu' => $this->input->post('resep')
+        );
+        $this->modmenu->insert_menu($data);
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Data Menu Berhasil Ditambah! </center></div>');
+        redirect('menu', 'refresh');
+    }
+
+    public function update_menu()
+    {
+        $id = $this->input->post('id_menu');
+
+        $data = array(
+            'id_menu' => $id,
+            'judul_menu' => $this->input->post('judul_menu'),
+            'bahan_menu' => $this->input->post('bahan'),
+            'resep_menu' => $this->input->post('resep')
+        );
+
+        $this->modmenu->update_menu($id, $data);
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Data Menu Berhasil Diubah! </center></div>');
+        redirect('menu', 'refresh');
+    }
+
+    public function delete()
+    {
+        $id = $this->input->get('id');
+
+        $this->modmenu->hapus_menu($id);
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Data Menu Telah Dihapus! </center></div>');
+        redirect('menu', 'refresh');
+    }
+}
