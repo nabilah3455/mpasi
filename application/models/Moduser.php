@@ -2,11 +2,11 @@
 //defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-class Modbahan extends CI_Model
+class Moduser extends CI_Model
 {
-    function get_bahan()
+    function get_admin()
     {
-        $q = $this->db->query("SELECT * FROM bahan_mpasi ORDER BY id_bahan DESC");
+        $q = $this->db->query("SELECT * FROM admin");
 
         return $q->result_array();
     }
@@ -18,9 +18,9 @@ class Modbahan extends CI_Model
         return $q->result_array();
     }
 
-    function insert_bahan($data)
+    function insert_admin($data)
     {
-        if ($this->db->insert('bahan_mpasi', $data)) {
+        if ($this->db->insert('admin', $data)) {
             $e = "Data berhasil dimasukkan";
         } else {
             $e = FALSE;

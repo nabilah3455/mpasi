@@ -17,7 +17,7 @@ class Bahan extends CI_Controller
         $data = array(
             'back' => base_url('bahan')
         );
-        $this->template->back('back/tambah_bahan_mpasi', $data);
+        $this->template->back('back/tambah_bahan', $data);
     }
 
     public function edit()
@@ -35,13 +35,14 @@ class Bahan extends CI_Controller
     public function insert_bahan()
     {
         $data = array(
-            'id_news' => $this->input->post('id_bahan'),
-            'judul_news' => $this->input->post('judul_bahan'),
-            'isi_news' => $this->input->post('isi_bahan')
+            'id_bahan' => $this->input->post('id_bahan'),
+            'nama_bahan' => $this->input->post('nama_bahan'),
+            'manfaat_bahan' => $this->input->post('manfaat_bahan'),
+            'kandungan_bahan' => $this->input->post('kandungan_bahan')
         );
         $this->modbahan->insert_bahan($data);
 
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>bahan Berhasil Ditambah! </center></div>');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Bahan Berhasil Ditambah! </center></div>');
         redirect('bahan', 'refresh');
     }
 
@@ -50,14 +51,15 @@ class Bahan extends CI_Controller
         $id = $this->input->post('id_bahan');
 
         $data = array(
-            'id_news' => $id,
-            'judul_news' => $this->input->post('judul_bahan'),
-            'isi_news' => $this->input->post('isi_bahan')
+            'id_bahan' => $id,
+            'nama_bahan' => $this->input->post('nama_bahan'),
+            'manfaat_bahan' => $this->input->post('manfaat_bahan'),
+            'kandungan_bahan' => $this->input->post('kandungan_bahan')
         );
 
         $this->modbahan->update_bahan($id, $data);
 
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>bahan Berhasil Diubah! </center></div>');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Bahan Berhasil Diubah! </center></div>');
         redirect('bahan', 'refresh');
     }
 
@@ -67,7 +69,7 @@ class Bahan extends CI_Controller
 
         $this->modbahan->hapus_bahan($id);
 
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>bahan Telah Dihapus! </center></div>');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Bahan Telah Dihapus! </center></div>');
         redirect('bahan', 'refresh');
     }
 }

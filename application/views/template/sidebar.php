@@ -36,6 +36,11 @@
                     <span class="nav-label">Kalkulator MPASI</span>
                 </a>
             </li>
+            <li <?= $this->uri->segment(1) == 'admin' ? 'class="active"' : ''; ?>>
+                <a href=<?= base_url('admin'); ?>><i class="sidebar-item-icon fa fa-users"></i>
+                    <span class="nav-label">Data Admin</span>
+                </a>
+            </li>
         </ul>
     </div>
 </nav>
