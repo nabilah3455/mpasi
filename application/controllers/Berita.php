@@ -3,9 +3,21 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Berita extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        if ($this->session->userdata('status') != "login") {
+            redirect(base_url("login"));
+        }
+
+        $this->load->helper(array('form', 'url'));
+    }
+    
     public function index()
     {
+        $data['user'] = $this->db->get_where('admin', ['username' => $this->session->userdata('nama')])->row_array();
         $data = array(
+            'nama' => $data['user']['username'],
             'tambah' => base_url('berita/tambah'),
             'data_berita' => $this->modberita->get_berita()
         );
@@ -14,7 +26,9 @@ class Berita extends CI_Controller
    
     public function tambah()
     {
+        $data['user'] = $this->db->get_where('admin', ['username' => $this->session->userdata('nama')])->row_array();
         $data = array(
+            'nama' => $data['user']['username'],
             'tambah' => base_url('berita/tambah'),
             'data_berita' => $this->modberita->get_berita(),
             'back' => base_url('berita')
@@ -25,7 +39,9 @@ class Berita extends CI_Controller
     public function edit()
     {
         $id = $this->input->get('id');
+        $data['user'] = $this->db->get_where('admin', ['username' => $this->session->userdata('nama')])->row_array();
         $data = array(
+            'nama' => $data['user']['username'],
             'tambah' => base_url('berita/tambah'),
             'data_berita' => $this->modberita->data_berita($id),
             'back' => base_url('berita')

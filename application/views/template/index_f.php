@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>SEO HTML-5 Template </title>
+    <title>Panduan Gizi Makanan Bayi</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/front/') ?>css/slick.css">
     <link rel="stylesheet" href="<?= base_url('assets/front/') ?>css/nice-select.css">
     <link rel="stylesheet" href="<?= base_url('assets/front/') ?>css/style.css">
+    <link rel="stylesheet" href="<?= base_url('assets/front/') ?>css/responsive.css">
 </head>
 
 <body>

@@ -6,7 +6,7 @@
                 <img src="<?= base_url('assets/') ?>/img/admin-avatar.png" width="45px" />
             </div>
             <div class="admin-info">
-                <div class="font-strong">James Brown</div><small>Administrator</small>
+                <div class="font-strong"><?= $nama ?></div><small>Administrator</small>
             </div>
         </div>
         <ul class="side-menu metismenu">
@@ -39,6 +39,11 @@
             <li <?= $this->uri->segment(1) == 'admin' ? 'class="active"' : ''; ?>>
                 <a href=<?= base_url('admin'); ?>><i class="sidebar-item-icon fa fa-users"></i>
                     <span class="nav-label">Data Admin</span>
+                </a>
+            </li>
+            <li <?= $this->uri->segment(1) == 'login/logout' ? 'class="active"' : ''; ?>>
+                <a href=<?= base_url('login/logout'); ?>><i class="sidebar-item-icon fa fa-sign-out"></i>
+                    <span class="nav-label">Logout</span>
                 </a>
             </li>
         </ul>

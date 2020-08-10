@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width initial-scale=1.0">
     <title>Admincast bootstrap 4 &amp; angular 5 admin template, Шаблон админки | Login</title>
     <!-- GLOBAL MAINLY STYLES-->
-    <link href="<?= base_url('assets/')?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="<?= base_url('assets/')?>vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="<?= base_url('assets/')?>vendors/themify-icons/css/themify-icons.css" rel="stylesheet" />
+    <link href="<?= base_url('assets/') ?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="<?= base_url('assets/') ?>vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="<?= base_url('assets/') ?>vendors/themify-icons/css/themify-icons.css" rel="stylesheet" />
     <!-- THEME STYLES-->
-    <link href="<?= base_url('assets/')?>css/main.css" rel="stylesheet" />
+    <link href="<?= base_url('assets/') ?>css/main.css" rel="stylesheet" />
     <!-- PAGE LEVEL STYLES-->
-    <link href="<?= base_url('assets/')?>css/pages/auth-light.css" rel="stylesheet" />
+    <link href="<?= base_url('assets/') ?>css/pages/auth-light.css" rel="stylesheet" />
 </head>
 
 <body class="bg-silver-300">
@@ -21,26 +21,29 @@
         <div class="brand">
             <a class="link" href="index.html">Aplikasi MPASI</a>
         </div>
-        <form id="login-form" action="javascript:;" method="post">
+        <form action="<?= base_url('login') ?>" method="post">
+            <div class="col-lg-12">
+                <?= $this->session->flashdata('message'); ?>
+            </div>
             <h2 class="login-title">Log in</h2>
             <div class="form-group">
                 <div class="input-group-icon right">
-                    <div class="input-icon"><i class="fa fa-envelope"></i></div>
-                    <input class="form-control" type="email" name="email" placeholder="Email" autocomplete="off">
+                    <div class="input-icon"><i class="fa fa-user"></i></div>
+                    <input class="form-control" type="text" name="username" placeholder="Username" required>
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group-icon right">
                     <div class="input-icon"><i class="fa fa-lock font-16"></i></div>
-                    <input class="form-control" type="password" name="password" placeholder="Password">
+                    <input class="form-control" type="password" name="password" placeholder="Password" required>
                 </div>
             </div>
             <div class="form-group">
                 <button class="btn btn-info btn-block" type="submit">Login</button>
             </div>
-            <div class="text-center">Not a member?
+            <!-- <div class="text-center">Not a member?
                 <a class="color-blue" href="register.html">Create accaunt</a>
-            </div>
+            </div> -->
         </form>
     </div>
     <!-- BEGIN PAGA BACKDROPS-->
@@ -50,11 +53,11 @@
     </div>
     <!-- END PAGA BACKDROPS-->
     <!-- CORE PLUGINS -->
-    <script src="<?= base_url('assets/')?>vendors/jquery/dist/jquery.min.js" type="text/javascript"></script>
-    <script src="<?= base_url('assets/')?>vendors/popper.js/dist/umd/popper.min.js" type="text/javascript"></script>
-    <script src="<?= base_url('assets/')?>vendors/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="<?= base_url('assets/') ?>vendors/jquery/dist/jquery.min.js" type="text/javascript"></script>
+    <script src="<?= base_url('assets/') ?>vendors/popper.js/dist/umd/popper.min.js" type="text/javascript"></script>
+    <script src="<?= base_url('assets/') ?>vendors/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
     <!-- PAGE LEVEL PLUGINS -->
-    <script src="<?= base_url('assets/')?>vendors/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="<?= base_url('assets/') ?>vendors/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
     <!-- CORE SCRIPTS-->
     <script src="assets/js/app.js" type="text/javascript"></script>
     <!-- PAGE LEVEL SCRIPTS-->

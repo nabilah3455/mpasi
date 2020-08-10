@@ -3,9 +3,21 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Admin extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        if ($this->session->userdata('status') != "login") {
+            redirect(base_url("login"));
+        }
+
+        $this->load->helper(array('form', 'url'));
+    }
+
     public function index()
     {
-        $data = array (
+        $data['user'] = $this->db->get_where('admin', ['username' => $this->session->userdata('nama')])->row_array();
+        $data = array(
+            'nama' => $data['user']['username'],
         'tambah' => base_url('user/tambah_admin'),
         'data_admin' => $this->moduser->get_admin()
         );
@@ -16,7 +28,9 @@ class Admin extends CI_Controller
     public function edit()
     {
         $id = $this->input->get('id');
+        $data['user'] = $this->db->get_where('admin', ['username' => $this->session->userdata('nama')])->row_array();
         $data = array(
+            'nama' => $data['user']['username'],
             'data_menu' => $this->modmenu->data_menu($id),
             'back' => base_url('menu')
         );

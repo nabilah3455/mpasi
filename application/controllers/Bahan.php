@@ -3,18 +3,36 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Bahan extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        if ($this->session->userdata('status') != "login") {
+            redirect(base_url("login"));
+        }
+
+
+        $this->load->helper(array('form', 'url'));
+    }
+    
     public function index()
     {
+        $data['user'] = $this->db->get_where('admin', ['username' => $this->session->userdata('nama')])->row_array();
         $data = array(
+            'nama' => $data['user']['username'],
             'tambah' => base_url('bahan/tambah'),
             'data_bahan' => $this->modbahan->get_bahan()
         );
         $this->template->back('back/bahan_mpasi', $data);
+
+        // var_dump($data['nama']);
+        // die();
     }
 
     public function tambah()
     {
+        $data['user'] = $this->db->get_where('admin', ['username' => $this->session->userdata('nama')])->row_array();
         $data = array(
+            'nama' => $data['user']['username'],
             'back' => base_url('bahan')
         );
         $this->template->back('back/tambah_bahan', $data);
@@ -23,7 +41,9 @@ class Bahan extends CI_Controller
     public function edit()
     {
         $id = $this->input->get('id');
+        $data['user'] = $this->db->get_where('admin', ['username' => $this->session->userdata('nama')])->row_array();
         $data = array(
+            'nama' => $data['user']['username'],
             'tambah' => base_url('bahan/tambah'),
             'data_bahan' => $this->modbahan->data_bahan($id),
             'back' => base_url('bahan')

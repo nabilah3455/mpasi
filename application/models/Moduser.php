@@ -4,16 +4,16 @@
 
 class Moduser extends CI_Model
 {
-    function get_admin()
+    function get_menu()
     {
-        $q = $this->db->query("SELECT * FROM admin");
+        $q = $this->db->query("SELECT * FROM mpasi ORDER BY id_menu DESC limit 3");
 
         return $q->result_array();
     }
 
-    function data_bahan($id)
+    function get_berita()
     {
-        $q = $this->db->query("SELECT * FROM bahan_mpasi WHERE id_bahan='$id'");
+        $q = $this->db->query("SELECT * FROM mpasi_news ORDER BY id_news DESC limit 6");
 
         return $q->result_array();
     }

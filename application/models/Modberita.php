@@ -10,6 +10,16 @@ class Modberita extends CI_Model
 
         return $q->result_array();
     }
+   
+    function jml_berita()
+    {
+        return $this->db->get('mpasi_news')->num_rows();
+    }
+
+    function berita($number, $offset)
+    {
+        return $query = $this->db->get('mpasi_news', $number, $offset)->result();
+    }
     
     function data_berita($id)
     {

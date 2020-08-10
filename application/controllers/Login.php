@@ -26,42 +26,41 @@ class Login extends CI_Controller
     {
         $username = $this->input->post('username');
         $password = $this->input->post('password');
+        $where = array(
+            'username' => $username,
+            'password' => $password
+        );
 
-        $user = $this->db->get_where('user', ['username' => $username])->row_array();
-        $pass = $this->db->get_where('user', ['password' => $password])->row_array();
+        // $user = $this->db->get_where('admin', ['username' => $username])->row_array();
+        // $pass = $this->db->get_where('admin', ['password' => $password])->row_array();
 
-        if ($user) {
-            if ($user['hak_akses'] == 1) {
-                if (password_verify($password, $user['password'])) {
-                    $data = [
-                        'username' => $user['username'],
-                        'password' => $user['password']
-                    ];
+        $cek = $this->modlogin->cek_login("admin", $where)->num_rows();
+        if ($cek > 0) {
 
-                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Selamat Datang di Aplikasi Pelayanan dan Pengelolaan Laundry</center></div>');
-                    $this->session->set_userdata($data);
-                    redirect('dashboard');
-                } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password Salah!</div>');
-                    redirect('login');
-                }
-            } elseif ($user['hak_akses'] == 2) {
-                if (password_verify($password, $user['password'])) {
-                    $data = [
-                        'username' => $user['username'],
-                        'password' => $user['password']
-                    ];
+            $data_session = array(
+                'nama' => $username,
+                'status' => "login"
+            );
 
-                    $this->session->set_userdata($data);
-                    redirect('konsumen');
-                } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password Salah!</div>');
-                    redirect('login');
-                }
-            } else {
-                // $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username Belum Di aktivasi!</div>');
-                redirect('login');
-            }
+            $this->session->set_userdata($data_session);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Selamat Datang di Aplikasi Panduan Gizi Makanan Balita</center></div>');
+
+            redirect(base_url("dashboard"));
+
+        // if ($user > 0) {
+        //     if (password_verify($password, $user['password'])) {
+        //         $data = [
+        //             'username' => $user['username'],
+        //             'password' => $user['password']
+        //         ];
+
+        //         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Selamat Datang di Aplikasi Pelayanan dan Pengelolaan Laundry</center></div>');
+        //         $this->session->set_userdata($data);
+        //         redirect('dashboard');
+        //     } else {
+        //         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password Salah!</div>');
+        //         redirect('login');
+        //     }
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username atau Password Salah!</div>');
             redirect('login');
@@ -126,13 +125,5 @@ class Login extends CI_Controller
 
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Berhasil Logout</center></div>');
         redirect('login');
-    }
-
-    public function logout_konsumen()
-    {
-        $this->session->unset_userdata('username');
-
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Berhasil Logout</center></div>');
-        redirect('konsumen');
     }
 }
