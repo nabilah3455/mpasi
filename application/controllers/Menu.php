@@ -9,8 +9,7 @@ class Menu extends CI_Controller
         if ($this->session->userdata('status') != "login") {
             redirect(base_url("login"));
         }
-
-
+        
         $this->load->helper(array('form', 'url'));
     }
     
@@ -20,7 +19,18 @@ class Menu extends CI_Controller
         $data = array(
             'nama' => $data['user']['username'],
             'tambah' => base_url('menu/tambah'),
-            'data_menu' => $this->modmenu->get_menu()
+            'menu_6' => $this->modmenu->get_menu_6(),
+            'menu_8' => $this->modmenu->get_menu_8(),
+            'menu_9' => $this->modmenu->get_menu_9(),
+            'menu_10' => $this->modmenu->get_menu_10(),
+            'menu_11' => $this->modmenu->get_menu_11(),
+            'menu_12' => $this->modmenu->get_menu_12(),
+            'menu_13' => $this->modmenu->get_menu_13(),
+            'menu_14' => $this->modmenu->get_menu_14(),
+            'menu_15' => $this->modmenu->get_menu_15(),
+            'menu_16' => $this->modmenu->get_menu_16(),
+            'menu_17' => $this->modmenu->get_menu_17(),
+            'menu_18' => $this->modmenu->get_menu_18()
         );
         $this->template->back('back/menu_mpasi', $data);
     }
@@ -50,11 +60,28 @@ class Menu extends CI_Controller
 
     public function insert_menu()
     {
+        $upload_image = $_FILES['image']['name'];
+
+        if ('$upload_image') {
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['max_size'] = '2048';
+            $config['upload_path'] = './assets/img/menu/';
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('image')) {
+                $new_image = $this->upload->data('file_name');
+                $this->db->set('foto', $new_image);
+            } else {
+                // echo $this->upload->display_errors();
+            }
+        }
+
         $data = array(
-            'id_menu' => $this->input->post('id_menu'),
             'judul_menu' => $this->input->post('judul_menu'),
             'bahan_menu' => $this->input->post('bahan'),
-            'resep_menu' => $this->input->post('resep')
+            'resep_menu' => $this->input->post('resep'),
+            'usia' => $this->input->post('usia')
         );
         $this->modmenu->insert_menu($data);
 
@@ -70,7 +97,8 @@ class Menu extends CI_Controller
             'id_menu' => $id,
             'judul_menu' => $this->input->post('judul_menu'),
             'bahan_menu' => $this->input->post('bahan'),
-            'resep_menu' => $this->input->post('resep')
+            'resep_menu' => $this->input->post('resep'),
+            'usia' => $this->input->post('usia')
         );
 
         $this->modmenu->update_menu($id, $data);

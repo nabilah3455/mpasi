@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width initial-scale=1.0">
-    <title>Admincast bootstrap 4 &amp; angular 5 admin template, Шаблон админки | Login</title>
+    <title>Panduan Gizi Makanan Bayi</title>
     <!-- GLOBAL MAINLY STYLES-->
     <link href="<?= base_url('assets/') ?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="<?= base_url('assets/') ?>vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
@@ -19,10 +19,10 @@
 <body class="bg-silver-300">
     <div class="content">
         <div class="brand">
-            <a class="link" href="index.html">Aplikasi MPASI</a>
+            <a class="link" href="index.html">Aplikasi Panduan Gizi Makanan Bayi</a>
         </div>
         <form action="<?= base_url('login') ?>" method="post">
-            <div class="col-lg-12">
+            <div class="col-lg-6">
                 <?= $this->session->flashdata('message'); ?>
             </div>
             <h2 class="login-title">Log in</h2>

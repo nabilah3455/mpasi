@@ -25,19 +25,6 @@ class Admin extends CI_Controller
         $this->template->back('back/data_admin', $data);
     }
 
-    public function edit()
-    {
-        $id = $this->input->get('id');
-        $data['user'] = $this->db->get_where('admin', ['username' => $this->session->userdata('nama')])->row_array();
-        $data = array(
-            'nama' => $data['user']['username'],
-            'data_menu' => $this->modmenu->data_menu($id),
-            'back' => base_url('menu')
-        );
-
-        $this->template->back('back/edit_menu_mpasi', $data);
-    }
-
     public function insert_admin()
     {
         $data = array(
@@ -50,13 +37,14 @@ class Admin extends CI_Controller
         redirect('user', 'refresh');
     }
 
-    public function update_menu()
+    public function update_admin()
     {
-        $id = $this->input->post('id_menu');
+        $id = $this->input->post('id_admin');
 
         $data = array(
-            'id_menu' => $id,
-            'judul_menu' => $this->input->post('judul_menu')
+            'id_admin' => $id,
+            'username' => $this->input->post('username'),
+            'password' => $this->input->post('password')
         );
 
         $this->modmenu->update_menu($id, $data);

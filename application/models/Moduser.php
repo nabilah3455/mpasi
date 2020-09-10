@@ -4,9 +4,9 @@
 
 class Moduser extends CI_Model
 {
-    function get_menu()
+    function get_admin()
     {
-        $q = $this->db->query("SELECT * FROM mpasi ORDER BY id_menu DESC limit 3");
+        $q = $this->db->query("SELECT * FROM admin");
 
         return $q->result_array();
     }

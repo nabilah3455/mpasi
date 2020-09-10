@@ -15,11 +15,7 @@
         <div class="ibox-body">
                 <form action="<?= base_url('berita/insert_berita') ?>" method="POST">
                 <div class="row">
-                    <div class="col-lg-3">
-                        <label>Id Berita</label>
-                        <input type="text" name="id_berita" id="" placeholder="input id" class="form-control" maxlength="5">
-                    </div>
-                    <div class="col-lg-9">
+                    <div class="col-lg-12">
                         <label>Judul Berita</label>
                         <input type="text" name="judul_berita" id="" placeholder="input judul" class="form-control">
                     </div>

@@ -53,7 +53,6 @@ class Berita extends CI_Controller
     public function insert_berita()
     {
         $data = array(
-            'id_news' => $this->input->post('id_berita'),
             'judul_news' => $this->input->post('judul_berita'),
             'isi_news' => $this->input->post('isi_berita')
         );

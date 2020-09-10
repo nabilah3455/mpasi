@@ -57,7 +57,6 @@ class Bahan extends CI_Controller
         $data = array(
             'id_bahan' => $this->input->post('id_bahan'),
             'nama_bahan' => $this->input->post('nama_bahan'),
-            'manfaat_bahan' => $this->input->post('manfaat_bahan'),
             'kandungan_bahan' => $this->input->post('kandungan_bahan')
         );
         $this->modbahan->insert_bahan($data);
@@ -73,7 +72,6 @@ class Bahan extends CI_Controller
         $data = array(
             'id_bahan' => $id,
             'nama_bahan' => $this->input->post('nama_bahan'),
-            'manfaat_bahan' => $this->input->post('manfaat_bahan'),
             'kandungan_bahan' => $this->input->post('kandungan_bahan')
         );
 

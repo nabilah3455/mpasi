@@ -4,18 +4,27 @@
         font-weight: 80px;
         text-decoration: underline;
     }
+
+    .banner {
+        background-image: url('../assets/front/img/banner/banner_1.jpg');
+        background-size: cover;
+    }
+
+    .pagiantion a:link{
+        background-color: aqua;
+    }
 </style>
 
 <!-- Slider Area Start-->
-<div class="services-area" data-background="<?= base_url('assets/front/') ?>img/hero/h1_hero.png">
+<div class="services-area banner">
     <div class="container">
 
         <!-- Section-tittle -->
         <div class="row d-flex justify-content-center">
             <div class="col-lg-8">
                 <div class="section-tittle text-center mb-80">
-                    <span>Panduan Gizi Makanan Bayi</span>
-                    <h2>Berita MPASI</h2>
+                    <span style="text-shadow:1px 1px 1px white;">Panduan Gizi Makanan Bayi</span>
+                    <h2 style="text-shadow:1px 3px 1px white;">Berita MPASI</h2>
                 </div>
             </div>
         </div>
@@ -28,7 +37,7 @@
     <div class="container">
         <div class="row">
             <?php foreach ($data_berita as $b) {
-                $b->isi_news = character_limiter($b->isi_news, 250);?>
+                $b->isi_news = character_limiter($b->isi_news, 250); ?>
                 <div class="col-lg-12 mb-5 mb-lg-0" data-background="<?= base_url('assets/front/') ?>img/hero/about-sharpe2.png">
                     <div class=" blog_left_sidebar">
                         <article class="blog_item">
@@ -46,7 +55,7 @@
                 </div>
             <?php } ?>
         </div>
-        <nav class="blog-pagination justify-content-center d-flex">
+        <div class="blog-pagination justify-content-center d-flex">
             <?php echo $this->pagination->create_links(); ?>
-        </nav>
+        </div>
 </section>
