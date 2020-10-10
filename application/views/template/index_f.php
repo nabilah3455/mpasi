@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>leopet || Home</title>
+    <title>Panduan Gizi Makanan Bayi</title>
     <link rel="icon" href="<?= base_url('assets/front/') ?>img/android-chrome-192x192.png">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?= base_url('assets/front/') ?>css/bootstrap.min.css">

@@ -1,61 +1,97 @@
 <style>
-    .read-more {
-        float: right;
-        font-weight: 80px;
-        text-decoration: underline;
+    .breadcrumb {
+        background-image: url('../assets/img/banner/jamie-coupaud-3fbI4ouy0Lw-unsplash.jpg')
     }
 
-    .banner {
-        background-image: url('../assets/front/img/banner/banner_1.jpg');
-        background-size: cover;
+    .judul h1 {
+        text-align: center;
+        padding-top: 2rem;
+        font-size: 59px;
+        font-weight: bold;
     }
 
-    .pagiantion a:link{
-        background-color: aqua;
+    .blog_details .button-group-area {
+        margin: 0 auto;
     }
+
+    .blog_item {
+        /* background-color: aqua; */
+        box-shadow: 0 0 1px black;
+    }
+
+    h4{
+        font-weight: bold;
+    }
+
+    /* .blog_details .button-group-area {
+        margin: 0 auto;
+    } */
 </style>
 
-<!-- Slider Area Start-->
-<div class="services-area banner">
+<!--::breadcrumb part start::-->
+<section class="breadcrumb breadcrumb_bg">
     <div class="container">
-
-        <!-- Section-tittle -->
-        <div class="row d-flex justify-content-center">
-            <div class="col-lg-8">
-                <div class="section-tittle text-center mb-80">
-                    <span style="text-shadow:1px 1px 1px white;">Panduan Gizi Makanan Bayi</span>
-                    <h2 style="text-shadow:1px 3px 1px white;">Berita MPASI</h2>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb_iner">
+                    <!-- <div class="breadcrumb_iner_item">
+                        <h1>Menu MPASI</h1>
+                    </div> -->
                 </div>
             </div>
         </div>
     </div>
+</section>
+<!--::breadcrumb part start::-->
+<div class="judul">
+    <h1>Berita MPASI</h1>
 </div>
-<!-- Slider Area End-->
-
 <!--================Blog Area =================-->
-<section class="blog_area section-paddingr">
+<section class="blog_area section_padding">
     <div class="container">
         <div class="row">
-            <?php foreach ($data_berita as $b) {
-                $b->isi_news = character_limiter($b->isi_news, 250); ?>
-                <div class="col-lg-12 mb-5 mb-lg-0" data-background="<?= base_url('assets/front/') ?>img/hero/about-sharpe2.png">
-                    <div class=" blog_left_sidebar">
+            <div class="col-lg-8 mb-5 mb-lg-0">
+                <div class="blog_left_sidebar">
+                    <?php foreach ($data_berita as $b) {
+                        $berita = character_limiter($b->isi_news, 300); ?>
                         <article class="blog_item">
                             <div class="blog_details">
                                 <a class="d-inline-block" href="single-blog.html">
                                     <h2><?= $b->judul_news ?></h2>
                                 </a>
-                                <p><?= $b->isi_news ?></p>
-                                <div class="read-more">
-                                    <a href="<?= base_url('user/isi_berita') ?>?id=<?= $b->id_news ?>"> Baca Selengkapnya <i class="ti-arrow-right"></i></a>
+                                <p><?= $berita ?></p>
+                                <div class="button-group-area read">
+                                    <a href="<?= base_url('user/detail_berita') ?>?id=<?= $b->id_news ?>" class="genric-btn danger circle">Lihat Berita Selengkapnya ...</a>
                                 </div>
                             </div>
                         </article>
-                    </div>
+                    <?php } ?>
+                    <nav class="blog-pagination justify-content-center d-flex">
+                        <!-- <div class="blog-pagination justify-content-center d-flex"> -->
+                        <?php echo $this->pagination->create_links(); ?>
+                        <!-- </div> -->
+                    </nav>
                 </div>
-            <?php } ?>
+            </div>
+            <div class="col-lg-4">
+                <div class="blog_right_sidebar">
+                    <aside class="single_sidebar_widget search_widget">
+                            <h4>Cari Berita</h4>
+                        <form action="#">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder='Search Keyword' onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
+                                    <div class="input-group-append">
+                                        <button class="btn" type="button"><i class="ti-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="button rounded-0 primary-bg text-white w-100" type="submit">Search</button>
+                        </form>
+                    </aside>
+                </div>
+            </div>
         </div>
-        <div class="blog-pagination justify-content-center d-flex">
-            <?php echo $this->pagination->create_links(); ?>
-        </div>
+    </div>
 </section>
+<!--================Blog Area =================-->

@@ -1,5 +1,5 @@
 <style>
-    .button{
+    .button {
         padding-top: 1rem;
         float: left;
     }
@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="ibox-body">
-                <form action="<?= base_url('berita/insert_berita') ?>" method="POST">
+            <form action="<?= base_url('berita/insert_berita') ?>" method="POST">
                 <div class="row">
                     <div class="col-lg-12">
                         <label>Judul Berita</label>
@@ -32,3 +32,7 @@
         </div>
     </div>
 </div>
+
+<script>
+    CKEDITOR.replace('isi_berita');
+</script>

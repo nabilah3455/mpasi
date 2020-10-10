@@ -14,13 +14,10 @@
         </div>
         <div class="ibox-body">
             <form action="<?= base_url('berita/update_berita') ?>" method="POST">
-            {data_berita}
+                {data_berita}
                 <div class="row">
-                    <div class="col-lg-3">
-                        <label>Id Berita</label>
-                        <input type="text" name="id_berita" id="" placeholder="input id" value="{id_news}" class="form-control" maxlength="5" readonly/>
-                    </div>
-                    <div class="col-lg-9">
+                        <input type="hidden" name="id_berita" id="" placeholder="input id" value="{id_news}" class="form-control" maxlength="5" readonly />
+                    <div class="col-lg-12">
                         <label>Judul Berita</label>
                         <input type="text" name="judul_berita" id="" value="{judul_news}" placeholder="input judul" class="form-control">
                     </div>
@@ -38,3 +35,7 @@
         </div>
     </div>
 </div>
+
+<script>
+    CKEDITOR.replace('isi_berita');
+</script>

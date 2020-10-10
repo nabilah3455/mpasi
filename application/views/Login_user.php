@@ -21,7 +21,7 @@
         <div class="brand">
             <a class="link" href="index.html">Aplikasi Panduan Gizi Makanan Bayi</a>
         </div>
-        <form action="<?= base_url('login') ?>" method="post">
+        <form action="<?= base_url('login_user') ?>" method="post">
             <div class="col-lg-12">
                 <?= $this->session->flashdata('message'); ?>
             </div>

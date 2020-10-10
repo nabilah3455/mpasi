@@ -2,7 +2,7 @@ $(function() {
     // Line Chart example
 
     var lineData = {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        labels: ["January", "February", "March", "April", "May"],
         datasets: [
             {
                 label: "Data 1",
@@ -10,6 +10,13 @@ $(function() {
                 borderColor: 'rgba(52,152,219, 1)',
                 pointBorderColor: "#fff",
                 data: [28, 48, 40, 19, 86, 27, 90],
+            },{
+                label: "Data 2",
+                backgroundColor: 'rgba(213,217,219, 0.9)',
+                borderColor: 'rgba(213,217,219, 1)',
+                pointBorderColor: "#fff",
+                data: [65, 59, 80, 81, 56, 55, 40],
+            
             },{
                 label: "Data 2",
                 backgroundColor: 'rgba(213,217,219, 0.9)',

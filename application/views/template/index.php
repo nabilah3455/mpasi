@@ -17,10 +17,12 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="//cdn.ckeditor.com/4.15.0/full/ckeditor.js"></script>
     <!-- PLUGINS STYLES-->
     <link href="<?= base_url('assets') ?>/vendors/summernote/dist/summernote.css" rel="stylesheet" />
     <link href="<?= base_url('assets') ?>/vendors/bootstrap-markdown/css/bootstrap-markdown.min.css" rel="stylesheet" />
     <link href="<?= base_url('assets') ?>/vendors/jvectormap/jquery-jvectormap-2.0.3.css" rel="stylesheet" />
+
     <!-- THEME STYLES-->
     <link href="<?= base_url('assets') ?>/css/main.min.css" rel="stylesheet" />
     <!-- PAGE LEVEL STYLES-->
@@ -33,8 +35,8 @@
         <div class="content-wrapper">
             <!-- START PAGE CONTENT-->
             <!-- <div class="page-content"> -->
-                <?= $content ?>
-                <!-- END PAGE CONTENT-->
+            <?= $content ?>
+            <!-- END PAGE CONTENT-->
             <!-- </div> -->
         </div>
 
@@ -60,13 +62,14 @@
         <script src="<?= base_url('assets') ?>/vendors/jvectormap/jquery-jvectormap-world-mill-en.js" type="text/javascript"></script>
         <script src="<?= base_url('assets') ?>/vendors/jvectormap/jquery-jvectormap-us-aea-en.js" type="text/javascript"></script>
         <!-- CORE SCRIPTS-->
-        <script src="<?= base_url('assets/')?>vendors/chart.js/dist/Chart.min.js" type="text/javascript"></script>
-        <script src="<?= base_url('assets/')?>js/scripts/chartjs_demo.js" type="text/javascript"></script>
+        <script src="<?= base_url('assets/') ?>vendors/chart.js/dist/Chart.min.js" type="text/javascript"></script>
+        <script src="<?= base_url('assets/') ?>js/scripts/chartjs_demo.js" type="text/javascript"></script>
         <script src="<?= base_url('assets') ?>/vendors/summernote/dist/summernote.min.js" type="text/javascript"></script>
         <script src="<?= base_url('assets/') ?>js/app.min.js" type="text/javascript"></script>
         <script src="<?= base_url('assets/'); ?>tables/js/jquery.dataTables.min.js"></script>
         <script src="<?= base_url('assets/'); ?>tables/js/datatable/dataTables.bootstrap4.min.js"></script>
         <script src="<?= base_url('assets/'); ?>tables/js/datatable-init/datatable-basic.min.js"></script>
+
         <script type="text/javascript">
             $(function() {
                 $('#summernote').summernote();

@@ -11,8 +11,8 @@
             <div class="col-lg-7 col-xl-6">
                 <div class="banner_text">
                     <!-- <h5>Selamat Datang!</h5> -->
-                    <h1>Give your pet Best Care</h1>
-                    <a href="#" class="btn_1">OUR SERVIECS</a>
+                    <h1>Berikan Gizi Terbaik Untuk Si Kecil</h1>
+                    <a href="<?= base_url('user/menu')?>" class="btn_1">Lihat Menu</a>
                 </div>
             </div>
         </div>

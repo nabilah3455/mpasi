@@ -125,4 +125,86 @@ class Modmenu extends CI_Model
         $q = $this->db->where('id_menu', $id)->delete('mpasi_menu');
         return $q;
     }
+
+    function menu($number, $offset, $bulan)
+    {
+        // return $query = $this->db->get('mpasi_menu', $number, $offset)->result();
+        if ($bulan == '6-7') { 
+            $q = $this->db->where('usia', $bulan)->get('mpasi_menu', $number, $offset);
+            return $q->result_array();
+        } elseif($bulan == '8') {
+            $q = $this->db->where('usia', $bulan)->get('mpasi_menu', $number, $offset);
+            return $q->result_array();
+        } elseif($bulan == '9') {
+            $q = $this->db->where('usia', $bulan)->get('mpasi_menu', $number, $offset);
+            return $q->result_array();
+        } elseif($bulan == '10') {
+            $q = $this->db->where('usia', $bulan)->get('mpasi_menu', $number, $offset);
+            return $q->result_array();
+        } elseif($bulan == '11') {
+            $q = $this->db->where('usia', $bulan)->get('mpasi_menu', $number, $offset);
+            return $q->result_array();
+        } elseif($bulan == '12') {
+            $q = $this->db->where('usia', $bulan)->get('mpasi_menu', $number, $offset);
+            return $q->result_array();
+        } elseif($bulan == '13') {
+            $q = $this->db->where('usia', $bulan)->get('mpasi_menu', $number, $offset);
+            return $q->result_array();
+        } elseif($bulan == '14') {
+            $q = $this->db->where('usia', $bulan)->get('mpasi_menu', $number, $offset);
+            return $q->result_array();
+        } elseif($bulan == '15') {
+            $q = $this->db->where('usia', $bulan)->get('mpasi_menu', $number, $offset);
+            return $q->result_array();
+        } elseif($bulan == '16') {
+            $q = $this->db->where('usia', $bulan)->get('mpasi_menu', $number, $offset);
+            return $q->result_array();
+        } elseif($bulan == '17') {
+            $q = $this->db->where('usia', $bulan)->get('mpasi_menu', $number, $offset);
+            return $q->result_array();
+        } elseif($bulan == '18') {
+            $q = $this->db->where('usia', $bulan)->get('mpasi_menu', $number, $offset);
+            return $q->result_array();
+        }else {
+            $q = $this->db->get('mpasi_menu', $number, $offset);
+            return $q->result_array();
+        }
+    }
+
+    function jml_menu($bulan)
+    {
+        if ($bulan == '6-7') {
+           return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
+        }elseif($bulan == '8'){
+           return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
+        } elseif ($bulan == '9') {
+           return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
+        } elseif ($bulan == '10') {
+           return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
+        } elseif ($bulan == '11') {
+           return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
+        } elseif ($bulan == '12') {
+           return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
+        } elseif ($bulan == '13') {
+           return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
+        } elseif ($bulan == '14') {
+           return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
+        } elseif ($bulan == '15') {
+           return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
+        } elseif ($bulan == '16') {
+           return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
+        } elseif ($bulan == '17') {
+           return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
+        } elseif ($bulan == '') {
+           return $this->db->get('mpasi_menu')->num_rows();
+        }
+        // return $this->db->get('mpasi_menu')->num_rows();
+    }
+
+    function detail_menu($id)
+    {
+        $q = $this->db->query("SELECT * FROM mpasi_menu WHERE id_menu='$id'");
+
+        return $q->result_array();
+    }
 }

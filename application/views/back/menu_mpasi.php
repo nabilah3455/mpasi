@@ -16,7 +16,7 @@
                         <div class="add-btn">
                                 <a href="{tambah}" class="btn btn-success col-lg-12">Tambah Menu MPASI</a>
                             </div>
-            <ul class="nav nav-tabs tabs-line">
+            <ul class="nav nav-tabs">
                 <li class="nav-item">
                     <a class="nav-link active" href="#tab-7-1" data-toggle="tab">6-7 Bulan</a>
                 </li>

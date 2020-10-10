@@ -51,4 +51,11 @@ class Modberita extends CI_Model
         $q = $this->db->where('id_news', $id)->delete('mpasi_news');
         return $q;
     }
+
+    function detail_berita($id)
+    {
+        $q = $this->db->query("SELECT * FROM mpasi_news WHERE id_news='$id'");
+
+        return $q->result_array();
+    }
 }

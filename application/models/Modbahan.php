@@ -41,4 +41,14 @@ class Modbahan extends CI_Model
         $q = $this->db->where('id_bahan', $id)->delete('kandungan_gizi_bahan_mpasi');
         return $q;
     }
+
+    function bahan($number, $offset)
+    {
+        return $query = $this->db->get('kandungan_gizi_bahan_mpasi', $number, $offset)->result();
+    }
+
+    function jml_bahan()
+    {
+        return $this->db->get('kandungan_gizi_bahan_mpasi')->num_rows();
+    }
 }
