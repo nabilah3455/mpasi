@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 14, 2020 at 05:18 PM
+-- Generation Time: Oct 10, 2020 at 06:03 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -45,16 +45,53 @@ INSERT INTO `admin` (`id_admin`, `username`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `defuzzy`
+--
+
+CREATE TABLE `defuzzy` (
+  `id_user` int(10) NOT NULL,
+  `defuzzy` float NOT NULL,
+  `tgl_cek` date NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `defuzzy`
+--
+
+INSERT INTO `defuzzy` (`id_user`, `defuzzy`, `tgl_cek`) VALUES
+(77, 45.8429, '0000-00-00'),
+(81, 30.7039, '0000-00-00'),
+(1, 43.1255, '2020-10-10');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `kalkulator_gizi`
 --
 
 CREATE TABLE `kalkulator_gizi` (
   `id_hitung` int(5) NOT NULL,
-  `tb` int(5) NOT NULL,
-  `bb` int(5) NOT NULL,
-  `usia` int(5) NOT NULL,
+  `id_user` int(5) NOT NULL,
+  `idvariabel` int(3) NOT NULL,
+  `nilai` float NOT NULL,
+  `predikat` varchar(30) NOT NULL,
+  `nilai1` varchar(5) NOT NULL,
+  `nilai2` varchar(5) NOT NULL,
+  `nilai3` varchar(6) NOT NULL,
   `tgl_cek` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kalkulator_gizi`
+--
+
+INSERT INTO `kalkulator_gizi` (`id_hitung`, `id_user`, `idvariabel`, `nilai`, `predikat`, `nilai1`, `nilai2`, `nilai3`, `tgl_cek`) VALUES
+(82, 1, 1, 20, 'Tahap 3', '0', '0', '1', '2020-09-01'),
+(83, 1, 2, 25, 'Berat lebih', '0', '0', '1', '2020-09-01'),
+(84, 1, 3, 76, 'Tinggi', '0', '0.807', '0.1923', '2020-09-01'),
+(106, 1, 1, 30, 'Tahap 3', '0', '0', '1', '2020-10-10'),
+(107, 1, 2, 11, 'Berat lebih', '0', '1.142', '-0.142', '2020-10-10'),
+(108, 1, 3, 60, 'Tinggi', '0', '1.576', '-0.576', '2020-10-10');
 
 -- --------------------------------------------------------
 
@@ -73,7 +110,7 @@ CREATE TABLE `kandungan_gizi_bahan_mpasi` (
 --
 
 INSERT INTO `kandungan_gizi_bahan_mpasi` (`id_bahan`, `nama_bahan`, `kandungan_bahan`) VALUES
-(4, 'Pepaya', 'energy = 3,9 kcal\r\nwater = -  g\r\nprotein (6%) = 0,1  g\r\nfat (2%) = 0,0  g\r\ncarbohydr. (92%) = 1,0  g\r\ndietary fiber = 0,2  g\r\nalcohol (0%) = -  g\r\nPUFA  =  0,0  g\r\ncholesterol =  0,0 mg\r\nVit. A = 13,5 µg\r\ncarotene = - mg\r\nVit. E (eq.) =  0,1 mg\r\nVit. B1  =  0,0 mg\r\nVit. B2  =   0,0 mg\r\nVit. B6 = 0,0 mg\r\ntot. fol.acid = 3,8 µg\r\nVit. C  =  6,2 mg\r\nsodium =  0,3 mg\r\npotassium = 25,7 mg\r\ncalcium	=  2,4 mg\r\nmagnesium	=  1,0 mg\r\nphosphorus	=  0,5 mg\r\niron	 =  0,0 mg\r\nzinc	 =  0,0 mg'),
+(4, 'Pepaya', '1. energy = 3,9 kcal\r\n2. water = -  g\r\n3. protein (6%) = 0,1  g\r\n4. fat (2%) = 0,0  g\r\n5. carbohydr. (92%) = 1,0  g\r\n6. dietary fiber = 0,2  g\r\n7. alcohol (0%) = -  g\r\n8. PUFA  =  0,0  g\r\n9. cholesterol =  0,0 mg\r\n10. Vit. A = 13,5 µg\r\n11. carotene = - mg\r\n12. Vit. E (eq.) =  0,1 mg\r\n13. Vit. B1  =  0,0 mg\r\n14. Vit. B2  =   0,0 mg\r\n15. Vit. B6 = 0,0 mg\r\n16. tot. fol.acid = 3,8 µg\r\n17. Vit. C  =  6,2 mg\r\n18. sodium =  0,3 mg\r\n19. potassium = 25,7 mg\r\n20. calcium	=  2,4 mg\r\n21. magnesium	=  1,0 mg'),
 (5, 'Tepung Beras', 'energy	 36,1 kcal\r\nwater	  -  g\r\nprotein (8%)	  0,7  g\r\nfat (1%)	0,1  g\r\ncarbohydr. (91%)	 7,9  g\r\ndietary fiber	 0,1  g\r\nalcohol (0%)	 -  g\r\nPUFA	 0,0  g\r\ncholesterol	0,0 mg\r\nVit. A	  0,0 µg\r\ncarotene	  - mg\r\nVit. E (eq.)	  0,0 mg\r\nVit. B1	 0,0 mg\r\nVit. B2	 0,0 mg\r\nVit. B6	 0,0 mg\r\ntot. fol.acid	 0,6 µg\r\nVit. C	  0,0 mg\r\nsodium	  0,0 mg\r\npotassium	  8,1 mg\r\ncalcium	 0,8 mg\r\nmagnesium	  3,6 mg\r\nphosphorus	10,3 mg\r\niron	 0,1 mg\r\nzinc	 0,1 mg\r\n'),
 (6, 'Labu Kuning', 'energy	  3,9 kcal\r\nwater	  -  g\r\nprotein (8%)	  0,1  g\r\nfat (12%)	  0,1  g\r\ncarbohydr. (80%)	 0,9  g\r\ndietary fiber	 0,3  g\r\nalcohol (0%)	 -  g\r\nPUFA	 0,0  g\r\ncholesterol	0,0 mg\r\nVit. A	 40,1 µg\r\ncarotene	  - mg\r\nVit. E (eq.)	  0,0 mg\r\nVit. B1	 0,0 mg\r\nVit. B2	 0,0 mg\r\nVit. B6	 0,0 mg\r\ntot. fol.acid	 2,8 µg\r\nVit. C	  1,0 mg\r\nsodium	  0,1 mg\r\npotassium	 43,7 mg\r\ncalcium	 1,4 mg\r\nmagnesium	  0,8 mg\r\nphosphorus	 2,0 mg\r\niron	 0,0 mg\r\nzinc	 0,0 mg'),
 (7, 'Kentang', 'energy	  9,3 kcal\r\nwater	  -  g\r\nprotein (8%)	  0,2  g\r\nfat (1%)	0,0  g\r\ncarbohydr. (91%)	 2,2  g\r\ndietary fiber	 0,2  g\r\nalcohol (0%)	 -  g\r\nPUFA	 0,0  g\r\ncholesterol	0,0 mg\r\nVit. A	  0,0 µg\r\ncarotene	  - mg\r\nVit. E (eq.)	  0,0 mg\r\nVit. B1	 0,0 mg\r\nVit. B2	 0,0 mg\r\nVit. B6	 0,0 mg\r\ntot. fol.acid	 0,9 µg\r\nVit. C	  1,3 mg\r\nsodium	  0,5 mg\r\npotassium	 39,1 mg\r\ncalcium	 0,5 mg\r\nmagnesium	  2,5 mg\r\nphosphorus	 5,0 mg\r\niron	 0,0 mg\r\nzinc	 0,0 mg'),
@@ -92,6 +129,411 @@ INSERT INTO `kandungan_gizi_bahan_mpasi` (`id_bahan`, `nama_bahan`, `kandungan_b
 (20, 'Telur', 'energy	 15,5 kcal\r\nwater	  -  g\r\nprotein (34%)	 1,3  g\r\nfat (63%)	  1,1  g\r\ncarbohydr. (3%)	  0,1  g\r\ndietary fiber	 0,0  g\r\nalcohol (0%)	 -  g\r\nPUFA	 0,1  g\r\ncholesterol	  42,4 mg\r\nVit. A	 19,0 µg\r\ncarotene	  - mg\r\nVit. E (eq.)	  0,2 mg\r\nVit. B1	 0,0 mg\r\nVit. B2	 0,1 mg\r\nVit. B6	 0,0 mg\r\ntot. fol.acid	 4,4 µg\r\nVit. C	  0,0 mg\r\nsodium	 12,4 mg\r\npotassium	 12,6 mg\r\ncalcium	 5,0 mg\r\nmagnesium	  1,0 mg\r\nphosphorus	17,2 mg\r\niron	 0,1 mg\r\nzinc	 0,1 mg'),
 (21, 'Bayam Merah', 'energy	  3,7 kcal\r\nwater	  -  g\r\nprotein (32%)	 0,4  g\r\nfat (4%)	0,0  g\r\ncarbohydr. (64%)	 0,7  g\r\ndietary fiber	 0,1  g\r\nalcohol (0%)	 -  g\r\nPUFA	 0,0  g\r\ncholesterol	0,0 mg\r\nVit. A	 51,9 µg\r\ncarotene	  - mg\r\nVit. E (eq.)	  0,0 mg\r\nVit. B1	 0,0 mg\r\nVit. B2	 0,0 mg\r\nVit. B6	 0,1 mg\r\ntot. fol.acid	10,4 µg\r\nVit. C	  3,3 mg\r\nsodium	  1,1 mg\r\npotassium	 55,0 mg\r\ncalcium	21,1 mg\r\nmagnesium	  6,2 mg\r\nphosphorus	 7,2 mg\r\niron	 0,3 mg\r\nzinc	 0,0 mg'),
 (22, 'Makaroni', 'energy	 35,3 kcal\r\nwater	  -  g\r\nprotein (14%)	 1,2  g\r\nfat (5%)	0,2  g\r\ncarbohydr. (82%)	 7,1  g\r\ndietary fiber	 0,4  g\r\nalcohol (0%)	 -  g\r\nPUFA	 0,1  g\r\ncholesterol	0,0 mg\r\nVit. A	  0,0 µg\r\ncarotene	  - mg\r\nVit. E (eq.)	  0,0 mg\r\nVit. B1	 0,0 mg\r\nVit. B2	 0,0 mg\r\nVit. B6	 0,0 mg\r\ntot. fol.acid	 1,8 µg\r\nVit. C	  0,0 mg\r\nsodium	  0,3 mg\r\npotassium	  7,8 mg\r\ncalcium	 1,8 mg\r\nmagnesium	  4,5 mg\r\nphosphorus	13,5 mg\r\niron	 0,1 mg\r\nzinc	 0,1 mg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `min`
+--
+
+CREATE TABLE `min` (
+  `id_user` int(10) NOT NULL,
+  `idrule` varchar(10) NOT NULL,
+  `min` varchar(10) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `min1`
+--
+
+CREATE TABLE `min1` (
+  `id_user` int(10) NOT NULL,
+  `idrule` varchar(10) NOT NULL,
+  `min` varchar(10) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `min1`
+--
+
+INSERT INTO `min1` (`id_user`, `idrule`, `min`) VALUES
+(0, 'R8', '0'),
+(0, 'R9', '0'),
+(0, 'R10', '0.2'),
+(0, 'R1', ''),
+(0, 'R2', ''),
+(0, 'R3', ''),
+(0, 'R4', ''),
+(0, 'R5', ''),
+(0, 'R6', ''),
+(0, 'R7', ''),
+(0, 'R8', ''),
+(0, 'R9', ''),
+(0, 'R10', ''),
+(0, 'R1', ''),
+(0, 'R2', ''),
+(0, 'R3', ''),
+(0, 'R4', ''),
+(0, 'R5', ''),
+(0, 'R6', ''),
+(0, 'R7', ''),
+(0, 'R8', ''),
+(0, 'R9', ''),
+(0, 'R10', ''),
+(0, 'R1', '0'),
+(0, 'R2', '0'),
+(0, 'R3', '0'),
+(0, 'R4', '0'),
+(0, 'R5', '0'),
+(0, 'R6', '0'),
+(0, 'R7', '0'),
+(0, 'R8', '0'),
+(0, 'R9', '0'),
+(0, 'R10', '0.2'),
+(0, 'R1', '0'),
+(0, 'R2', '0'),
+(0, 'R3', '0'),
+(0, 'R4', '0'),
+(0, 'R5', '0'),
+(0, 'R6', '0'),
+(0, 'R7', '0'),
+(0, 'R8', '0'),
+(0, 'R9', '0'),
+(0, 'R10', '0.2'),
+(0, 'R1', '0'),
+(0, 'R2', '0'),
+(0, 'R3', '0'),
+(0, 'R4', '0'),
+(0, 'R5', '0'),
+(0, 'R6', '0'),
+(0, 'R7', '0'),
+(0, 'R8', '0'),
+(0, 'R9', '0'),
+(0, 'R10', '0.2'),
+(0, 'R1', '0'),
+(0, 'R2', '0'),
+(0, 'R3', '0'),
+(0, 'R4', '0'),
+(0, 'R5', '0'),
+(0, 'R6', '0'),
+(0, 'R7', '0'),
+(0, 'R1', '0'),
+(0, 'R2', '0'),
+(0, 'R3', '-0.461'),
+(0, 'R4', '0'),
+(0, 'R5', '0'),
+(0, 'R6', '-0.461'),
+(0, 'R7', '-0.285'),
+(0, 'R8', '-0.285'),
+(0, 'R9', '-0.285'),
+(0, 'R10', '0'),
+(0, 'R11', '0'),
+(0, 'R12', '-0.461'),
+(0, 'R13', '0'),
+(0, 'R14', '0'),
+(0, 'R15', '-0.461'),
+(0, 'R16', '-0.285'),
+(0, 'R17', '-0.285'),
+(0, 'R18', '-0.285'),
+(0, 'R19', '0'),
+(0, 'R20', '0'),
+(0, 'R21', '-0.461'),
+(0, 'R22', '0'),
+(0, 'R23', '1'),
+(0, 'R24', '-0.461'),
+(0, 'R25', '-0.285'),
+(0, 'R26', '-0.285'),
+(0, 'R27', '-0.285'),
+(0, 'R28', '0'),
+(0, 'R29', '0'),
+(0, 'R30', '-0.461'),
+(0, 'R31', '0'),
+(0, 'R32', '1'),
+(0, 'R33', '-0.461'),
+(0, 'R34', '-0.285'),
+(0, 'R35', '-0.285'),
+(0, 'R36', '-0.285'),
+(0, 'R37', '0'),
+(0, 'R38', '0'),
+(0, 'R39', '-0.461'),
+(0, 'R40', '0'),
+(0, 'R41', '1'),
+(0, 'R42', '-0.461'),
+(0, 'R43', '-0.285'),
+(0, 'R44', '-0.285'),
+(0, 'R45', '-0.285'),
+(0, 'R1', '0'),
+(0, 'R2', '0'),
+(0, 'R3', '-0.461'),
+(0, 'R4', '0'),
+(0, 'R5', '0'),
+(0, 'R6', '-0.461'),
+(0, 'R7', '-0.285'),
+(0, 'R8', '-0.285'),
+(0, 'R9', '-0.285'),
+(0, 'R10', '0'),
+(0, 'R11', '0'),
+(0, 'R12', '-0.461'),
+(0, 'R13', '0'),
+(0, 'R14', '0'),
+(0, 'R15', '-0.461'),
+(0, 'R16', '-0.285'),
+(0, 'R17', '-0.285'),
+(0, 'R18', '-0.285'),
+(0, 'R19', '0'),
+(0, 'R20', '0'),
+(0, 'R21', '-0.461'),
+(0, 'R22', '0'),
+(0, 'R23', '1'),
+(0, 'R24', '-0.461'),
+(0, 'R25', '-0.285'),
+(0, 'R26', '-0.285'),
+(0, 'R27', '-0.285'),
+(0, 'R28', '0'),
+(0, 'R29', '0'),
+(0, 'R30', '-0.461'),
+(0, 'R31', '0'),
+(0, 'R32', '1'),
+(0, 'R33', '-0.461'),
+(0, 'R34', '-0.285'),
+(0, 'R35', '-0.285'),
+(0, 'R36', '-0.285'),
+(0, 'R37', '0'),
+(0, 'R38', '0'),
+(0, 'R39', '-0.461'),
+(0, 'R40', '0'),
+(0, 'R41', '1'),
+(0, 'R42', '-0.461'),
+(0, 'R43', '-0.285'),
+(0, 'R44', '-0.285'),
+(0, 'R45', '-0.285'),
+(0, 'R1', '0'),
+(0, 'R2', '0'),
+(0, 'R3', '-0.461'),
+(0, 'R4', '0'),
+(0, 'R5', '0'),
+(0, 'R6', '-0.461'),
+(0, 'R7', '-0.285'),
+(0, 'R8', '-0.285'),
+(0, 'R9', '-0.285'),
+(0, 'R10', '0'),
+(0, 'R11', '0'),
+(0, 'R12', '-0.461'),
+(0, 'R13', '0'),
+(0, 'R14', '0'),
+(0, 'R15', '-0.461'),
+(0, 'R16', '-0.285'),
+(0, 'R17', '-0.285'),
+(0, 'R18', '-0.285'),
+(0, 'R19', '0'),
+(0, 'R20', '0'),
+(0, 'R21', '-0.461'),
+(0, 'R22', '0'),
+(0, 'R23', '1'),
+(0, 'R24', '-0.461'),
+(0, 'R25', '-0.285'),
+(0, 'R26', '-0.285'),
+(0, 'R27', '-0.285'),
+(0, 'R28', '0'),
+(0, 'R29', '0'),
+(0, 'R30', '-0.461'),
+(0, 'R31', '0'),
+(0, 'R32', '1'),
+(0, 'R33', '-0.461'),
+(0, 'R34', '-0.285'),
+(0, 'R35', '-0.285'),
+(0, 'R36', '-0.285'),
+(0, 'R37', '0'),
+(0, 'R38', '0'),
+(0, 'R39', '-0.461'),
+(0, 'R40', '0'),
+(0, 'R41', '1'),
+(0, 'R42', '-0.461'),
+(0, 'R43', '-0.285'),
+(0, 'R44', '-0.285'),
+(0, 'R45', '-0.285'),
+(0, 'R1', '0'),
+(0, 'R2', '0'),
+(0, 'R3', '-0.461'),
+(0, 'R4', '0'),
+(0, 'R5', '0'),
+(0, 'R6', '-0.461'),
+(0, 'R7', '-0.285'),
+(0, 'R8', '-0.285'),
+(0, 'R9', '-0.285'),
+(0, 'R10', '0'),
+(0, 'R11', '0'),
+(0, 'R12', '-0.461'),
+(0, 'R13', '0'),
+(0, 'R14', '0'),
+(0, 'R15', '-0.461'),
+(0, 'R16', '-0.285'),
+(0, 'R17', '-0.285'),
+(0, 'R18', '-0.285'),
+(0, 'R19', '0'),
+(0, 'R20', '0'),
+(0, 'R21', '-0.461'),
+(0, 'R22', '0'),
+(0, 'R23', '1'),
+(0, 'R24', '-0.461'),
+(0, 'R25', '-0.285'),
+(0, 'R26', '-0.285'),
+(0, 'R27', '-0.285'),
+(0, 'R28', '0'),
+(0, 'R29', '0'),
+(0, 'R30', '-0.461'),
+(0, 'R31', '0'),
+(0, 'R32', '1'),
+(0, 'R33', '-0.461'),
+(0, 'R34', '-0.285'),
+(0, 'R35', '-0.285'),
+(0, 'R36', '-0.285'),
+(0, 'R37', '0'),
+(0, 'R38', '0'),
+(0, 'R39', '-0.461'),
+(0, 'R40', '0'),
+(0, 'R41', '1'),
+(0, 'R42', '-0.461'),
+(0, 'R43', '-0.285'),
+(0, 'R44', '-0.285'),
+(0, 'R45', '-0.285'),
+(0, 'R1', '0'),
+(0, 'R2', '0'),
+(0, 'R3', '-0.461'),
+(0, 'R4', '0'),
+(0, 'R5', '0'),
+(0, 'R6', '-0.461'),
+(0, 'R7', '-0.285'),
+(0, 'R8', '-0.285'),
+(0, 'R9', '-0.285'),
+(0, 'R10', '0'),
+(0, 'R11', '0'),
+(0, 'R12', '-0.461'),
+(0, 'R13', '0'),
+(0, 'R14', '0'),
+(0, 'R15', '-0.461'),
+(0, 'R16', '-0.285'),
+(0, 'R17', '-0.285'),
+(0, 'R18', '-0.285'),
+(0, 'R19', '0'),
+(0, 'R20', '0'),
+(0, 'R21', '-0.461'),
+(0, 'R22', '0'),
+(0, 'R23', '1'),
+(0, 'R24', '-0.461'),
+(0, 'R25', '-0.285'),
+(0, 'R26', '-0.285'),
+(0, 'R27', '-0.285'),
+(0, 'R28', '0'),
+(0, 'R29', '0'),
+(0, 'R30', '-0.461'),
+(0, 'R31', '0'),
+(0, 'R32', '1'),
+(0, 'R33', '-0.461'),
+(0, 'R34', '-0.285'),
+(0, 'R35', '-0.285'),
+(0, 'R36', '-0.285'),
+(0, 'R37', '0'),
+(0, 'R38', '0'),
+(0, 'R39', '-0.461'),
+(0, 'R40', '0'),
+(0, 'R41', '1'),
+(0, 'R42', '-0.461'),
+(0, 'R43', '-0.285'),
+(0, 'R44', '-0.285'),
+(0, 'R45', '-0.285'),
+(0, 'R1', '0'),
+(0, 'R2', '0'),
+(0, 'R3', '-0.346'),
+(0, 'R4', '0'),
+(0, 'R5', '0'),
+(0, 'R6', '-0.346'),
+(0, 'R7', '0'),
+(0, 'R8', '0'),
+(0, 'R9', '-0.346'),
+(0, 'R10', '0'),
+(0, 'R11', '0'),
+(0, 'R12', '-0.346'),
+(0, 'R13', '0'),
+(0, 'R14', '0'),
+(0, 'R15', '-0.346'),
+(0, 'R16', '0'),
+(0, 'R17', '0.166'),
+(0, 'R18', '-0.346'),
+(0, 'R19', '0'),
+(0, 'R20', '0'),
+(0, 'R21', '-0.346'),
+(0, 'R22', '0'),
+(0, 'R23', '0'),
+(0, 'R24', '-0.346'),
+(0, 'R25', '0'),
+(0, 'R26', '0.8333'),
+(0, 'R27', '-0.346'),
+(0, 'R28', '0'),
+(0, 'R29', '0'),
+(0, 'R30', '-0.346'),
+(0, 'R31', '0'),
+(0, 'R32', '0'),
+(0, 'R33', '-0.346'),
+(0, 'R34', '0'),
+(0, 'R35', '0.8333'),
+(0, 'R36', '-0.346'),
+(0, 'R37', '0'),
+(0, 'R38', '0'),
+(0, 'R39', '-0.346'),
+(0, 'R40', '0'),
+(0, 'R41', '0'),
+(0, 'R42', '-0.346'),
+(0, 'R43', '0'),
+(0, 'R44', '0.8333'),
+(0, 'R45', '-0.346'),
+(1, 'R1', '0'),
+(1, 'R2', '0'),
+(1, 'R3', '-0.576'),
+(1, 'R4', '0'),
+(1, 'R5', '0'),
+(1, 'R6', '-0.576'),
+(1, 'R7', '-0.142'),
+(1, 'R8', '-0.142'),
+(1, 'R9', '-0.142'),
+(1, 'R10', '0'),
+(1, 'R11', '0'),
+(1, 'R12', '-0.576'),
+(1, 'R13', '0'),
+(1, 'R14', '0'),
+(1, 'R15', '-0.576'),
+(1, 'R16', '-0.142'),
+(1, 'R17', '-0.142'),
+(1, 'R18', '-0.142'),
+(1, 'R19', '0'),
+(1, 'R20', '0'),
+(1, 'R21', '-0.576'),
+(1, 'R22', '0'),
+(1, 'R23', '1'),
+(1, 'R24', '-0.576'),
+(1, 'R25', '-0.142'),
+(1, 'R26', '-0.142'),
+(1, 'R27', '-0.142'),
+(1, 'R28', '0'),
+(1, 'R29', '0'),
+(1, 'R30', '-0.576'),
+(1, 'R31', '0'),
+(1, 'R32', '1'),
+(1, 'R33', '-0.576'),
+(1, 'R34', '-0.142'),
+(1, 'R35', '-0.142'),
+(1, 'R36', '-0.142'),
+(1, 'R37', '0'),
+(1, 'R38', '0'),
+(1, 'R39', '-0.576'),
+(1, 'R40', '0'),
+(1, 'R41', '1'),
+(1, 'R42', '-0.576'),
+(1, 'R43', '-0.142'),
+(1, 'R44', '-0.142'),
+(1, 'R45', '-0.142');
 
 -- --------------------------------------------------------
 
@@ -166,17 +608,268 @@ CREATE TABLE `mpasi_news` (
 --
 
 INSERT INTO `mpasi_news` (`id_news`, `judul_news`, `isi_news`) VALUES
-(12, '1', 'dsdsdd'),
-(1000, '2', 'ini dfsfs\r\n\r\nadalah\r\n\r\nsebuah\r\n\r\nberita\r\n\r\nsadasdsfsdfdsf dsfsfsf dsfsfsf fsdfsf sfsdf sfaoewkeqekn dsfdsfdfns fksfsf\r\n\r\nini dfsfs\r\n\r\nadalah\r\n\r\nsebuah\r\n\r\nberita\r\n\r\nsadasdsfsdfdsf dsfsfsf dsfsfsf fsdfsf sfsdf sfaoewkeqekn dsfdsfdfns fksfsf\r\n'),
-(1002, '3', 'ini dfsfs\r\n\r\nadalah\r\n\r\nsebuah\r\n\r\nberita\r\n\r\n'),
-(1003, '4', '5'),
-(1004, '6', 'ini dfsfs\r\n\r\nadalah\r\n\r\nsebuah\r\n\r\nberita\r\n\r\n'),
-(1005, '7', 'dsdsdd'),
-(1006, '8', 'ini dfsfs\r\n\r\nadalah\r\n\r\nsebuah\r\n\r\nberita\r\n\r\nsadasdsfsdfdsf dsfsfsf dsfsfsf fsdfsf sfsdf sfaoewkeqekn dsfdsfdfns fksfsf\r\n\r\nini dfsfs\r\n\r\nadalah\r\n\r\nsebuah\r\n\r\nberita\r\n\r\nsadasdsfsdfdsf dsfsfsf dsfsfsf fsdfsf sfsdf sfaoewkeqekn dsfdsfdfns fksfsf\r\n'),
-(1007, '9', 'ini dfsfs\r\n\r\nadalah\r\n\r\nsebuah\r\n\r\nberita\r\n\r\n'),
-(1008, '10', 'dsdsdd'),
-(1009, '11', 'ini dfsfs\r\n\r\nadalah\r\n\r\nsebuah\r\n\r\nberita\r\n\r\n'),
-(1010, 'makan', 'makan');
+(1011, 'Pentingnya MP-ASI', 'Selamat! Bayi Anda telah lulus masa Asi (air susu ibu) eksklusif. Setelah sela 6 bulan usia pertamanya tanpa tambahan minuman apa pun, termasuk madu dan sebagainya, karena dia memang tidak memerlukannya- kini dia perlu makanan pendamping ASI (MP-ASI).  Pendamping?  Ya, \"pendamping\", karena usia 6-9 bulan, ASI sedapat mungkin masih diberikan sebab masih dapat memenuhi kebutuhan zat gizi bayi hingga 80%.  Jadi boleh dibilang bayi masih belajar makan makanan padat selain memang membutuhkan zat besi dan seng (zinc) dari makanan, karena kandungan zat ini dalam ASI sudah tidak memadai lagi bagi kebutuhan tumbuh kembang bayi.  Catatan Badan Kesehatan Dunia WHO tahun 2008 menunjukkan, 40% di dunia mengalami anemia defisiensi (kekurangan) zat besi.  Akibatnya, anak dapat mengalami gangguan perkembangan, kecerdasan lain, karena zat besi yang diperlukan bagi selubung sel saraf.  Mengingat akibat kekurangan zat besi tidak dapat mencegah, maka pencegahan pencegahan tindakan yang terbaik'),
+(1012, 'Piramida Gizi Seimbang', 'Di Indonesia, piramida gizi seimbang digambarrkan dalam bentuk tumpeng, bentuk makanan khas masyarakat kita. Penjabaran dari gizi seimbang ini menggambarkan pembagian gizi per hari.  Selain tumpeng, visualisasi gizi seimbang yang digambarkan dalam bentuk \"Piring Makanku\" sebagai panduan sekali makan, serta kebiasaan cuci tangan sebelum makan. Pada praktiknya, berikan porsi menu gizi seimbang kepada bayi yang agak berbeda.  Karena bayi masih banyak mengonsumsi ASI untuk memenuhi sebagian besar kebutuhan tubuh, selain fungsi pencernaan pun belum optimal.  Itu berkembang MP-ASI diperkenalkan secara bertahap mulai murni (makanan lembut) hingga semakin kasar teksturnya, porsinya bertambah, dan kian variatif bahan makanannya.'),
+(1014, 'Usia 6-7 BUlan', 'Pure atau makanan ekstra lembut adalah tekstur yang baru bisa diterima bayi usia ini. Mulailah dengan pemberian makanan yang mengandung zat-zat gizi yang turun atau bahkan tidak ada pada ASI, seperti zat besi, zinc, protein, dan lemak. Apalagi mengingat bayi dan anak usia balita cenderung mengalami anemia defisiensi zat besi.'),
+(1015, 'Usia 7-9 Bulan', 'Porsi makanan bayi di usia 7-8 bulan bisa mulai ditambah menjadi 4-5 sendok makan untuk sekali makan, dan hingga usia 9 bulan bisa mencapai 8 sendok makan.  Tekstur makanannya pun secara bertahap bisa lebih kasar.  Di usia 8-9 bulan bisa diberikan makanan halus yang tak perlu disaring lagi. Tambahkan juga sumber lemak seperti santan dan minyak biji bunga matahari atau kanola. Selain menambah energi, lemak juga memberikan rasa gurih serta mempertinggi penyerapan yang larut dalam lemak, yaitu vitamin A, D, E dan K. Bayi membutuhkan cukup lemak untuk tumbuh kembang otaknya. '),
+(1016, 'Usia 9-12 Bulan', 'Kini organ pencernaan bayi sudah bisa menerima makanan dengan tekstur lebih kasar lagi, misalnya nasi tim lembek dengan ikan gabus dan wortel serta buncis cincang.  Porsinya pun bisa ditingkatkan secara bertahap menjadi satu mangkuk kecil. Makanan selingan seperti aneka camilan sehat, biskui bubur kacang hijau, dan olahan buah, juga bisa mulai diberikan.  Bayi usia 12 bulan sudah dapat mengonsumsi makanan keluarga, tidak berbumbu tajam, terlalu pedas dan asam.'),
+(1017, '6 Tanda Bayi Siap Makan', '1. Berusia 6 bulan ke atas.  \r\n2. Bisa duduk dengan bantuan yang sangat sedikit.  \r\n3. Bisa berkepala.  \r\n4. Membuka mulutnya saat ditawari makanan.  \r\n5. Dapat memutar menolak makanan.  \r\n6. Mampu mengambil makanan dari sendok dan larinya.\r\n'),
+(1018, 'Pengganti Air Susu Ibu (PASI', 'Pada kondisi di mana ibu sakit keras atau ada indikasi medis bahwa ibu tidak dapat memberikan ASI, maka kepada bayi yang diberikan Pengganti Air Susu Ibu (PASI). \r\nPASI adalah susu formula yang dibuat dari susu sapi yang kandungan zat gizinya sudah diubah sehingga sesuai dengan kebutuhan bayi selama masa pertumbuhan dan perkembangannya.  Untuk mempersembahkan PASI yang paling tepat untuk bayi Anda, berkonsultasilah dengan dokter anak.\r\n'),
+(1019, 'Penuhi Kebutuhan Gizinya', 'Bayi usia 6-18 bulan sedang menjalani proses tumbuh kembang otak yang cepat (brain growth spurts). masa perkembangan kritis keterampilan organ mulut bayi untuk mengunyah dan gelandangan. Itulah alasan pemenuhan gizi seimbang di masa ini sangat penting agar bayi dapat menjalani proses pertumbuhan dan perkembangan yang optimal.  Pemenuhan gizi seimbang di masa ini juga bisa mencegah bayi yang mengalami gangguan kesehatan di kemudian hari, antara penyakit kardiovaskular lain seperti stroke atau penyakit jantung.'),
+(1020, 'MP-ASI Tidak tepat Waktu', 'Sejumlah risiko dapat terjadi bila pemberian MP_ASI tidak tepat waktu alias terlalu dini (kurang dari usia 4bulan) atau terlambat (lebih dari usia 7 bulan).\r\n\r\nRisiko MP-ASI terlalu dini:\r\n• Risiko diare dan dehidrasi, antara lain karena organ pencernaan bayi belum siap. \r\n• Produksi ASI menurun akibat bayi kenyang sehingga tidak mau menyusu.  • Risiko bayi tersedak.  Gangguan tumbuh kembang.  \r\n\r\nRisiko MP-ASI terlambat:\r\n• Potensial terjadi gagal tumbuh, mengingat zat gizi ASI tidak lagi mencukupi kebutuhan bayi.  • Defisiensi (kekurangan) zat besi. \r\n• Gangguan tumbuh kembang.\r\n'),
+(1021, 'Bayi Vegetarian', 'Anda membesarkan bayi sebagai vegetarian dari lahir?  Cara sederhana untuk memastikan bahwa ia mendapatkan zat gizi yang cukup, tepat, dan selalu bergantung pada makanan, kacang-kacangan (khususnya kacang kedelai), susu dan / atau telur, buah dan sayuran.\r\nTahap makan MP-ASI bayi vegetarian pada acara sama dengan bayi pada umumnya yaitu dari porsi sedikit dan tekstur lembut ke porsi lebih banyak dan tekstur makin kasar hingga ke menu makanan keluarga usia satu tahun.\r\nBedanya, gantikan zat-zat gizi dari makanan hewani (seperti daging dan ikar ke makanan nabati (seperti kacang-kacangan) Zat gizi yang penting diperhatikan adalah protein, zat besi, kalsium, dan vitamin B12.\r\nDalam hal ini, sebaiknya konsultasikan pola makan bayi Anda pada dokter anak Anda, mengingat tumbuh kembang tiap bayi berbeda, termasuk bila diperlukan suplementasi.\r\n'),
+(1022, 'Jangan Putus Asa', 'Setelah memasuki bulan kedua mencobakan MP-ASI kepada bayi, ternyata petualangan ini tidak semulus yang Anda harapkan.  Bayi selalu melepeh makanan- nya, menepis sendok yang akan disuapkan sehingga makanan berhamburan, bahkan rewel berkepanjangan.  Jangan putus asa, Bu!  Belum tentu bayi Anda tidak suka makanannya atau menolak makanan Anda.  Perilakunya tersebut sebenarnya merupakan refleks bayi. Dia tidak bermaksud menolak, apalagi membuang, makanan yang Anda tawarkan. \r\nBisa juga hal tersebut karena bayi memerlukan waktu untuk menerima jenis makanan baru. Penelitian menunjukkan bahwa setelah 8-10 kali dicobakan, umumnya bayi baru mau menerima jenis makanan baru tersebut. Dan, orang tua cenderung cepat menyerah.\r\n');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nilai`
+--
+
+CREATE TABLE `nilai` (
+  `idnilai` int(3) NOT NULL,
+  `idpasien` int(10) NOT NULL,
+  `idvariabel` int(3) NOT NULL,
+  `nilai` float NOT NULL,
+  `predikat` varchar(30) NOT NULL,
+  `nilai1` varchar(5) NOT NULL,
+  `nilai2` varchar(5) NOT NULL,
+  `nilai3` varchar(6) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `nilai`
+--
+
+INSERT INTO `nilai` (`idnilai`, `idpasien`, `idvariabel`, `nilai`, `predikat`, `nilai1`, `nilai2`, `nilai3`) VALUES
+(359, 77, 1, 25, 'Tahap 3', '0', '0', '1'),
+(360, 77, 2, 10, 'Berat lebih', '0', '1.285', '-0.285'),
+(361, 77, 3, 63, 'Tinggi', '0', '1.461', '-0.461'),
+(362, 78, 1, 0, '', '', '', ''),
+(363, 78, 2, 0, '', '', '', ''),
+(364, 78, 3, 0, '', '', '', ''),
+(365, 80, 1, 22, '', '', '', ''),
+(366, 80, 2, 22, '', '', '', ''),
+(367, 80, 3, 66, '', '', '', ''),
+(368, 81, 1, 22, 'Tahap 2', '0', '0.166', '0.8333'),
+(369, 81, 2, 22, 'Berat lebih', '0', '0', '1'),
+(370, 81, 3, 66, 'Tinggi', '0', '1.346', '-0.346');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rule`
+--
+
+CREATE TABLE `rule` (
+  `idrule` varchar(10) NOT NULL,
+  `maka` varchar(25) NOT NULL,
+  `daerah` int(1) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `rule`
+--
+
+INSERT INTO `rule` (`idrule`, `maka`, `daerah`) VALUES
+('R1', 'Gizi Normal ', 3),
+('R2', 'Gizi Normal ', 3),
+('R3', 'Gizi Kurang ', 2),
+('R4', 'Gizi Lebih ', 4),
+('R5', 'Gizi Lebih ', 4),
+('R6', 'Gizi Lebih ', 4),
+('R7', 'Gizi Lebih ', 4),
+('R8', 'Gizi Lebih ', 4),
+('R9', 'Obesitas', 5),
+('R10', 'Gizi Kurang ', 2),
+('R11', 'Gizi Kurang ', 2),
+('R12', 'Gizi Kurang ', 2),
+('R13', 'Gizi Normal ', 3),
+('R14', 'Gizi Normal ', 3),
+('R15', 'Gizi Normal ', 3),
+('R16', 'Gizi Lebih ', 4),
+('R17', 'Gizi Lebih ', 4),
+('R18', 'Obesitas', 5),
+('R19', 'Gizi Buruk ', 1),
+('R20', 'Gizi Buruk ', 1),
+('R21', 'Gizi Normal ', 3),
+('R22', 'Gizi Normal ', 3),
+('R23', 'Gizi Normal ', 3),
+('R24', 'Gizi Normal ', 3),
+('R25', 'Gizi Lebih ', 4),
+('R26', 'Gizi Lebih ', 4),
+('R27', 'Obesitas', 5),
+('R28', 'Gizi Kurang ', 2),
+('R29', 'Gizi Kurang ', 2),
+('R30', 'Gizi Kurang ', 2),
+('R31', 'Gizi Normal ', 3),
+('R32', 'Gizi Normal ', 3),
+('R33', 'Gizi Normal ', 3),
+('R34', 'Gizi Lebih ', 4),
+('R35', 'Gizi Lebih ', 4),
+('R36', 'Gizi Normal ', 3),
+('R37', 'Gizi Buruk ', 1),
+('R38', 'Gizi Buruk ', 1),
+('R39', 'Gizi Buruk ', 1),
+('R40', 'Gizi Kurang ', 2),
+('R41', 'Gizi Kurang ', 2),
+('R42', 'Gizi Kurang ', 2),
+('R43', 'Gizi Lebih ', 4),
+('R44', 'Gizi Lebih ', 4),
+('R45', 'Gizi Normal ', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rule1`
+--
+
+CREATE TABLE `rule1` (
+  `idrule` varchar(10) NOT NULL,
+  `idvariabel` int(3) NOT NULL,
+  `rule1` varchar(30) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `rule1`
+--
+
+INSERT INTO `rule1` (`idrule`, `idvariabel`, `rule1`) VALUES
+('R1', 1, 'Tahap 1'),
+('R1', 2, 'Kurang Berat'),
+('R1', 3, 'Pendek'),
+('R2', 1, 'Tahap 1'),
+('R2', 2, 'Kurang Berat'),
+('R2', 3, 'Normal'),
+('R3', 1, 'Tahap 1'),
+('R3', 2, 'Kurang Berat'),
+('R3', 3, 'Tinggi'),
+('R4', 1, 'Tahap 1'),
+('R4', 2, 'Normal '),
+('R4', 3, 'Pendek'),
+('R5', 1, 'Tahap 1'),
+('R5', 2, 'Normal '),
+('R5', 3, 'Normal'),
+('R6', 1, 'Tahap 1'),
+('R6', 2, 'Normal '),
+('R6', 3, 'Tinggi'),
+('R7', 1, 'Tahap 1'),
+('R7', 2, 'Berat lebih'),
+('R7', 3, 'Pendek'),
+('R8', 1, 'Tahap 1'),
+('R8', 2, 'Berat lebih'),
+('R8', 3, 'Normal'),
+('R9', 1, 'Tahap 1'),
+('R9', 2, 'Berat lebih'),
+('R9', 3, 'Tinggi'),
+('R10', 1, 'Tahap 2'),
+('R10', 2, 'Kurang Berat'),
+('R10', 3, 'Pendek'),
+('R11', 1, 'Tahap 2'),
+('R11', 2, 'Kurang Berat'),
+('R11', 3, 'Normal'),
+('R12', 1, 'Tahap 2'),
+('R12', 2, 'Kurang Berat'),
+('R12', 3, 'Tinggi'),
+('R13', 1, 'Tahap 2'),
+('R13', 2, 'Normal '),
+('R13', 3, 'Pendek'),
+('R14', 1, 'Tahap 2'),
+('R14', 2, 'Normal '),
+('R14', 3, 'Normal'),
+('R15', 1, 'Tahap 2'),
+('R15', 2, 'Normal '),
+('R15', 3, 'Tinggi'),
+('R16', 1, 'Tahap 2'),
+('R16', 2, 'Berat lebih'),
+('R16', 3, 'Pendek'),
+('R17', 1, 'Tahap 2'),
+('R17', 2, 'Berat lebih'),
+('R17', 3, 'Normal'),
+('R18', 1, 'Tahap 2'),
+('R18', 2, 'Berat lebih'),
+('R18', 3, 'Tinggi'),
+('R19', 3, 'Pendek'),
+('R19', 2, 'Kurang Berat'),
+('R19', 1, 'Tahap 3'),
+('R20', 1, 'Tahap 3'),
+('R20', 2, 'Kurang Berat'),
+('R20', 3, 'Normal'),
+('R21', 1, 'Tahap 3'),
+('R21', 2, 'Kurang Berat'),
+('R21', 3, 'Tinggi'),
+('R22', 1, 'Tahap 3'),
+('R22', 2, 'Normal '),
+('R22', 3, 'Pendek'),
+('R23', 1, 'Tahap 3'),
+('R23', 2, 'Normal '),
+('R23', 3, 'Normal'),
+('R24', 1, 'Tahap 3'),
+('R24', 2, 'Normal '),
+('R24', 3, 'Tinggi'),
+('R25', 3, 'Pendek'),
+('R25', 2, 'Berat lebih'),
+('R25', 1, 'Tahap 3'),
+('R26', 1, 'Tahap 3'),
+('R26', 2, 'Berat lebih'),
+('R26', 3, 'Normal'),
+('R27', 1, 'Tahap 3'),
+('R27', 2, 'Berat lebih'),
+('R27', 3, 'Tinggi'),
+('R28', 1, 'Tahap 4'),
+('R28', 2, 'Kurang Berat'),
+('R28', 3, 'Pendek'),
+('R29', 1, 'Tahap 4'),
+('R29', 2, 'Kurang Berat'),
+('R29', 3, 'Normal'),
+('R30', 1, 'Tahap 4'),
+('R30', 2, 'Kurang Berat'),
+('R30', 3, 'Tinggi'),
+('R31', 1, 'Tahap 4'),
+('R31', 2, 'Normal '),
+('R31', 3, 'Pendek'),
+('R32', 1, 'Tahap 4'),
+('R32', 2, 'Normal '),
+('R32', 3, 'Normal'),
+('R33', 1, 'Tahap 4'),
+('R33', 2, 'Normal '),
+('R33', 3, 'Tinggi'),
+('R34', 1, 'Tahap 4'),
+('R34', 2, 'Berat lebih'),
+('R34', 3, 'Pendek'),
+('R35', 1, 'Tahap 4'),
+('R35', 2, 'Berat lebih'),
+('R35', 3, 'Normal'),
+('R36', 1, 'Tahap 4'),
+('R36', 2, 'Berat lebih'),
+('R36', 3, 'Tinggi'),
+('R37', 1, 'Tahap 5'),
+('R37', 2, 'Kurang Berat'),
+('R37', 3, 'Pendek'),
+('R38', 1, 'Tahap 5'),
+('R38', 2, 'Kurang Berat'),
+('R38', 3, 'Normal'),
+('R39', 2, 'Kurang Berat'),
+('R39', 1, 'Tahap 5'),
+('R39', 3, 'Tinggi'),
+('R40', 1, 'Tahap 5'),
+('R40', 2, 'Normal '),
+('R40', 3, 'Pendek'),
+('R41', 1, 'Tahap 5'),
+('R41', 2, 'Normal '),
+('R41', 3, 'Normal'),
+('R42', 1, 'Tahap 5'),
+('R42', 2, 'Normal '),
+('R42', 3, 'Tinggi'),
+('R43', 1, 'Tahap 5'),
+('R43', 2, 'Berat lebih'),
+('R43', 3, 'Pendek'),
+('R44', 1, 'Tahap 5'),
+('R44', 2, 'Berat lebih'),
+('R44', 3, 'Normal'),
+('R45', 1, 'Tahap 5'),
+('R45', 2, 'Berat lebih'),
+('R45', 3, 'Tinggi');
 
 -- --------------------------------------------------------
 
@@ -187,12 +880,91 @@ INSERT INTO `mpasi_news` (`id_news`, `judul_news`, `isi_news`) VALUES
 CREATE TABLE `user` (
   `id_user` int(5) NOT NULL,
   `nama_user` text NOT NULL,
+  `username` varchar(10) NOT NULL,
   `pass_user` varchar(9) NOT NULL,
-  `jenis_kelamin` varchar(3) NOT NULL,
-  `tgl_lahir` date NOT NULL,
-  `berat_badan_kelahiran` varchar(5) NOT NULL,
-  `tinggi_badan_kelahiran` varchar(3) NOT NULL
+  `jenis_kelamin` varchar(3) DEFAULT NULL,
+  `tgl_lahir` date DEFAULT NULL,
+  `berat_badan_kelahiran` varchar(5) DEFAULT NULL,
+  `tinggi_badan_kelahiran` varchar(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id_user`, `nama_user`, `username`, `pass_user`, `jenis_kelamin`, `tgl_lahir`, `berat_badan_kelahiran`, `tinggi_badan_kelahiran`) VALUES
+(1, 'nabilah', 'nabil', 'nabil', 'P', '2019-04-09', '12', '12');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `variabel`
+--
+
+CREATE TABLE `variabel` (
+  `idvariabel` int(3) NOT NULL,
+  `variabel` varchar(100) NOT NULL,
+  `nilai1` varchar(10) NOT NULL,
+  `nilai11` varchar(10) NOT NULL,
+  `nilai2` varchar(10) NOT NULL,
+  `nilai22` varchar(10) NOT NULL,
+  `nilai3` varchar(10) NOT NULL,
+  `nilai33` varchar(10) NOT NULL,
+  `nilai4` varchar(10) DEFAULT NULL,
+  `nilai44` varchar(10) DEFAULT NULL,
+  `nilai5` varchar(10) DEFAULT NULL,
+  `nilai55` varchar(10) DEFAULT NULL,
+  `atr1` varchar(30) NOT NULL,
+  `atr2` varchar(30) NOT NULL,
+  `atr3` varchar(30) NOT NULL,
+  `atr4` varchar(30) DEFAULT NULL,
+  `atr5` varchar(30) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `variabel`
+--
+
+INSERT INTO `variabel` (`idvariabel`, `variabel`, `nilai1`, `nilai11`, `nilai2`, `nilai22`, `nilai3`, `nilai33`, `nilai4`, `nilai44`, `nilai5`, `nilai55`, `atr1`, `atr2`, `atr3`, `atr4`, `atr5`) VALUES
+(1, 'Umur', '0', '12', '6', '24', '12', '36', '24', '48', '36', '60', 'Tahap 1', 'Tahap 2', 'Tahap 3', 'Tahap 4', 'Tahap 5'),
+(2, 'Berat Badan', '0', '7', '7', '19', '12', '26', '', '', '', '', 'Kurang Berat', 'Normal ', 'Berat lebih', '', ''),
+(3, 'Tinggi Badan', '0', '49', '49', '101', '75', '124', '', '', '', '', 'Pendek', 'Normal', 'Tinggi', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `var_output`
+--
+
+CREATE TABLE `var_output` (
+  `nilai1` varchar(10) NOT NULL,
+  `nilai11` varchar(10) NOT NULL,
+  `nilai2` varchar(10) NOT NULL,
+  `nilai22` varchar(10) NOT NULL,
+  `nilai3` varchar(10) NOT NULL,
+  `nilai33` varchar(10) NOT NULL,
+  `nilai4` varchar(10) NOT NULL,
+  `nilai44` varchar(10) NOT NULL,
+  `nilai5` varchar(10) NOT NULL,
+  `nilai55` varchar(10) NOT NULL,
+  `atr1` varchar(30) NOT NULL,
+  `atr2` varchar(30) NOT NULL,
+  `atr3` varchar(30) NOT NULL,
+  `atr4` varchar(30) NOT NULL,
+  `atr5` varchar(30) NOT NULL,
+  `kendali1` text,
+  `kendali2` text,
+  `kendali3` text,
+  `kendali4` text,
+  `kendali5` text
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `var_output`
+--
+
+INSERT INTO `var_output` (`nilai1`, `nilai11`, `nilai2`, `nilai22`, `nilai3`, `nilai33`, `nilai4`, `nilai44`, `nilai5`, `nilai55`, `atr1`, `atr2`, `atr3`, `atr4`, `atr5`, `kendali1`, `kendali2`, `kendali3`, `kendali4`, `kendali5`) VALUES
+('0', '48', '43', '53', '48', '70', '53', '83', '70', '123', 'Gizi Buruk ', 'Gizi Kurang ', 'Gizi Normal ', 'Gizi Lebih ', 'Obesitas', 'Berikan ASI eksklusif \r\nFaktor ekonomi tidak selalu menjadi penyebab anak kekurangan gizi. Penyebab lainnya adalah anak tidak mendapatkan ASI. Tak heran jika umumnya anak mengalami kekurangan gizi pada usia 6 bulan ke atas. Oleh karena itu, agar anak tidak mengalami malnutrisi, memberi makanan tambahan sebagai pendamping ASI sangat penting. Misalnya, berilah anak bubur susu yang encer atau buah manis seperti pisang yang dihaluskan. \r\n', 'Perbanyak asupan kalori \r\nPenderita kurang gizi harus banyak mengkonsumsi kalori dalam bentuk karbohidrat, lemak, dan gula. Selain itu asupan mineral dan vitamin juga penting bagi penderita gizi buruk.', 'Jika ragu dengan kondisi gizi anak Anda, bawalah anak untuk diperiksakan ke dokter atau ke posyandu terdekat. ', 'Mengatasi gizi lebih ini, perlu perubahan sosial baik gaya hidup, perilaku makan dan penyiapan lingkungan yang kondusif. ', 'Gizi berlebih (obesitas) menjadi masalah serius bagi penduduk Indonesia, dan merupakan ancaman tersembunyi bagi masa depan anak. Kasus ini bukan saja menimpa golongan berpunya, tapi juga dialami masyarakat miskin di pedesaan dan perkotaan.');
 
 --
 -- Indexes for dumped tables
@@ -203,6 +975,12 @@ CREATE TABLE `user` (
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id_admin`);
+
+--
+-- Indexes for table `defuzzy`
+--
+ALTER TABLE `defuzzy`
+  ADD PRIMARY KEY (`id_user`);
 
 --
 -- Indexes for table `kalkulator_gizi`
@@ -229,10 +1007,28 @@ ALTER TABLE `mpasi_news`
   ADD PRIMARY KEY (`id_news`);
 
 --
+-- Indexes for table `nilai`
+--
+ALTER TABLE `nilai`
+  ADD PRIMARY KEY (`idnilai`);
+
+--
+-- Indexes for table `rule`
+--
+ALTER TABLE `rule`
+  ADD PRIMARY KEY (`idrule`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
+
+--
+-- Indexes for table `variabel`
+--
+ALTER TABLE `variabel`
+  ADD PRIMARY KEY (`idvariabel`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -248,7 +1044,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `kalkulator_gizi`
 --
 ALTER TABLE `kalkulator_gizi`
-  MODIFY `id_hitung` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_hitung` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT for table `kandungan_gizi_bahan_mpasi`
@@ -266,13 +1062,25 @@ ALTER TABLE `mpasi_menu`
 -- AUTO_INCREMENT for table `mpasi_news`
 --
 ALTER TABLE `mpasi_news`
-  MODIFY `id_news` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1011;
+  MODIFY `id_news` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1023;
+
+--
+-- AUTO_INCREMENT for table `nilai`
+--
+ALTER TABLE `nilai`
+  MODIFY `idnilai` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=371;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_user` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `variabel`
+--
+ALTER TABLE `variabel`
+  MODIFY `idvariabel` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

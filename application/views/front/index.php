@@ -22,7 +22,8 @@
 <!-- banner part start-->
 
 <!-- about part start-->
-<section class="about_part section_padding">
+
+<!-- <section class="about_part section_padding">
     <div class="container">
         <div class="row align-items-center justify-content-between">
             <div class="col-md-6">
@@ -41,11 +42,11 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!-- about part start-->
 
 <!-- service part start-->
-<section class="service_part section_padding services_bg">
+<!-- <section class="service_part section_padding services_bg">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8">
@@ -80,11 +81,11 @@
             </div>
         </div>
     </div>
-</section>
+</!--> -->
 <!-- service part end-->
 
 <!-- counter adopt number here -->
-<section class="abopt_number_counter section_padding">
+<!-- <section class="abopt_number_counter section_padding">
     <div class="container">
         <div class="row align-items-center justify-content-between">
             <div class="col-lg-5 col-md-6">
@@ -114,11 +115,11 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!-- counter adopt number end -->
 
 <!-- client review part here -->
-<section class="client_review">
+<!-- <section class="client_review">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-7">
@@ -142,11 +143,11 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!-- client review part end -->
 
 <!-- about part start-->
-<section class="about_part section_padding">
+<!-- <section class="about_part section_padding">
     <div class="container">
         <div class="row align-items-center justify-content-between">
             <div class="col-md-6">
@@ -165,5 +166,5 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!-- about part end-->
