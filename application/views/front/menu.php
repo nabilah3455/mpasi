@@ -1,7 +1,7 @@
 <style>
-    .breadcrumb {
+    /* .breadcrumb {
         background-image: url('../assets/img/banner/food.jpg')
-    }
+    } */
 
     .judul h1 {
         text-align: center;
@@ -11,13 +11,22 @@
         font-weight: bold;
     }
 
-    .blog_details .button-group-area{
-        margin: 0 auto;
+    .search .form-group{
+        float: right;
+    }
+
+    .blog_item {
+        /* background-color: aqua; */
+        box-shadow: 0 0 1px black;
+    }
+
+    .button-group-area{
+        font-size: 15px;
     }
 </style>
 
 <!--::breadcrumb part start::-->
-<section class="breadcrumb breadcrumb_bg">
+<section class="breadcrumb breadcrumb_bg" style="background-image:url('<?= $banner ?>')">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -39,7 +48,20 @@
 <section class="blog_area section_padding">
     <div class="container">
         <div class="row">
-            <?php foreach($data_menu as $d) { ?>
+            <div class="search col-lg-12">
+                <form action="<?= base_url('user/menu') ?>" method="POST">
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <input type="text" name="cari" class="form-control" placeholder='Cari Menu' onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cari Bahan'" autocomplete="off" />
+                            <div class="input-group-append">
+                                <input class="btn btn-danger" type="submit" name="submit" value="Cari">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <?php foreach($data_menu as $d) { 
+                $bahan = character_limiter(nl2br($d['bahan_menu']), 80); ?>
                 <div class="col-lg-4 mb-5 mb-lg-0">
                     <div class="blog_left_sidebar">
                         <article class="blog_item">
@@ -53,11 +75,12 @@
 
                             <div class="blog_details">
                                 <a class="d-inline-block" href="single-blog.html">
-                                    <h2><b><?= $d['judul_menu']; ?></b></h2>
+                                    <h3><b><?= $d['judul_menu']; ?></b></h2>
+                                    <label>Usia <?= $d['usia']?> Bulan</label>
                                 </a>
-                                <p><?= nl2br($d['bahan_menu']) ?></p>
+                                <p><?= $bahan ?></p>
                                 <div class="button-group-area mt-10">
-                                    <a href="<?= base_url('user/detail_menu') ?>?id=<?= $d['id_menu']; ?>" class="genric-btn primary circle arrow">Cara Membuat</a>
+                                    <a href="<?= base_url('user/detail_menu') ?>?id=<?= $d['id_menu']; ?>" class="genric-btn primary circle arrow">Lihat Cara Membuat</a>
                                 </div>
                             </div>
                         </article>

@@ -23,7 +23,7 @@ class Modgizi extends CI_Model
 
     function data_anak($id)
     {
-        $q = $this->db->query("SELECT u.*, k.*, DATE_FORMAT (u.tgl_lahir, '%d %M %Y') as tgl_lahir FROM user u, kalkulator_gizi k WHERE u.id_user=k.id_user AND u.id_user='$id' LIMIT 1");
+        $q = $this->db->query("SELECT u.*, k.*, DATE_FORMAT(u.tgl_lahir, '%d %M %Y') as tgl_lahir FROM user u, kalkulator_gizi k WHERE u.id_user=k.id_user AND u.id_user='$id' LIMIT 1");
 
         return $q->result_array();
     }
@@ -166,5 +166,19 @@ class Modgizi extends CI_Model
         $q = $this->db->query("SELECT * from var_output");
 
         return $q->result_array();
+    }
+
+    function nama_anak($id)
+    {
+        $q = $this->db->query("SELECT nama_user from user WHERE id_user='$id'");
+
+        return $q->result();
+    }
+    
+    function jml_anak($id, $tgl)
+    {
+        $q = $this->db->query("SELECT * from kalkulator_gizi WHERE id_user='$id' AND tgl_cek LIKE '$tgl%'");
+
+        return $q->num_rows();
     }
 }

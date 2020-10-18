@@ -458,8 +458,7 @@
             <!-- <a href="#" class="btn btn-info">Lihat Rekomendasi Menu MPASI</a> -->
         </div>
         <div class="cetak">
-            <a href="#" class="btn btn-danger">Cetak Hasil</a>
-            <a href="#" class="btn btn-success">Ubah Diagnosa</a>
+            <a href="<?= base_url('user/cetak')?>?id_user=<?= $id ?>" class="btn btn-danger">Cetak Hasil</a>
         </div>
     </div>
 </section>

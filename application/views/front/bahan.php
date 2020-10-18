@@ -1,7 +1,7 @@
 <style>
-    .breadcrumb {
-        background-image: url('../assets/img/banner/banner1.jpg')
-    }
+    /* .breadcrumb {
+        background-image: $banner;
+    } */
 
     .judul h1 {
         text-align: center;
@@ -23,10 +23,14 @@
     .modal-content {
         height: 60%;
     }
+
+    .search .form-group{
+        float: right;
+    }
 </style>
 
 <!--::breadcrumb part start::-->
-<section class="breadcrumb breadcrumb_bg">
+<section class="breadcrumb breadcrumb_bg" style="background-image: url('<?= $banner?>')">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -45,9 +49,22 @@
 <div class="judul">
     <h1>Bahan MPASI</h1>
 </div>
+
 <section class="blog_area section_padding">
     <div class="container">
         <div class="row">
+            <div class="search col-lg-12">
+                <form action="<?= base_url('user/bahan') ?>" method="POST">
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <input type="text" name="cari" class="form-control" placeholder='Cari Bahan' onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cari Bahan'" autocomplete="off" />
+                            <div class="input-group-append">
+                                <input class="btn btn-danger" type="submit" name="submit" value="Cari">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
             <?php foreach ($data_bahan as $d) {
                 $kandungan = character_limiter(nl2br($d->kandungan_bahan), 70); ?>
                 <div class="col-lg-4 mb-5 mb-lg-0">
@@ -57,7 +74,7 @@
                                 <h2><b><?= $d->nama_bahan; ?></b></h2>
                                 <p><?= nl2br($kandungan) ?></p>
                                 <div class="button-group-area mt-10">
-                                    <a href="#" data-toggle="modal" data-target="#exampleModal<?= $d->id_bahan; ?>" class="genric-btn primary circle arrow">Cara Membuat</a>
+                                    <a href="#" data-toggle="modal" data-target="#exampleModal<?= $d->id_bahan; ?>" class="genric-btn primary circle arrow">Lihat Kandungan Bahan</a>
                                 </div>
                             </div>
                         </article>

@@ -16,19 +16,31 @@ class User extends CI_Controller
     public function index()
     {
         $data = array (
-            'title' => 'Home'
+            'title' => 'Home',
+            'total_menu' => $this->modmenu->total_menu(),
+            'total_bahan' => $this->modbahan->total_bahan(),
+            'menu1' => $this->modmenu->menu1(),
+            'menu2' => $this->modmenu->menu2(),
+            'menu3' => $this->modmenu->menu3(),
         );
+
+        // var_dump($data['total_menu']);
+        // die();
     
         $this->template->front('front/index', $data);
-        // $this->load->view('template/index_f');
     }
     
     public function berita()
     {
+        if ($this->input->post('submit')) {
+            $judul_berita = $this->input->post('cari');
+        }else{
+            $judul_berita = null;
+        }
         $this->load->database();
         $this->load->library('pagination');
         $config['base_url'] = base_url() . '/user/berita';
-        $jumlah_data = $this->modberita->jml_berita();
+        $jumlah_data = $this->modberita->jml_berita($judul_berita);
         $config['total_rows'] = $jumlah_data;
         $config['per_page'] = 5;
         $from = $this->uri->segment(3);
@@ -55,8 +67,12 @@ class User extends CI_Controller
         $this->pagination->initialize($config);
       
         $data = array (
-        'data_berita' => $this->modberita->berita($config['per_page'], $from)
+        'data_berita' => $this->modberita->berita($config['per_page'], $from, $judul_berita),
+        'banner' => base_url('assets/img/banner/jamie-coupaud-3fbI4ouy0Lw-unsplash.jpg')
         );
+
+        // var_dump($jumlah_data);
+        // die();
     
         $this->template->front('front/berita', $data);
     }
@@ -64,11 +80,17 @@ class User extends CI_Controller
     public function menu()
     {
         $bulan = $this->input->get('bulan');
+        if ($this->input->post('submit')) {
+            $judul_menu = $this->input->post('cari');
+            $jumlah_data = $this->modmenu->jml_menu1($judul_menu);
+        }else{
+            $judul_menu = null;
+            $jumlah_data = $this->modmenu->jml_menu($bulan);
+        }
 
         $this->load->database();
         $this->load->library('pagination');
         $config['base_url'] = base_url() . 'user/menu';
-        $jumlah_data = $this->modmenu->jml_menu($bulan);
         $config['total_rows'] = $jumlah_data;
         $config['per_page'] = 12;
         $from = $this->uri->segment(3);
@@ -93,12 +115,19 @@ class User extends CI_Controller
         $config['first_tag_close'] = '</li>';
         
         $this->pagination->initialize($config);
+
+        if($judul_menu == null){
+            $data_menu = $this->modmenu->menu($config['per_page'], $from, $bulan);
+        }else{
+            $data_menu = $this->modmenu->judul_menu($config['per_page'], $from, $judul_menu);
+        }
         
         $data = array (
-        'data_menu' => $this->modmenu->menu($config['per_page'], $from, $bulan)
+        'data_menu' => $data_menu,
+        'banner' => base_url('assets/img/banner/food.jpg')
         );
 
-        // var_dump($jumlah_data);
+        // var_dump($data);
         // die();
     
         $this->template->front('front/menu', $data);
@@ -128,10 +157,16 @@ class User extends CI_Controller
 
     public function bahan()
     {
+        if ($this->input->post('submit')) {
+            $judul_bahan = $this->input->post('cari');
+        }else{
+            $judul_bahan = null;
+        }
+
         $this->load->database();
         $this->load->library('pagination');
         $config['base_url'] = base_url() . 'user/bahan';
-        $jumlah_data = $this->modbahan->jml_bahan();
+        $jumlah_data = $this->modbahan->jml_bahan($judul_bahan);
         $config['total_rows'] = $jumlah_data;
         $config['per_page'] = 12;
         $from = $this->uri->segment(3);
@@ -158,10 +193,11 @@ class User extends CI_Controller
         $this->pagination->initialize($config);
 
         $data = array(
-            'data_bahan' => $this->modbahan->bahan($config['per_page'], $from)
+            'data_bahan' => $this->modbahan->bahan($config['per_page'], $from, $judul_bahan),
+            'banner' => base_url('assets/img/banner/banner1.jpg')
         );
 
-        // var_dump($jumlah_data);
+        // var_dump($data['banner']);
         // die();
 
         $this->template->front('front/bahan', $data);
@@ -170,15 +206,23 @@ class User extends CI_Controller
     public function kalkulator()
     {
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('nama')])->row_array();
+        $id = $data['user']['id_user'];
+        $tgl = date('Y-m');
+        $user = $this->modgizi->jml_anak($id, $tgl);
+
         $data = array(
             'nama' => $data['user']['nama_user'],
-            'id' => $data['user']['id_user'],
+            'id' => $id,
             'jk' => $data['user']['jenis_kelamin'],
             'tgl_lahir' => $data['user']['tgl_lahir'],
             'variabel' => $this->modgizi->get_variabel()
         );
 
+        if ($user > 0){
+            redirect('user/nilai_gizi?id_user='. $id);
+        }else{
         $this->template->front('front/kalkulator', $data);
+        }
     }
 
     public function input_hasil()
@@ -279,5 +323,32 @@ class User extends CI_Controller
         // die();
         
         $this->template->front('front/hasil_gizi', $data);
+    }
+
+    public function cetak()
+    {
+        $this->load->library('pdfgenerator');
+        // $this->load->model('modgizi');
+
+        $id = $this->input->get('id_user');
+        $variabel1 = $this->modgizi->get_variabel1();
+        $tgl = date('Y-m');
+
+        $data = array(
+            'data_anak' => $this->modgizi->data_anak($id, $tgl),
+            'variabel' => $this->modgizi->get_nilai_variabel(),
+            'id' => $id,
+            'tgl' => $tgl,
+            'variabel1' => $variabel1,
+            'rule' => $this->modgizi->get_rule(),
+            'nama_anak' => $this->modgizi->nama_anak($id)
+            // 'nilai' => $this->modgizi->get_nilai($id, $variabel1, $tgl)
+        );
+
+        //  var_dump($data['variabel']);
+        //  die();
+
+        $html = $this->parser->parse("front/cetak_hasil_gizi", $data);
+        $this->pdfgenerator->generate($html, "Hasil Nilai Gizi ", true, 'legal', 'landscape');
     }
 }

@@ -11,14 +11,28 @@ class Modberita extends CI_Model
         return $q->result_array();
     }
    
-    function jml_berita()
+    function jml_berita($jml)
     {
-        return $this->db->get('mpasi_news')->num_rows();
+        if ($jml == null) {
+            return $this->db->get('mpasi_news')->num_rows();
+        }else{
+        $this->db->where('judul_news', $jml);
+        $q = $this->db->get('mpasi_news')->num_rows();
+
+        return $q;
+        }
     }
 
-    function berita($number, $offset)
+    function berita($number, $offset, $judul)
     {
-        return $query = $this->db->get('mpasi_news', $number, $offset)->result();
+        if ($judul == null) {
+            return $q = $this->db->get('mpasi_news', $number, $offset)->result();
+        }else{
+            $this->db->like('judul_news',$judul, 'both');
+            $q = $this->db->get('mpasi_news', $number, $offset)->result();
+
+            return $q;
+        }
     }
     
     function data_berita($id)

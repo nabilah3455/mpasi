@@ -1,7 +1,7 @@
 <style>
-    .breadcrumb {
+    /* .breadcrumb {
         background-image: url('../assets/img/banner/jamie-coupaud-3fbI4ouy0Lw-unsplash.jpg')
-    }
+    } */
 
     .judul h1 {
         text-align: center;
@@ -29,7 +29,7 @@
 </style>
 
 <!--::breadcrumb part start::-->
-<section class="breadcrumb breadcrumb_bg">
+<section class="breadcrumb breadcrumb_bg" style="background-image: url('<?= $banner ?>')">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -77,16 +77,16 @@
                 <div class="blog_right_sidebar">
                     <aside class="single_sidebar_widget search_widget">
                             <h4>Cari Berita</h4>
-                        <form action="#">
+                        <form action="<?= base_url('user/berita')?>" method="POST">
                             <div class="form-group">
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder='Search Keyword' onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
+                                    <input type="text" name="cari" class="form-control" placeholder='Search Keyword' onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
                                     <div class="input-group-append">
                                         <button class="btn" type="button"><i class="ti-search"></i></button>
                                     </div>
                                 </div>
                             </div>
-                            <button class="button rounded-0 primary-bg text-white w-100" type="submit">Search</button>
+                            <input class="button rounded-0 primary-bg text-white w-100" type="submit" name="submit" value="Cari">
                         </form>
                     </aside>
                 </div>

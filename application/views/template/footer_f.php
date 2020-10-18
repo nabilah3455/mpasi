@@ -1,14 +1,15 @@
 <!-- footer part start-->
 <footer class="footer_area padding_top">
     <div class="container">
-        <div class="row justify-content-between">
+        <!-- <div class="row justify-content-between">
             <div class="col-xl-2 col-sm-6 col-md-3 mb-4 mb-xl-0 single-footer-widget">
                 <h4>Menu</h4>
                 <ul>
-                    <li><a href="#">home</a></li>
-                    <li><a href="#">about</a></li>
-                    <li><a href="#">shop</a></li>
-                    <li><a href="#">contact</a></li>
+                    <li><a href="<?= base_url('user') ?>">home</a></li>
+                    <li><a href="#">Berita MPASI</a></li>
+                    <li><a href="#">Bahan MPASI</a></li>
+                    <li><a href="#">Menu MPASI</a></li>
+                    <li><a href="#">Kalkulator Gizi</a></li>
                 </ul>
             </div>
             <div class="col-xl-2 col-sm-6 col-md-3 mb-4 mb-xl-0 single-footer-widget">
@@ -33,7 +34,7 @@
                     <li><a href="#">Sat-Sun (Closed)</a></li>
                 </ul>
             </div>
-        </div>
+        </div> -->
         <div class="row">
             <div class="col-lg-12">
                 <div class="copyright_text">

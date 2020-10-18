@@ -43,7 +43,7 @@ class Login_user extends CI_Controller
             );
 
             $this->session->set_userdata($data_session);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Selamat Datang di Aplikasi Panduan Gizi Makanan Balita</center></div>');
+            $this->session->set_flashdata('message', '<label><center>Selamat Datang di Aplikasi Panduan Gizi Makanan Balita</center></label>');
             // var_dump($data_session);
             redirect("user");
 
@@ -62,7 +62,7 @@ class Login_user extends CI_Controller
             //         redirect('login');
             //     }
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username atau Password Salah!</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-danger alert-bordered">Username atau Password Salah!</div>');
             redirect('login_user');
         }
     }
@@ -83,7 +83,7 @@ class Login_user extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'Buat Akun Baru';
-            $this->load->view('register', $data);
+            $this->load->view('register_user', $data);
             $tanggal = date('Y-m-d');
 
             // var_dump($tanggal);
@@ -112,7 +112,6 @@ class Login_user extends CI_Controller
             // die();
 
             $this->moduser->register($data);
-            $this->moduser->register_konsumen($user, $tlp);
 
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Register Berhasil, Silahkan Login</center></div>');
             redirect('login');

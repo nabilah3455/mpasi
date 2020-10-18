@@ -13,7 +13,7 @@ class Pdfgenerator
     $dompdf = new DOMPDF($options);
     $dompdf->load_html($html);
     $dompdf->set_paper($paper, $orientation);
-    $options->setIsRemoteEnabled(true);
+    // $options->setIsRemoteEnabled(true);
     $dompdf->render();
     if ($stream) {
         $dompdf->stream($filename.".pdf", array("Attachment" => 0));

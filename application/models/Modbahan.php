@@ -42,12 +42,31 @@ class Modbahan extends CI_Model
         return $q;
     }
 
-    function bahan($number, $offset)
-    {
+    function bahan($number, $offset, $nama_bahan)
+    { 
+        if($nama_bahan == null){
         return $query = $this->db->get('kandungan_gizi_bahan_mpasi', $number, $offset)->result();
+        }else{
+            $this->db->like('nama_bahan',$nama_bahan, 'both');
+            $q = $this->db->get('kandungan_gizi_bahan_mpasi', $number, $offset)->result();
+
+            return $q;
+        }
     }
 
-    function jml_bahan()
+    function jml_bahan($jml)
+    {
+        if($jml == null){
+            return $this->db->get('kandungan_gizi_bahan_mpasi')->num_rows();
+        }else{
+             $this->db->like('nama_bahan', $jml);
+             $q = $this->db->get('kandungan_gizi_bahan_mpasi')->num_rows();
+
+        return $q;
+        }
+    }
+
+    function total_bahan()
     {
         return $this->db->get('kandungan_gizi_bahan_mpasi')->num_rows();
     }

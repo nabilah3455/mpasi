@@ -171,9 +171,25 @@ class Modmenu extends CI_Model
         }
     }
 
+     function jml_menu1($judul_menu)
+    {
+        $this->db->like('judul_menu', $judul_menu, 'both');
+        $q = $this->db->get('mpasi_menu')->num_rows();
+
+        return $q;
+    }
+
+    function judul_menu($number, $offset, $judul_menu)
+    { 
+        $this->db->like('judul_menu',$judul_menu, 'both');
+        $q = $this->db->get('mpasi_menu', $number, $offset)->result_array();
+
+        return $q;
+    }
+
     function jml_menu($bulan)
     {
-        if ($bulan == '6-7') {
+        if($bulan == '6-7') {
            return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
         }elseif($bulan == '8'){
            return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
@@ -197,6 +213,11 @@ class Modmenu extends CI_Model
            return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
         } elseif ($bulan == '') {
            return $this->db->get('mpasi_menu')->num_rows();
+        // } elseif($bulan == '') {
+        //     $this->db->like('judul_menu', $bulan);
+        //      $q = $this->db->get('mpasi_menu')->num_rows();
+
+        //      return $q;
         }
         // return $this->db->get('mpasi_menu')->num_rows();
     }
@@ -206,5 +227,33 @@ class Modmenu extends CI_Model
         $q = $this->db->query("SELECT * FROM mpasi_menu WHERE id_menu='$id'");
 
         return $q->result_array();
+    }
+   
+    function menu1()
+    {
+        $q = $this->db->query("SELECT * FROM mpasi_menu WHERE usia='6-7' LIMIT 1");
+
+        return $q->result_array();
+    }
+    
+    function menu2()
+    {
+        $q = $this->db->query("SELECT * FROM mpasi_menu WHERE usia='8' LIMIT 1");
+
+        return $q->result_array();
+    }
+    
+    function menu3()
+    {
+        $q = $this->db->query("SELECT * FROM mpasi_menu WHERE usia='9' LIMIT 1");
+
+        return $q->result_array();
+    }
+
+    function total_menu()
+    {
+        $q = $this->db->get('mpasi_menu')->num_rows();
+
+        return $q;
     }
 }
