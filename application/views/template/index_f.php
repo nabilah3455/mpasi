@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/front/') ?>css/magnific-popup.css">
     <!-- style CSS -->
     <link rel="stylesheet" href="<?= base_url('assets/front/') ?>css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>

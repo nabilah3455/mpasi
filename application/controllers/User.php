@@ -15,7 +15,9 @@ class User extends CI_Controller
     
     public function index()
     {
-        $data = array (
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('nama')])->row_array();
+        $data = array(
+            'nama' => $data['user']['nama_user'],
             'title' => 'Home',
             'total_menu' => $this->modmenu->total_menu(),
             'total_bahan' => $this->modbahan->total_bahan(),
@@ -24,7 +26,7 @@ class User extends CI_Controller
             'menu3' => $this->modmenu->menu3(),
         );
 
-        // var_dump($data['total_menu']);
+        // var_dump($data['nama']);
         // die();
     
         $this->template->front('front/index', $data);

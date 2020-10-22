@@ -20,8 +20,16 @@ class Kalkulator extends CI_Controller
         $data = array(
             'nama' => $data['user']['username'],
             'tambah' => base_url('kalkulator/tambah'),
-            'data_gizi' => $this->modgizi->get_gizi()
+            'data_gizi' => $this->modgizi->get_gizi(),
+            'umur' => $this->modgizi->get_umur(),
+            'tinggi' => $this->modgizi->get_tinggi(),
+            'berat' => $this->modgizi->get_berat(),
+            'gizi' => $this->modgizi->get_nilai_gizi(),
+            'rule' => $this->modgizi->get_rule(),
         );
+
+        // var_dump($data['umur']);
+        // die();
         $this->template->back('back/kalkulator_gizi', $data);
     }
 

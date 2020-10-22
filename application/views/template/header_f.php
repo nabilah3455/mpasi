@@ -4,6 +4,10 @@
          font-size: 30px;
          font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
      }
+
+     .btn_1 {
+         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+     }
  </style>
 
  <!--::header part start::-->
@@ -11,14 +15,14 @@
      <div class="sub_header">
          <div class="container">
              <div class="row align-items-center">
-                 <div class="col-lg-11">
+                 <div class="col-lg-6">
                      <div id="logo">
                          <img src="<?= base_url('assets/front/') ?>img/android-chrome-192x192.png" width="40px"> Aplikasi Panduan Makanan Gizi Bayi
                      </div>
                  </div>
-                 <div class="col-lg-1">
+                 <div class="col-lg-6">
                      <div class="sub_header_social_icon float-right">
-                         <a href="<?= base_url('login_user/logout')?>" class="btn_1 d-none d-md-inline-block">Logout</a>
+                        <a href="<?= base_url('login_user/logout') ?>" class="btn_1 d-none d-md-inline-block">Logout</a>
                      </div>
                  </div>
              </div>

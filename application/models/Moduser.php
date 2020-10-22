@@ -27,6 +27,16 @@ class Moduser extends CI_Model
         }
         return $e;
     }
+    
+    function register_user($data)
+    {
+        if ($this->db->insert('user', $data)) {
+            $e = "Data berhasil dimasukkan";
+        } else {
+            $e = FALSE;
+        }
+        return $e;
+    }
 
     function update_bahan($id, $data)
     {

@@ -12,4 +12,11 @@ class Modlogin extends CI_Model
     {
         return $this->db->get_where($table, $where);
     }
+
+    function get_username($username)
+    {
+        $q = $this->db->query("SELECT username FROM user WHERE username='$username'");
+
+        return $q->num_rows();
+    }
 }

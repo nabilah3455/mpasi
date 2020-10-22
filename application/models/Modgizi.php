@@ -104,6 +104,13 @@ class Modgizi extends CI_Model
 
         return $q->num_rows();
     }
+   
+    function data_rule1($b)
+    {
+        $q = $this->db->query("SELECT * FROM rule1 WHERE idrule='$b' ORDER BY idvariabel ASC");
+
+        return $q->result_array();
+    }
     
     function get_var_output()
     {
@@ -180,5 +187,33 @@ class Modgizi extends CI_Model
         $q = $this->db->query("SELECT * from kalkulator_gizi WHERE id_user='$id' AND tgl_cek LIKE '$tgl%'");
 
         return $q->num_rows();
+    }
+
+    function get_umur()
+    {
+        $q = $this->db->query("SELECT * from variabel WHERE idvariabel='1'");
+
+        return $q->result_array();
+    }
+    
+    function get_tinggi()
+    {
+        $q = $this->db->query("SELECT * from variabel WHERE idvariabel='3'");
+
+        return $q->result_array();
+    }
+    
+    function get_berat()
+    {
+        $q = $this->db->query("SELECT * from variabel WHERE idvariabel='2'");
+
+        return $q->result_array();
+    }
+    
+    function get_nilai_gizi()
+    {
+        $q = $this->db->query("SELECT * from var_output");
+
+        return $q->result_array();
     }
 }

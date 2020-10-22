@@ -11,12 +11,6 @@
         font-weight: bold;
         font-size: 18px;
     }
-
-    .nilai_gizi {
-        color: red;
-        font-style: italic;
-        font-size: 12px;
-    }
 </style>
 
 <div class="page-content fade-in-up">
@@ -31,7 +25,7 @@
                 </div>
                 <div class="ibox-body">
                     <div>
-                        <canvas id="line_chart"></canvas>
+                        <canvas id="bar_chart" style="height:260px;"></canvas>
                     </div>
                 </div>
             </div>
@@ -40,121 +34,83 @@
             <div class="ibox">
                 <div class="ibox-head">
                     Tahap Umur
+                    <a href="#edi_umur" data-toggle="modal"><i class="fa fa-edit"></i></a>
                 </div>
                 <div class="ibox-body">
                     <table class="table table-bordered">
-                        <tr>
-                            <th>Tahap 1</th>
-                            <td>0-12 Bulan</td>
-                        </tr>
-                        <tr>
-                            <th>Tahap 2</th>
-                            <td>6-24 Bulan</td>
-                        </tr>
-                        <tr>
-                            <th>Tahap 3</th>
-                            <td>24-36 Bulan</td>
-                        </tr>
-                        <tr>
-                            <th>Tahap 4</th>
-                            <td>24-48 Bulan</td>
-                        </tr>
-                        <tr>
-                            <th>Tahap 5</th>
-                            <td>36-60 Bulan</td>
-                        </tr>
+                        <?php foreach ($umur as $u) { ?>
+                            <tr>
+                                <th><?= $u['atr1'] ?></th>
+                                <td><?= $u['nilai1'] ?>&nbsp;-&nbsp;<?= $u['nilai11'] ?></td>
+                            </tr>
+                            <tr>
+                                <th><?= $u['atr2'] ?></th>
+                                <td><?= $u['nilai2'] ?>&nbsp;-&nbsp;<?= $u['nilai22'] ?></td>
+                            </tr>
+                            <tr>
+                                <th><?= $u['atr3'] ?></th>
+                                <td><?= $u['nilai3'] ?>&nbsp;-&nbsp;<?= $u['nilai33'] ?></td>
+                            </tr>
+                            <tr>
+                                <th><?= $u['atr4'] ?></th>
+                                <td><?= $u['nilai4'] ?>&nbsp;-&nbsp;<?= $u['nilai44'] ?></td>
+                            </tr>
+                            <tr>
+                                <th><?= $u['atr5'] ?></th>
+                                <td><?= $u['nilai5'] ?>&nbsp;-&nbsp;<?= $u['nilai55'] ?></td>
+                            </tr>
+                        <?php } ?>
                     </table>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3">
+
+        <div class="col-lg-6">
             <div class="ibox">
                 <div class="ibox-head">
-                    Berat Laki-Laki
+                    Tinggi Badan
                 </div>
                 <div class="ibox-body">
                     <table class="table table-bordered">
-                        <tr>
-                            <th>Kurang Berat</th>
-                            <td>0-7 Kg</td>
-                        </tr>
-                        <tr>
-                            <th>Normal</th>
-                            <td>7-19 Kg</td>
-                        </tr>
-                        <tr>
-                            <th>Berat Lebih</th>
-                            <td>13-25 Kg</td>
-                        </tr>
+                        <?php foreach ($tinggi as $t) { ?>
+                            <tr>
+                                <th><?= $t['atr1'] ?></th>
+                                <td><?= $t['nilai1'] ?>&nbsp;-&nbsp;<?= $t['nilai11'] ?></td>
+                            </tr>
+                            <tr>
+                                <th><?= $t['atr2'] ?></th>
+                                <td><?= $t['nilai2'] ?>&nbsp;-&nbsp;<?= $t['nilai22'] ?></td>
+                            </tr>
+                            <tr>
+                                <th><?= $t['atr3'] ?></th>
+                                <td><?= $t['nilai3'] ?>&nbsp;-&nbsp;<?= $t['nilai33'] ?></td>
+                            </tr>
+                        <?php } ?>
                     </table>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-6">
             <div class="ibox">
                 <div class="ibox-head">
-                    Berat Perempuan
+                    Berat Badan
                 </div>
                 <div class="ibox-body">
                     <table class="table table-bordered">
-                        <tr>
-                            <th>Kurang Berat</th>
-                            <td>0-7 Kg</td>
-                        </tr>
-                        <tr>
-                            <th>Normal</th>
-                            <td>7-18 Kg</td>
-                        </tr>
-                        <tr>
-                            <th>Berat Lebih</th>
-                            <td>12-26 Kg</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3">
-            <div class="ibox">
-                <div class="ibox-head">
-                    Tinggi Laki-Laki
-                </div>
-                <div class="ibox-body">
-                    <table class="table table-bordered">
-                        <tr>
-                            <th>Pendek</th>
-                            <td>0-49 Cm</td>
-                        </tr>
-                        <tr>
-                            <th>Normal</th>
-                            <td>49-101 Cm</td>
-                        </tr>
-                        <tr>
-                            <th>Tinggi</th>
-                            <td>75-124 Cm</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3">
-            <div class="ibox">
-                <div class="ibox-head">
-                    Tinggi Perempuan
-                </div>
-                <div class="ibox-body">
-                    <table class="table table-bordered">
-                        <tr>
-                            <th>Pendek</th>
-                            <td>0-48 Cm</td>
-                        </tr>
-                        <tr>
-                            <th>Normal</th>
-                            <td>48-100 Cm</td>
-                        </tr>
-                        <tr>
-                            <th>Tinggi</th>
-                            <td>74-123 Cm</td>
-                        </tr>
+                        <?php foreach ($berat as $b) { ?>
+                            <tr>
+                                <th><?= $b['atr1'] ?></th>
+                                <td><?= $b['nilai1'] ?>&nbsp;-&nbsp;<?= $b['nilai11'] ?></td>
+                            </tr>
+                            <tr>
+                                <th><?= $b['atr2'] ?></th>
+                                <td><?= $b['nilai2'] ?>&nbsp;-&nbsp;<?= $b['nilai22'] ?></td>
+                            </tr>
+                            <tr>
+                                <th><?= $b['atr3'] ?></th>
+                                <td><?= $b['nilai3'] ?>&nbsp;-&nbsp;<?= $b['nilai33'] ?></td>
+                            </tr>
+                        <?php } ?>
                     </table>
                 </div>
             </div>
@@ -166,383 +122,171 @@
                 </div>
                 <div class="ibox-body">
                     <table class="table table-bordered">
-                        <tr>
-                            <th>Gizi Buruk</th>
-                            <td>0-48</td>
-                        </tr>
-                        <tr>
-                            <th>Gizi Kurang</th>
-                            <td>43-53</td>
-                        </tr>
-                        <tr>
-                            <th>Normal</th>
-                            <td>48-70</td>
-                        </tr>
-                        <tr>
-                            <th>Gizi Lebih</th>
-                            <td>53-83</td>
-                        </tr>
-                        <tr>
-                            <th>Obesitas</th>
-                            <td>70-123</td>
-                        </tr>
+                        <?php foreach ($gizi as $g) { ?>
+                            <tr>
+                                <th><?= $g['atr1'] ?></th>
+                                <th><?= $g['atr2'] ?></th>
+                                <th><?= $g['atr3'] ?></th>
+                                <th><?= $g['atr4'] ?></th>
+                                <th><?= $g['atr5'] ?></th>
+                            </tr>
+                            <tr>
+                                <td><?= $g['nilai1'] ?>&nbsp;-&nbsp;<?= $g['nilai11'] ?></td>
+                                <td><?= $g['nilai2'] ?>&nbsp;-&nbsp;<?= $g['nilai22'] ?></td>
+                                <td><?= $g['nilai3'] ?>&nbsp;-&nbsp;<?= $g['nilai33'] ?></td>
+                                <td><?= $g['nilai4'] ?>&nbsp;-&nbsp;<?= $g['nilai44'] ?></td>
+                                <td><?= $g['nilai5'] ?>&nbsp;-&nbsp;<?= $g['nilai55'] ?></td>
+                            </tr>
+                        <?php } ?>
                     </table>
-                    <label for="" class="nilai_gizi">Nilai Gizi = Berat Badan (Kg) / Tinggi Badan (Cm)</label>
                 </div>
             </div>
         </div>
         <div class="col-lg-12">
-            <div class="accordion" id="accordionExample">
-                <div class="card">
-                    <div class="card-header" id="headingOne">
-                        <h5 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Aturan Dalam Penentuan Status Gizi Tahap 1
-                            </button>
-                        </h5>
-                    </div>
+            <div class="ibox">
+                <div class="ibox-head">
+                    Rule
+                </div>
+                <div class="ibox-body">
+                    <table class="table table-striped table-bordered zero-configuration" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th width="1%">No.</th>
+                                <th width="8%">Rule</th>
+                                <th>Aturan (Rule)</th>
+                                <th width="10%">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $no = 1;
+                            foreach ($rule as $r) { ?>
+                                <tr>
+                                    <td>
+                                        <div align="left"><?php echo "$no"; ?>.</div>
+                                    </td>
+                                    <td>
+                                        <div align="left"><?php echo "$r[idrule]"; ?></div>
+                                    </td>
+                                    <td>
+                                        <div align="left">
+                                            <?php
+                                            // $z = mysql_num_rows(mysql_query("select * from rule1 where idrule='$b[0]'"));
+                                            $z = $this->modgizi->get_rule1($r['idrule']);
+                                            // $c = mysql_query("select * from rule1 where idrule='$b[0]' order by idvariabel asc");
+                                            $c = $this->modgizi->data_rule1($r['idrule']);
+                                            $i = 1;
+                                            foreach ($c as $d) {
+                                                // $e = mysql_fetch_array(mysql_query("select * from variabel where idvariabel='$d[idvariabel]'"));
+                                                $var = $this->modgizi->get_var_rule($d['idvariabel']);
+                                                foreach ($var as $e) {
+                                                    if ($i == $z) {
+                                                        echo "$e[variabel] <font color=black>$d[rule1]</font> ";
+                                                        echo " Then <font color=brown><strong>$r[maka]</strong></font>";
+                                                    } else {
+                                                        echo "$e[variabel] <font color=black>$d[rule1]</font> <font color=red>And</font> ";
+                                                    }
+                                                    $i++;
+                                                }
+                                            }
 
-                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <table class="table table-striped table-bordered zero-configuration" cellspacing="0" width="100%">
-                                <thead>
-                                    <tr>
-                                        <th width=90%>Keterangan</th>
-                                        <th width="10%">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>[R1] : JIKA berat badan adalah kurang berat DAN tinggi badan adalah pendek, MAKA status gizinya adalah normal.</td>
-                                        <td>
-                                            <a href="#" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                            <a href="#myModal" data-toggle="modal" class=" btn btn-danger"><i class="fa fa-trash"></i></a>
-                                            <!-- <a href="<?= base_url('bahan/delete') ?>?id=<?= $b['id_bahan'] ?>" onclick="return confirm('Yakin Hapus <?= $b['nama_bahan']; ?> Ini?')" class=" btn btn-danger"><i class="fa fa-trash"></i></a> -->
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R2] : JIKA berat badan adalah kurang berat DAN tinggi badan adalah normal, MAKA status gizinya adalah normal.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R2] : JIKA berat badan adalah kurang berat DAN tinggi badan adalah normal, MAKA status gizinya adalah normal.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R3] : JIKA berat badan adalah kurang berat DAN tinggi badan adalah tinggi, MAKA status gizinya adalah gizi kurang.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R4] : JIKA berat badan adalah normal DAN tinggi badan adalah pendek, MAKA status gizinya adalah gizi lebih.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R5] : JIKA berat badan adalah normal DAN tinggi badan adalah normal, MAKA status gizinya adalah gizi lebih.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R6] : JIKA berat badan adalah normal DAN tinggi badan adalah tinggi, MAKA status gizinya adalah gizi lebih.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R7] : JIKA berat badan adalah berat lebih DAN tinggi badan adalah pendek, MAKA status gizinya adalah gizi lebih</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R7] : JIKA berat badan adalah berat lebih DAN tinggi badan adalah pendek, MAKA status gizinya adalah gizi lebih.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R9] : JIKA berat badan adalah berat lebih DAN tinggi badan adalah tinggi, MAKA status gizinya adalah obesitas.</td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingTwo">
-                        <h5 class="mb-0">
-                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Aturan Dalam Penentuan Status Gizi Tahap 2
-                            </button>
-                        </h5>
-                    </div>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <table class="table table-striped table-bordered zero-configuration" cellspacing="0" width="100%">
-                                <thead>
-                                    <tr>
-                                        <th width=90%>Keterangan</th>
-                                        <th width="10%">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>[R10] : JIKA berat badan adalah kurang berat DAN tinggi badan adalah pendek, MAKA status gizinya adalah gizi kurang.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R11] : JIKA berat badan adalah kurang berat DAN tinggi badan adalah normal, MAKA status gizinya adalah gizi kurang.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R12] : JIKA berat badan adalah kurang berat DAN tinggi badan adalah tinggi, MAKA status gizinya adalah gizi kurang.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R13] : JIKA berat badan adalah normal DAN tinggi badan adalah pendek, MAKA status gizinya adalah normal.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R14] : JIKA berat badan adalah normal DAN tinggi badan adalah normal, MAKA status gizinya adalah normal.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R15] : JIKA berat badan adalah normal DAN tinggi badan adalah tinggi, MAKA status gizinya adalah normal.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R16] : JIKA berat badan adalah berat lebih DAN tinggi badan adalah pendek, MAKA status gizinya adalah gizi lebih.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R17] : JIKA berat badan adalah berat lebih DAN tinggi badan adalah normal, MAKA status gizinya adalah gizi lebih.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R18] : JIKA berat badan adalah berat lebih DAN tinggi badan adalah tinggi, MAKA status gizinya adalah obesitas.</td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingThree">
-                        <h5 class="mb-0">
-                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Aturan Dalam Penentuan Status Gizi Tahap 3
-                            </button>
-                        </h5>
-                    </div>
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <table class="table table-striped table-bordered zero-configuration" cellspacing="0" width="100%">
-                                <thead>
-                                    <tr>
-                                        <th width=90%>Keterangan</th>
-                                        <th width="10%">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>[R19] : JIKA berat badan adalah kurang berat DAN tinggi badan adalah pendek, MAKA status gizinya adalah gizi buruk.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R20] : JIKA berat badan adalah kurang berat DAN tinggi badan adalah normal, MAKA status gizinya adalah gizi buruk.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R21] : JIKA berat badan adalah kurang berat DAN tinggi badan adalah tinggi, MAKA status gizinya adalah normal.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R22] : JIKA berat badan adalah normal DAN tinggi badan adalah pendek, MAKA status gizinya adalah normal.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R23] : JIKA berat badan adalah normal DAN tinggi badan adalah normal, MAKA status gizinya adalah normal.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R24] : JIKA berat badan adalah normal DAN tinggi badan adalah tinggi, MAKA status gizinya adalah normal.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R25] : JIKA berat badan adalah berat lebih DAN tinggi badan adalah pendek, MAKA status gizinya adalah gizi lebih.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R26] : JIKA berat badan adalah berat lebih DAN tinggi badan adalah normal, MAKA status gizinya adalah gizi lebih.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R27] : JIKA berat badan adalah berat lebih DAN tinggi badan adalah tinggi, MAKA status gizinya adalah obesitas.</td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingFour">
-                        <h5 class="mb-0">
-                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
-                                Aturan Dalam Penentuan Status Gizi Tahap 4
-                            </button>
-                        </h5>
-                    </div>
-                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <table class="table table-striped table-bordered zero-configuration" cellspacing="0" width="100%">
-                                <thead>
-                                    <tr>
-                                        <th width=90%>Keterangan</th>
-                                        <th width="10%">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>[R28] : JIKA berat badan adalah kurang berat DAN tinggi badan adalah pendek, MAKA status gizinya adalah gizi kurang.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R29] : JIKA berat badan adalah kurang berat DAN tinggi badan adalah normal, MAKA status gizinya adalah gizi kurang.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R30] : JIKA berat badan adalah kurang berat DAN tinggi badan adalah tinggi, MAKA status gizinya adalah gizi kurang.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R31] : JIKA berat badan adalah normal DAN tinggi badan adalah pendek, MAKA status gizinya adalah normal.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R32] : JIKA berat badan adalah normal DAN tinggi badan adalah normal, MAKA status gizinya adalah normal </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R33] : JIKA berat badan adalah normal DAN tinggi badan adalah tinggi, MAKA status gizinya adalah normal.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R34] : JIKA berat badan adalah berat lebih DAN tinggi badan adalah pendek, MAKA status gizinya adalah gizi lebih </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R35] : JIKA berat badan adalah berat lebih DAN tinggi badan adalah normal, MAKA status gizinya adalah gizi lebih </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R36] : JIKA berat badan adalah berat lebih DAN tinggi badan adalah tinggi, MAKA status gizinya adalah normal.</td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header" id="headingFive">
-                        <h5 class="mb-0">
-                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
-                                Aturan Dalam Penentuan Status Gizi Tahap 5
-                            </button>
-                        </h5>
-                    </div>
-                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <table class="table table-striped table-bordered zero-configuration" cellspacing="0" width="100%">
-                                <thead>
-                                    <tr>
-                                        <th width=90%>Keterangan</th>
-                                        <th width="10%">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>[R37] : JIKA berat badan adalah kurang berat DAN tinggi badan adalah pendek, MAKA status gizinya adalah gizi buruk.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R38] : JIKA berat badan adalah kurang berat DAN tinggi badan adalah normal, MAKA status gizinya adalah gizi buruk.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R39] : JIKA berat badan adalah kurang berat DAN tinggi badan adalah tinggi, MAKA status gizinya adalah gizi buruk.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R40] : JIKA berat badan adalah normal DAN tinggi badan adalah pendek, MAKA status gizinya adalah gizi kurang.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R41] : JIKA berat badan adalah normal DAN tinggi badan adalah normal, MAKAstatus gizinya adalah gizi kurang.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R42] : JIKA berat badan adalah normal DAN tinggi badan adalah tinggi, MAKA status gizinya adalah gizi kurang.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R43] : JIKA berat badan adalah berat lebih DAN tinggi badan adalah pendek, MAKA status gizinya adalah gizi lebih.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R44] : JIKA berat badan adalah berat lebih DAN tinggi badan adalah normal, MAKA status gizinya adalah gizi lebih.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>[R45] : JIKA berat badan adalah berat lebih DAN tinggi badan adalah tinggi, MAKA status gizinya adalah normal.</td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                                            ?>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href="<?= base_url('kalkulator/edit_rule') ?>?idrule=<?= $r['idrule']; ?>" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                        <a href="#myModal" data-toggle="modal" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            <?php
+                                $no++;
+                            }
+                            ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!-- Modal HTML -->
+<?php foreach ($rule as $r) { ?>
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header flex-column">
+                    <div class="icon-box">
+                        <i class="material-icons">&#xE5CD;</i>
+                    </div>
+                    <h4 class="modal-title w-100">Hapus Rule <b> <?= $r['idrule'] ?></b> ?</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <!-- <div class="modal-body">
+                                        <p>Do you really want to delete these records? This process cannot be undone.</p>
+                                    </div> -->
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" onclick="window.location.href='<?= base_url('kalkulator/delete_rule') ?>?idrule=<?= $r['idrule'] ?>'" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
 
-<script>
+<!-- Modal umur -->
+<?php foreach ($umur as $u) { ?>
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header flex-column">
+                    <div class="icon-box">
+                        <i class="material-icons">&#xE5CD;</i>
+                    </div>
+                    <h4 class="modal-title w-100">Hapus Rule <b> <?= $u['idrule'] ?></b> ?</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <!-- <div class="modal-body">
+                                        <p>Do you really want to delete these records? This process cannot be undone.</p>
+                                    </div> -->
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" onclick="window.location.href='<?= base_url('kalkulator/delete_rule') ?>?idrule=<?= $u['idrule'] ?>'" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+<script src="<?= base_url('assets') ?>/js/app.min.js" type="text/javascript"></script>
+<script type="text/javascript">
     $(function() {
-        // Line Chart example
-
-        var lineData = {
-
-            labels: ["January", "February", "March", "April"],
-            datasets: [{
-                    label: "Data 1",
-                    backgroundColor: 'rgba(52,152,219, 0.9)',
-                    borderColor: 'rgba(52,152,219, 1)',
-                    pointBorderColor: "#fff",
-                    data: [28, 3, 40, 19, 86, 27],
+        var a = {
+                labels: ["Januari", "Februari", "Maret", "Wednesday", "Thursday", "Friday", "Saturday"],
+                datasets: [{
+                    label: "Gizi Baik",
+                    borderColor: 'rgba(52,152,219,1)',
+                    // backgroundColor: 'rgba(52,152,219,1)',
+                    pointBackgroundColor: 'rgba(52,152,219,1)',
+                    data: [29, 48, 40, 19, 100, 31, 85]
                 }, {
                     label: "Data 2",
-                    backgroundColor: 'rgba(213,217,219, 0.9)',
-                    borderColor: 'rgba(213,217,219, 1)',
-                    pointBorderColor: "#fff",
-                    data: [65, 59, 80, 81, 56, 55],
-
+                    // backgroundColor: "#DADDE0",
+                    borderColor: "#DADDE0",
+                    data: [45, 80, 58, 74, 54, 59, 40]
                 }, {
                     label: "Data 2",
-                    backgroundColor: 'rgba(213,217,219, 0.9)',
-                    borderColor: 'rgba(213,217,219, 1)',
-                    pointBorderColor: "#fff",
-                    data: [65, 59, 80, 81, 56, 55],
-                }
-
-            ]
-        };
-
-        var lineOptions = {
-            responsive: true,
-            maintainAspectRatio: false
-        };
-        var ctx = document.getElementById("line_chart").getContext("2d");
-
-        new Chart(ctx, {
-            type: 'line',
-            data: lineData,
-            options: lineOptions
+                    // backgroundColor: "#DADDE0",
+                    borderColor: "#DADDE0",
+                    data: [20, 40, 60, 30, 83, 44, 59]
+                }]
+            },
+            t = {
+                responsive: !0,
+                maintainAspectRatio: !1
+            },
+            e = document.getElementById("bar_chart").getContext("2d");
+        new Chart(e, {
+            type: "line",
+            data: a,
+            options: t
         });
     });
 </script>

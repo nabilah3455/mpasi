@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width initial-scale=1.0">
     <title>Panduan Gizi Makanan Bayi</title>
+    <link rel="icon" href="<?= base_url('assets/front/') ?>img/android-chrome-192x192.png">
     <!-- GLOBAL MAINLY STYLES-->
     <link href="<?= base_url('assets/') ?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="<?= base_url('assets/') ?>vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
@@ -23,7 +24,7 @@
     }
 
     .banner {
-        background-image: url('assets/img/banner/element5-digital-acrBf9BlfvE-unsplash.jpg');
+        background-image: url('assets/img/banner/hector-farahani-jvXX_1OK-ik-unsplash.jpg');
         background-size: cover;
     }
 
@@ -50,7 +51,7 @@
 </style>
 
 <body>
-    <div class="col-lg-12 hal_login">
+    <div class="col-lg-12">
         <div class="row">
             <div class="col-lg-4 login">
                 <form action="<?= base_url('login_user') ?>" method="post">
