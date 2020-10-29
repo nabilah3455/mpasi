@@ -1,15 +1,11 @@
 <style>
-    .add-btn {
-        padding-bottom: 1rem;
-    }
-
-    #line_chart {
-        width: 60%;
-    }
-
     .ibox-head {
         font-weight: bold;
         font-size: 18px;
+    }
+
+    .modal-body input {
+        width: 25%;
     }
 </style>
 
@@ -18,7 +14,7 @@
         <div class="col-lg-12">
             <?= $this->session->flashdata('message'); ?>
         </div>
-        <div class="col-lg-9">
+        <div class="col-lg-12">
             <div class="ibox">
                 <div class="ibox-head">
                     <div class="ibox-title">Grafik</div>
@@ -30,11 +26,11 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-4">
             <div class="ibox">
                 <div class="ibox-head">
                     Tahap Umur
-                    <a href="#edi_umur" data-toggle="modal"><i class="fa fa-edit"></i></a>
+                    <a href="#edit_umur" data-toggle="modal"><i class="fa fa-edit"></i></a>
                 </div>
                 <div class="ibox-body">
                     <table class="table table-bordered">
@@ -65,10 +61,11 @@
             </div>
         </div>
 
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <div class="ibox">
                 <div class="ibox-head">
                     Tinggi Badan
+                    <a href="#edit_tinggi" data-toggle="modal"><i class="fa fa-edit"></i></a>
                 </div>
                 <div class="ibox-body">
                     <table class="table table-bordered">
@@ -90,10 +87,11 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <div class="ibox">
                 <div class="ibox-head">
                     Berat Badan
+                    <a href="#edit_berat" data-toggle="modal"><i class="fa fa-edit"></i></a>
                 </div>
                 <div class="ibox-body">
                     <table class="table table-bordered">
@@ -119,6 +117,7 @@
             <div class="ibox">
                 <div class="ibox-head">
                     Nilai Gizi
+                    <a href="#edit_gizi" data-toggle="modal"><i class="fa fa-edit"></i></a>
                 </div>
                 <div class="ibox-body">
                     <table class="table table-bordered">
@@ -194,7 +193,7 @@
                                     </td>
                                     <td>
                                         <a href="<?= base_url('kalkulator/edit_rule') ?>?idrule=<?= $r['idrule']; ?>" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                        <a href="#myModal" data-toggle="modal" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                        <a href="#myModal<?= $r['idrule'] ?>" data-toggle="modal" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
                             <?php
@@ -210,7 +209,7 @@
 </div>
 <!-- Modal HTML -->
 <?php foreach ($rule as $r) { ?>
-    <div id="myModal" class="modal fade">
+    <div id="myModal<?= $r['idrule'] ?>" class="modal fade">
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">
                 <div class="modal-header flex-column">
@@ -233,28 +232,213 @@
 <?php } ?>
 
 <!-- Modal umur -->
-<?php foreach ($umur as $u) { ?>
-    <div id="myModal" class="modal fade">
+<?php foreach ($tinggi as $t) { ?>
+    <div id="edit_tinggi" class="modal fade">
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">
                 <div class="modal-header flex-column">
-                    <div class="icon-box">
-                        <i class="material-icons">&#xE5CD;</i>
-                    </div>
-                    <h4 class="modal-title w-100">Hapus Rule <b> <?= $u['idrule'] ?></b> ?</h4>
+                    <h5 class="modal-title w-100">Edit Tinggi</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
-                <!-- <div class="modal-body">
-                                        <p>Do you really want to delete these records? This process cannot be undone.</p>
-                                    </div> -->
+                <div class="modal-body" style="color: black;">
+                    <form action="<?= base_url('kalkulator/update_tinggi') ?>" method="POST">
+                        <table width="100%">
+                            <tr>
+                                <td width="25%"><?= $t['atr1'] ?></td>
+                                <td width="5%">:</td>
+                                <td align="left">
+                                    <input type="number" name="nilai1" value="<?= $t['nilai1'] ?>" id=""> - <input type="number" name="nilai11" value="<?= $t['nilai11'] ?>" id="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="25%"><?= $t['atr2'] ?></td>
+                                <td width="5%">:</td>
+                                <td align="left">
+                                    <input type="number" name="nilai2" value="<?= $t['nilai2'] ?>" id=""> - <input type="number" name="nilai22" value="<?= $t['nilai22'] ?>" id="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="25%"><?= $t['atr3'] ?></td>
+                                <td width="5%">:</td>
+                                <td align="left">
+                                    <input type="number" name="nilai3" value="<?= $t['nilai3'] ?>" id=""> - <input type="number" name="nilai33" value="<?= $t['nilai33'] ?>" id="">
+                                </td>
+                            </tr>
+                        </table>
+                </div>
                 <div class="modal-footer justify-content-center">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" onclick="window.location.href='<?= base_url('kalkulator/delete_rule') ?>?idrule=<?= $u['idrule'] ?>'" class="btn btn-danger">Delete</button>
+                    <input type="submit" name="submit" value="Update Data" class="btn btn-success">
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+
+<!-- Modal umur -->
+<?php foreach ($berat as $b) { ?>
+    <div id="edit_berat" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header flex-column">
+                    <h5 class="modal-title w-100">Edit Berat</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <form action="<?= base_url('kalkulator/update_berat') ?>" method="POST">
+                    <div class="modal-body" style="color: black;">
+                        <table width="100%">
+                            <tr>
+                                <td width="40%"><?= $b['atr1'] ?></td>
+                                <td width="5%">:</td>
+                                <td align="left">
+                                    <input type="number" name="nilai1" value="<?= $b['nilai1'] ?>" id=""> - <input type="number" name="nilai11" value="<?= $b['nilai11'] ?>" id="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="25%"><?= $b['atr2'] ?></td>
+                                <td width="5%">:</td>
+                                <td align="left">
+                                    <input type="number" name="nilai2" value="<?= $b['nilai2'] ?>" id=""> - <input type="number" name="nilai22" value="<?= $b['nilai22'] ?>" id="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="25%"><?= $b['atr3'] ?></td>
+                                <td width="5%">:</td>
+                                <td align="left">
+                                    <input type="number" name="nilai3" value="<?= $b['nilai3'] ?>" id=""> - <input type="number" name="nilai33" value="<?= $b['nilai33'] ?>" id="">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <input type="submit" name="submit" value="Update Data" class="btn btn-success">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+
+<!-- Modal umur -->
+<?php foreach ($umur as $u) { ?>
+    <div id="edit_umur" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header flex-column">
+                    <h5 class="modal-title w-100">Edit Umur</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body" style="color: black;">
+                    <form action="<?= base_url('kalkulator/update_umur') ?>" method="POST">
+                        <table width="100%">
+                            <tr>
+                                <td width="25%"><?= $u['atr1'] ?></td>
+                                <td width="5%">:</td>
+                                <td align="left">
+                                    <input type="number" name="nilai1" value="<?= $u['nilai1'] ?>" id=""> - <input type="number" name="nilai11" value="<?= $u['nilai11'] ?>" id="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="25%"><?= $u['atr2'] ?></td>
+                                <td width="5%">:</td>
+                                <td align="left">
+                                    <input type="number" name="nilai2" value="<?= $u['nilai2'] ?>" id=""> - <input type="number" name="nilai22" value="<?= $u['nilai22'] ?>" id="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="25%"><?= $u['atr3'] ?></td>
+                                <td width="5%">:</td>
+                                <td align="left">
+                                    <input type="number" name="nilai3" value="<?= $u['nilai3'] ?>" id=""> - <input type="number" name="nilai33" value="<?= $u['nilai33'] ?>" id="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="25%"><?= $u['atr4'] ?></td>
+                                <td width="5%">:</td>
+                                <td align="left">
+                                    <input type="number" name="nilai4" value="<?= $u['nilai4'] ?>" id=""> - <input type="number" name="nilai44" value="<?= $u['nilai44'] ?>" id="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="25%"><?= $u['atr5'] ?></td>
+                                <td width="5%">:</td>
+                                <td align="left">
+                                    <input type="number" name="nilai5" value="<?= $u['nilai5'] ?>" id=""> - <input type="number" name="nilai55" value="<?= $u['nilai55'] ?>" id="">
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="modal-footer justify-content-center">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <input type="submit" name="submit" value="Update Data" class="btn btn-success">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 <?php } ?>
+
+<!-- Modal umur -->
+<?php foreach ($gizi as $g) { ?>
+    <div id="edit_gizi" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header flex-column">
+                    <h5 class="modal-title w-100">Edit Umur</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <form action="<?= base_url('kalkulator/update_gizi') ?>" method="POST">
+                <div class="modal-body" style="color: black;">
+                        <table width="100%">
+                            <tr>
+                                <td width="25%"><?= $g['atr1'] ?></td>
+                                <td width="5%">:</td>
+                                <td align="left">
+                                    <input type="number" name="nilai1" value="<?= $g['nilai1'] ?>" id=""> - <input type="number" name="nilai11" value="<?= $g['nilai11'] ?>" id="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="25%"><?= $g['atr2'] ?></td>
+                                <td width="5%">:</td>
+                                <td align="left">
+                                    <input type="number" name="nilai2" value="<?= $g['nilai2'] ?>" id=""> - <input type="number" name="nilai22" value="<?= $g['nilai22'] ?>" id="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="25%"><?= $g['atr3'] ?></td>
+                                <td width="5%">:</td>
+                                <td align="left">
+                                    <input type="number" name="nilai3" value="<?= $g['nilai3'] ?>" id=""> - <input type="number" name="nilai33" value="<?= $g['nilai33'] ?>" id="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="25%"><?= $g['atr4'] ?></td>
+                                <td width="5%">:</td>
+                                <td align="left">
+                                    <input type="number" name="nilai4" value="<?= $g['nilai4'] ?>" id=""> - <input type="number" name="nilai44" value="<?= $g['nilai44'] ?>" id="">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="25%"><?= $g['atr5'] ?></td>
+                                <td width="5%">:</td>
+                                <td align="left">
+                                    <input type="number" name="nilai5" value="<?= $g['nilai5'] ?>" id=""> - <input type="number" name="nilai55" value="<?= $g['nilai55'] ?>" id="">
+                                </td>
+                            </tr>
+                        </table>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <input type="submit" name="submit" value="Update Data" class="btn btn-success">
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+
 <script src="<?= base_url('assets') ?>/js/app.min.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(function() {
@@ -271,11 +455,6 @@
                     // backgroundColor: "#DADDE0",
                     borderColor: "#DADDE0",
                     data: [45, 80, 58, 74, 54, 59, 40]
-                }, {
-                    label: "Data 2",
-                    // backgroundColor: "#DADDE0",
-                    borderColor: "#DADDE0",
-                    data: [20, 40, 60, 30, 83, 44, 59]
                 }]
             },
             t = {

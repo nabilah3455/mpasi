@@ -33,29 +33,6 @@ class Kalkulator extends CI_Controller
         $this->template->back('back/kalkulator_gizi', $data);
     }
 
-    public function tambah()
-    {
-        $data['user'] = $this->db->get_where('admin', ['username' => $this->session->userdata('nama')])->row_array();
-        $data = array(
-            'nama' => $data['user']['username'],
-            'back' => base_url('kalkulator')
-        );
-        $this->template->back('back/tambah_kalkulator', $data);
-    }
-
-    public function edit()
-    {
-        $id = $this->input->get('id');
-        $data['user'] = $this->db->get_where('admin', ['username' => $this->session->userdata('nama')])->row_array();
-        $data = array(
-            'nama' => $data['user']['username'],
-            'data_menu' => $this->modmenu->data_menu($id),
-            'back' => base_url('menu')
-        );
-
-        $this->template->back('back/edit_menu_mpasi', $data);
-    }
-
     public function insert_menu()
     {
         $data = array(
@@ -69,22 +46,47 @@ class Kalkulator extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Data Menu Berhasil Ditambah! </center></div>');
         redirect('menu', 'refresh');
     }
-
-    public function update_menu()
+    
+    public function update_umur()
     {
-        $id = $this->input->post('id_menu');
-
+        $id = 1;
         $data = array(
-            'id_menu' => $id,
-            'judul_menu' => $this->input->post('judul_menu'),
-            'bahan_menu' => $this->input->post('bahan'),
-            'resep_menu' => $this->input->post('resep')
+            'idvariabel' => $id,
+            'nilai1' => $this->input->post('nilai1'),
+            'nilai2' => $this->input->post('nilai2'),
+            'nilai3' => $this->input->post('nilai3'),
+            'nilai4' => $this->input->post('nilai4'),
+            'nilai5' => $this->input->post('nilai5'),
+            'nilai11' => $this->input->post('nilai11'),
+            'nilai22' => $this->input->post('nilai22'),
+            'nilai33' => $this->input->post('nilai33'),
+            'nilai44' => $this->input->post('nilai44'),
+            'nilai55' => $this->input->post('nilai55')
         );
 
-        $this->modmenu->update_menu($id, $data);
+        $this->modgizi->update_umur($id, $data);
 
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Data Menu Berhasil Diubah! </center></div>');
-        redirect('menu', 'refresh');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Variabel Umur Berhasil Diubah! </center></div>');
+        redirect('kalkulator', 'refresh');
+    }
+    
+    public function update_tinggi()
+    {
+        $id = 3;
+        $data = array(
+            'idvariabel' => $id,
+            'nilai1' => $this->input->post('nilai1'),
+            'nilai2' => $this->input->post('nilai2'),
+            'nilai3' => $this->input->post('nilai3'),
+            'nilai11' => $this->input->post('nilai11'),
+            'nilai22' => $this->input->post('nilai22'),
+            'nilai33' => $this->input->post('nilai33')
+        );
+
+        $this->modgizi->update_tinggi($id, $data);
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Variabel TInggi Berhasil Diubah! </center></div>');
+        redirect('kalkulator', 'refresh');
     }
 
     public function delete()
@@ -95,5 +97,18 @@ class Kalkulator extends CI_Controller
 
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Data Menu Telah Dihapus! </center></div>');
         redirect('menu', 'refresh');
+    }
+    
+    public function delete_rule()
+    {
+        $id = $this->input->get('idrule');
+
+        // var_dump($id);
+        // die();
+
+        $this->modgizi->hapus_rule($id);
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Data Rule Berhasil Dihapus! </center></div>');
+        redirect('kalkulator', 'refresh');
     }
 }

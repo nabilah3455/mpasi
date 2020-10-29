@@ -43,7 +43,7 @@ class Login extends CI_Controller
             );
 
             $this->session->set_userdata($data_session);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Selamat Datang di Aplikasi Panduan Gizi Makanan Balita</center></div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissable fade show" role="alert"><center><h4>Selamat Datang di Aplikasi Panduan Gizi Makanan Balita<h4></center></div>');
 
             redirect(base_url("dashboard"));
 

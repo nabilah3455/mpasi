@@ -216,4 +216,21 @@ class Modgizi extends CI_Model
 
         return $q->result_array();
     }
+
+    function hapus_rule($id)
+    {
+        $q = $this->db->where('idrule', $id)->delete('rule');
+        return $q;
+       
+        $e = $this->db->where('idrule', $id)->delete('rule1');
+        return $e;
+    }
+
+    function update_umur($id, $data)
+    {
+        $this->db->where('idvariabel', $id);
+        $q = $this->db->update('variabel', $data);
+
+        return $q;
+    }
 }
