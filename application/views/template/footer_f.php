@@ -38,7 +38,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="copyright_text">
-                    <img src="<?= base_url('assets/front/') ?>img/footer_logo.png" alt="#">
+                    <img src="<?= base_url('assets/') ?>img/logo.png" alt="#" width="250">
                     <p class="footer-text">
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         Copyright &copy;<script>

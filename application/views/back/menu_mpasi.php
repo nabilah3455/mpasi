@@ -1,21 +1,34 @@
 <style>
     .add-btn {
         padding-bottom: 1rem;
+        float: left;
+    }
+
+
+    .judul {
+        font-size: 40px;
+        font-weight: bold;
     }
 </style>
 
 <div class="page-content fade-in-up">
+    <div class="row">
+        <div class="judul col-lg-6">
+            Menu MPASI
+        </div>
+        <div class="add-btn col-lg-6">
+            <a href="{tambah}" class="btn btn-success">Tambah Menu MPASI</a>
+        </div>
+    </div>
     <div class="col-lg-12">
         <?= $this->session->flashdata('message'); ?>
     </div>
     <div class="ibox">
-        <div class="ibox-head">
+        <!-- <div class="ibox-head">
             <div class="ibox-title">Menu MPASI</div>
-        </div>
+        </div> -->
         <div class="ibox-body">
-                        <div class="add-btn">
-                                <a href="{tambah}" class="btn btn-success col-lg-12">Tambah Menu MPASI</a>
-                            </div>
+
             <ul class="nav nav-tabs">
                 <li class="nav-item">
                     <a class="nav-link active" href="#tab-7-1" data-toggle="tab">6-7 Bulan</a>

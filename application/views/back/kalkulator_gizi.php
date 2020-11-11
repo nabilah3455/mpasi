@@ -4,17 +4,41 @@
         font-size: 18px;
     }
 
-    .modal-body input {
+    .tinggi .modal-body input,
+    .berat .modal-body input,
+    .umur .modal-body input,
+    .gizi .modal-body input {
         width: 25%;
+    }
+
+    .then {
+        padding: 1rem;
+        font-weight: bold;
+    }
+
+    .ket {
+        color: red;
+    }
+
+    input:read-only {
+        cursor: no-drop;
+    }
+
+    .judul{
+        font-size: 40px;
+        font-weight: bold;
     }
 </style>
 
 <div class="page-content fade-in-up">
     <div class="row">
         <div class="col-lg-12">
+            <div class="judul">
+                Kalkulator Gizi
+            </div>
             <?= $this->session->flashdata('message'); ?>
         </div>
-        <div class="col-lg-12">
+        <div class="col-lg-9">
             <div class="ibox">
                 <div class="ibox-head">
                     <div class="ibox-title">Grafik</div>
@@ -26,7 +50,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-3">
             <div class="ibox">
                 <div class="ibox-head">
                     Tahap Umur
@@ -61,7 +85,7 @@
             </div>
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-lg-6">
             <div class="ibox">
                 <div class="ibox-head">
                     Tinggi Badan
@@ -87,7 +111,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-6">
             <div class="ibox">
                 <div class="ibox-head">
                     Berat Badan
@@ -144,7 +168,8 @@
         <div class="col-lg-12">
             <div class="ibox">
                 <div class="ibox-head">
-                    Rule
+                    Nilai Rule
+                    <a href="#add_rule" data-toggle="modal"><i class="fa fa-plus"></i>Tambah Rule</a>
                 </div>
                 <div class="ibox-body">
                     <table class="table table-striped table-bordered zero-configuration" cellspacing="0" width="100%">
@@ -192,7 +217,8 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <a href="<?= base_url('kalkulator/edit_rule') ?>?idrule=<?= $r['idrule']; ?>" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                        <a href="#edit_rule<?= $r['idrule'] ?>" data-toggle="modal" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                        <!-- <a href="<?= base_url('kalkulator/edit_rule') ?>?idrule=<?= $r['idrule']; ?>" class="btn btn-primary"><i class="fa fa-edit"></i></a> -->
                                         <a href="#myModal<?= $r['idrule'] ?>" data-toggle="modal" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
@@ -233,11 +259,11 @@
 
 <!-- Modal umur -->
 <?php foreach ($tinggi as $t) { ?>
-    <div id="edit_tinggi" class="modal fade">
+    <div id="edit_tinggi" class="modal fade tinggi">
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">
                 <div class="modal-header flex-column">
-                    <h5 class="modal-title w-100">Edit Tinggi</h5>
+                    <h5 class="modal-title w-100">Edit Nilai Tinggi Badan</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body" style="color: black;">
@@ -278,11 +304,11 @@
 
 <!-- Modal umur -->
 <?php foreach ($berat as $b) { ?>
-    <div id="edit_berat" class="modal fade">
+    <div id="edit_berat" class="modal fade berat">
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">
                 <div class="modal-header flex-column">
-                    <h5 class="modal-title w-100">Edit Berat</h5>
+                    <h5 class="modal-title w-100">Edit Nilai Berat Badan</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <form action="<?= base_url('kalkulator/update_berat') ?>" method="POST">
@@ -323,11 +349,11 @@
 
 <!-- Modal umur -->
 <?php foreach ($umur as $u) { ?>
-    <div id="edit_umur" class="modal fade">
+    <div id="edit_umur" class="modal fade umur">
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">
                 <div class="modal-header flex-column">
-                    <h5 class="modal-title w-100">Edit Umur</h5>
+                    <h5 class="modal-title w-100">Edit Nilai Umur</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body" style="color: black;">
@@ -382,15 +408,15 @@
 
 <!-- Modal umur -->
 <?php foreach ($gizi as $g) { ?>
-    <div id="edit_gizi" class="modal fade">
+    <div id="edit_gizi" class="modal fade gizi">
         <div class="modal-dialog modal-confirm">
             <div class="modal-content">
                 <div class="modal-header flex-column">
-                    <h5 class="modal-title w-100">Edit Umur</h5>
+                    <h5 class="modal-title w-100">Edit Nilai Gizi</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <form action="<?= base_url('kalkulator/update_gizi') ?>" method="POST">
-                <div class="modal-body" style="color: black;">
+                    <div class="modal-body" style="color: black;">
                         <table width="100%">
                             <tr>
                                 <td width="25%"><?= $g['atr1'] ?></td>
@@ -428,16 +454,234 @@
                                 </td>
                             </tr>
                         </table>
-                </div>
-                <div class="modal-footer justify-content-center">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <input type="submit" name="submit" value="Update Data" class="btn btn-success">
-                </div>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <input type="submit" name="submit" value="Update Data" class="btn btn-success">
+                    </div>
                 </form>
             </div>
         </div>
     </div>
 <?php } ?>
+
+<!-- Modal umur -->
+
+<?php foreach ($rule as $r) { ?>
+    <div id="edit_rule<?= $r['idrule'] ?>" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header flex-column">
+                    <h5 class="modal-title w-100">Edit Nilai Rule <?= $r['idrule'] ?></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <form action="<?= base_url('kalkulator/update_rule') ?>" method="POST">
+                    <div class="modal-body" style="color: black;">
+                        <table width="100%">
+                            <tr>
+                                <td width="30%" align="left">Nama Rule</td>
+                                <td width="5%">:</td>
+                                <td align="left">
+                                    <input type="text" name="idrule" value="<?= $r['idrule'] ?>" id="" readonly />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="then">Jika</td>
+                            </tr>
+                            <?php
+                            $z = $this->modgizi->get_rule1($r['idrule']);
+                            // $c = mysql_query("select * from rule1 where idrule='$b[0]' order by idvariabel asc");
+                            $c = $this->modgizi->get_data_rule1($r['idrule']);
+                            foreach ($c as $d) {
+                                $var = $this->modgizi->get_var_rule($d['idvariabel']);
+                                foreach ($var as $e) {
+                                    if ($e['variabel'] == 'Umur') { ?>
+                                        <tr>
+                                            <td align="left"><?= $e['variabel'] ?></td>
+                                            <td width="5%">:</td>
+                                            <td align="left">
+                                                <select name="umur" id="">
+                                                    <option value="<?= $d['rule1'] ?>"><?= $d['rule1'] ?></option>
+                                                    <option value="Tahap 1">Tahap 1</option>
+                                                    <option value="Tahap 2">Tahap 2</option>
+                                                    <option value="Tahap 3">Tahap 3</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    <?php } elseif ($e['variabel'] == 'Berat Badan') { ?>
+                                        <tr>
+                                            <td align="left"><?= $e['variabel'] ?></td>
+                                            <td width="5%">:</td>
+                                            <td align="left">
+                                                <select name="berat" id="">
+                                                    <option value="<?= $d['rule1'] ?>"><?= $d['rule1'] ?></option>
+                                                    <option value="Kurang Berat">Kurang Berat</option>
+                                                    <option value="Normal">Normal</option>
+                                                    <option value="Berat Lebih">Berat Lebih</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    <?php } else { ?>
+                                        <tr>
+                                            <td align="left"><?= $e['variabel'] ?></td>
+                                            <td width="5%">:</td>
+                                            <td align="left">
+                                                <select name="tinggi" id="">
+                                                    <option value="<?= $d['rule1'] ?>"><?= $d['rule1'] ?></option>
+                                                    <option value="Pendek">Pendek</option>
+                                                    <option value="Normal">Normal</option>
+                                                    <option value="Tinggi">Tinggi</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                            <?php }
+                                }
+                            }
+                            ?>
+                            <tr>
+                                <td colspan="3" class="then">Hasil</td>
+                            </tr>
+                            <tr>
+                                <td align="left">Maka</td>
+                                <td width="5%">:</td>
+                                <td align="left">
+                                    <input type="text" name="maka" value="<?= $r['maka'] ?>" id="" width="50%">
+                            </tr>
+                            <tr>
+                                <td align="left">Output</td>
+                                <td width="5%">:</td>
+                                <td align="left">
+                                    <select name="daerah" id="">
+                                        <option value="<?= $r['daerah'] ?>"><?= $r['daerah'] ?></option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td align="left"><label for="" class="ket">*</label>Keterangan <br>
+                                    1. Gizi Anak Buruk <br>
+                                    2. Gizi Anak Kurang <br>
+                                    3. Gizi Anak Normal <br>
+                                    4. Gizi Anak Lebih <br>
+                                    5. Gizi Anak Obesitas
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <input type="submit" name="submit" value="Update Data" class="btn btn-success">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+
+    <div id="add_rule" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header flex-column">
+                    <h5 class="modal-title w-100">Tambah Nilai Rule</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <form action="<?= base_url('kalkulator/tambah_rule') ?>" method="POST">
+                    <div class="modal-body" style="color: black;">
+                        <table width="100%">
+                            <tr>
+                                <td width="30%" align="left">Nama Rule</td>
+                                <td width="5%">:</td>
+                                <td align="left">
+                                    <input type="text" name="idrule"  id="" >
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="then">Jika</td>
+                            </tr>
+                            <tr>
+                                <td align="left">Umur</td>
+                                <td width="5%">:</td>
+                                <td align="left">
+                                    <select name="umur" id="">
+                                        <option value=""></option>
+                                        <option value="Tahap 1">Tahap 1</option>
+                                        <option value="Tahap 2">Tahap 2</option>
+                                        <option value="Tahap 3">Tahap 3</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left">Berat Badan</td>
+                                <td width="5%">:</td>
+                                <td align="left">
+                                    <select name="berat" id="">
+                                        <option value=""></option>
+                                        <option value="Kurang Berat">Kurang Berat</option>
+                                        <option value="Normal">Normal</option>
+                                        <option value="Berat Lebih">Berat Lebih</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left">Tinggi Badan</td>
+                                <td width="5%">:</td>
+                                <td align="left">
+                                    <select name="tinggi" id="">
+                                        <option value=""></option>
+                                        <option value="Pendek">Pendek</option>
+                                        <option value="Normal">Normal</option>
+                                        <option value="Tinggi">Tinggi</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="then">Hasil</td>
+                            </tr>
+                            <tr>
+                                <td align="left">Maka</td>
+                                <td width="5%">:</td>
+                                <td align="left">
+                                    <input type="text" name="maka" id="" width="50%">
+                            </tr>
+                            <tr>
+                                <td align="left">Output</td>
+                                <td width="5%">:</td>
+                                <td align="left">
+                                    <select name="daerah" id="">
+                                        <option value=""></option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td align="left"><label for="" class="ket">*</label>Keterangan <br>
+                                    1. Gizi Anak Buruk <br>
+                                    2. Gizi Anak Kurang <br>
+                                    3. Gizi Anak Normal <br>
+                                    4. Gizi Anak Lebih <br>
+                                    5. Gizi Anak Obesitas
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <input type="submit" name="submit" value="Tambah Data Rule" class="btn btn-success">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 <script src="<?= base_url('assets') ?>/js/app.min.js" type="text/javascript"></script>
 <script type="text/javascript">

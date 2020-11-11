@@ -37,6 +37,16 @@ class Moduser extends CI_Model
         }
         return $e;
     }
+    
+    function register($data)
+    {
+        if ($this->db->insert('admin', $data)) {
+            $e = "Data berhasil dimasukkan";
+        } else {
+            $e = FALSE;
+        }
+        return $e;
+    }
 
     function update_bahan($id, $data)
     {

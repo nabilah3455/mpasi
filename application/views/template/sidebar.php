@@ -36,11 +36,11 @@
                     <span class="nav-label">Kalkulator MPASI</span>
                 </a>
             </li>
-            <li <?= $this->uri->segment(1) == 'admin' ? 'class="active"' : ''; ?>>
+            <!-- <li <?= $this->uri->segment(1) == 'admin' ? 'class="active"' : ''; ?>>
                 <a href=<?= base_url('admin'); ?>><i class="sidebar-item-icon fa fa-users"></i>
                     <span class="nav-label">Data Admin</span>
                 </a>
-            </li>
+            </li> -->
             <li <?= $this->uri->segment(1) == 'login/logout' ? 'class="active"' : ''; ?>>
                 <a href=<?= base_url('login/logout'); ?>><i class="sidebar-item-icon fa fa-sign-out"></i>
                     <span class="nav-label">Logout</span>

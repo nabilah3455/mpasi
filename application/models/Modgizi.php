@@ -112,6 +112,13 @@ class Modgizi extends CI_Model
         return $q->result_array();
     }
     
+    function get_data_rule1($b)
+    {
+        $q = $this->db->query("SELECT * FROM rule1 WHERE idrule='$b' LIMIT 3");
+
+        return $q->result_array();
+    }
+    
     function get_var_output()
     {
         $q = $this->db->query("SELECT * FROM var_output");
@@ -220,10 +227,8 @@ class Modgizi extends CI_Model
     function hapus_rule($id)
     {
         $q = $this->db->where('idrule', $id)->delete('rule');
+        $q = $this->db->where('idrule', $id)->delete('rule1');
         return $q;
-       
-        $e = $this->db->where('idrule', $id)->delete('rule1');
-        return $e;
     }
 
     function update_umur($id, $data)
@@ -232,5 +237,96 @@ class Modgizi extends CI_Model
         $q = $this->db->update('variabel', $data);
 
         return $q;
+    }
+    
+    function update_berat($id, $data)
+    {
+        $this->db->where('idvariabel', $id);
+        $q = $this->db->update('variabel', $data);
+
+        return $q;
+    }
+    
+    function update_rule_berat($idrule, $id, $berat)
+    {
+        $this->db->where('idrule', $idrule);
+        $this->db->where('idvariabel', $id);
+        $q = $this->db->update('rule1', $berat);
+
+        return $q;
+    }
+    
+    function update_rule_tinggi($idrule, $id, $tinggi)
+    {
+        $this->db->where('idrule', $idrule);
+        $this->db->where('idvariabel', $id);
+        $q = $this->db->update('rule1', $tinggi);
+
+        return $q;
+    }
+    
+    function update_rule_umur($idrule, $id, $umur)
+    {
+        $this->db->where('idrule', $idrule);
+        $this->db->where('idvariabel', $id);
+        $q = $this->db->update('rule1', $umur);
+
+        return $q;
+    }
+    
+    function update_rule($id, $rule1)
+    {
+        $this->db->where('idrule', $id);
+        $q = $this->db->update('rule', $rule1);
+
+        return $q;
+    }
+   
+    function update_gizi($data)
+    {
+        // $this->db->where('idvariabel', $id);
+        $q = $this->db->update('var_output', $data);
+
+        return $q;
+    }
+
+    function tambah_rule($rule1)
+    {
+        if ($this->db->insert('rule', $rule1)) {
+            $e = "Data berhasil dimasukkan";
+        } else {
+            $e = 'belum masuk';
+        }
+        return $e;
+    }
+    
+    function tambah_rule_umur($umur)
+    {
+        if ($this->db->insert('rule1', $umur)) {
+            $e = "Data berhasil dimasukkan";
+        } else {
+            $e = 'belum masuk';
+        }
+        return $e;
+    }
+    
+    function tambah_rule_berat($berat)
+    {
+        if ($this->db->insert('rule1', $berat)) {
+            $e = "Data berhasil dimasukkan";
+        } else {
+            $e = 'belum masuk';
+        }
+        return $e;
+    }
+    
+    function tambah_rule_tinggi($tinggi)
+    {
+        if ($this->db->insert('rule1', $tinggi)) {
+            $e = "Data berhasil dimasukkan";
+        } else {
+            $e = 'belum masuk';
+        }
+        return $e;
     }
 }
