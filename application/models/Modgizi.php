@@ -329,4 +329,13 @@ class Modgizi extends CI_Model
         }
         return $e;
     }
+
+    function data_grafik()
+    {
+        $q = $this->db->query("
+        SELECT * from var_output
+        ");
+
+        return $q->result_array();
+    }
 }

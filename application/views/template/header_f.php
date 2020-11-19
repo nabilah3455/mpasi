@@ -8,6 +8,12 @@
      .btn_1 {
          font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
      }
+
+     @media screen and (max-width: 760px) {
+         #logo {
+             font-size: 15px;
+         }
+     }
  </style>
 
  <!--::header part start::-->
@@ -15,14 +21,17 @@
      <div class="sub_header">
          <div class="container">
              <div class="row align-items-center">
-                 <div class="col-lg-6">
+                 <div class="col-8 col-md-4 col-xl-6">
                      <div id="logo">
+                         <!-- <a href="index.htm?l"><img src="img/Logo.png" alt="" title="" /></a> -->
                          <img src="<?= base_url('assets/front/') ?>img/android-chrome-192x192.png" width="40px"> Aplikasi Panduan Makanan Gizi Bayi
                      </div>
                  </div>
-                 <div class="col-lg-6">
+                 <div class="col-4 col-md-8 col-xl-6 ">
                      <div class="sub_header_social_icon float-right">
-                        <a href="<?= base_url('login_user/logout') ?>" class="btn_1 d-none d-md-inline-block">Logout</a>
+                         <!-- <a href="#"><i class="flaticon-phone"></i>+02 213 - 256 (365)</a>
+                         <a href="#" class="btn_1 d-none d-md-inline-block">Become a Volunteer</a> -->
+                         <a href="<?= base_url('login_user/logout') ?>" class="genric-btn danger circle" style="color: white;">Logout</a>
                      </div>
                  </div>
              </div>
@@ -41,12 +50,6 @@
                              <ul class="navbar-nav">
                                  <li class="nav-item active">
                                      <a class="nav-link active" href="<?= base_url('user') ?>">Home</a>
-                                 </li>
-                                 <li class="nav-item">
-                                     <a href="<?= base_url('user/berita') ?>" class="nav-link">Berita MPASI</a>
-                                 </li>
-                                 <li class="nav-item">
-                                     <a href="<?= base_url('user/bahan') ?>" class="nav-link">Bahan MPASI</a>
                                  </li>
                                  <li class="nav-item dropdown">
                                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -67,6 +70,12 @@
                                          <a class="dropdown-item" href="<?= base_url('user/menu') ?>?bulan=17">17 Bulan</a>
                                          <a class="dropdown-item" href="<?= base_url('user/menu') ?>?bulan=18">18 Bulan</a>
                                      </div>
+                                 </li>
+                                 <li class="nav-item">
+                                     <a href="<?= base_url('user/berita') ?>" class="nav-link">Berita MPASI</a>
+                                 </li>
+                                 <li class="nav-item">
+                                     <a href="<?= base_url('user/bahan') ?>" class="nav-link">Bahan MPASI</a>
                                  </li>
                                  <li class="nav-item">
                                      <a href="<?= base_url('user/kalkulator') ?>" class=" nav-link">Kalkulator Gizi</a>

@@ -75,8 +75,6 @@
                 $('#summernote_air').summernote({
                     airMode: true
                 });
-
-                
             });
         </script>
 </body>

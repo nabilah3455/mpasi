@@ -24,12 +24,14 @@
         cursor: no-drop;
     }
 
-    .judul{
+    .judul {
         font-size: 40px;
         font-weight: bold;
     }
 </style>
-
+<script src="<?= base_url('assets/') ?>js/scripts/core.js" type="text/javascript"></script>
+<script src="<?= base_url('assets/') ?>js/scripts/charts.js" type="text/javascript"></script>
+<script src="<?= base_url('assets/') ?>js/scripts/animated.js" type="text/javascript"></script>
 <div class="page-content fade-in-up">
     <div class="row">
         <div class="col-lg-12">
@@ -38,19 +40,20 @@
             </div>
             <?= $this->session->flashdata('message'); ?>
         </div>
-        <div class="col-lg-9">
+        <div class="col-lg-12">
             <div class="ibox">
                 <div class="ibox-head">
                     <div class="ibox-title">Grafik</div>
                 </div>
                 <div class="ibox-body">
                     <div>
-                        <canvas id="bar_chart" style="height:260px;"></canvas>
+                        <!-- <canvas id="bar_chart" style="height:330px;"></canvas> -->
+                        <div id="chartdiv" style="height:550px;"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3">
+        <div class="col-lg-4">
             <div class="ibox">
                 <div class="ibox-head">
                     Tahap Umur
@@ -85,7 +88,7 @@
             </div>
         </div>
 
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <div class="ibox">
                 <div class="ibox-head">
                     Tinggi Badan
@@ -111,7 +114,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <div class="ibox">
                 <div class="ibox-head">
                     Berat Badan
@@ -583,133 +586,220 @@
     </div>
 <?php } ?>
 
-    <div id="add_rule" class="modal fade">
-        <div class="modal-dialog modal-confirm">
-            <div class="modal-content">
-                <div class="modal-header flex-column">
-                    <h5 class="modal-title w-100">Tambah Nilai Rule</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <form action="<?= base_url('kalkulator/tambah_rule') ?>" method="POST">
-                    <div class="modal-body" style="color: black;">
-                        <table width="100%">
-                            <tr>
-                                <td width="30%" align="left">Nama Rule</td>
-                                <td width="5%">:</td>
-                                <td align="left">
-                                    <input type="text" name="idrule"  id="" >
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="3" class="then">Jika</td>
-                            </tr>
-                            <tr>
-                                <td align="left">Umur</td>
-                                <td width="5%">:</td>
-                                <td align="left">
-                                    <select name="umur" id="">
-                                        <option value=""></option>
-                                        <option value="Tahap 1">Tahap 1</option>
-                                        <option value="Tahap 2">Tahap 2</option>
-                                        <option value="Tahap 3">Tahap 3</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left">Berat Badan</td>
-                                <td width="5%">:</td>
-                                <td align="left">
-                                    <select name="berat" id="">
-                                        <option value=""></option>
-                                        <option value="Kurang Berat">Kurang Berat</option>
-                                        <option value="Normal">Normal</option>
-                                        <option value="Berat Lebih">Berat Lebih</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left">Tinggi Badan</td>
-                                <td width="5%">:</td>
-                                <td align="left">
-                                    <select name="tinggi" id="">
-                                        <option value=""></option>
-                                        <option value="Pendek">Pendek</option>
-                                        <option value="Normal">Normal</option>
-                                        <option value="Tinggi">Tinggi</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="3" class="then">Hasil</td>
-                            </tr>
-                            <tr>
-                                <td align="left">Maka</td>
-                                <td width="5%">:</td>
-                                <td align="left">
-                                    <input type="text" name="maka" id="" width="50%">
-                            </tr>
-                            <tr>
-                                <td align="left">Output</td>
-                                <td width="5%">:</td>
-                                <td align="left">
-                                    <select name="daerah" id="">
-                                        <option value=""></option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td align="left"><label for="" class="ket">*</label>Keterangan <br>
-                                    1. Gizi Anak Buruk <br>
-                                    2. Gizi Anak Kurang <br>
-                                    3. Gizi Anak Normal <br>
-                                    4. Gizi Anak Lebih <br>
-                                    5. Gizi Anak Obesitas
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="modal-footer justify-content-center">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <input type="submit" name="submit" value="Tambah Data Rule" class="btn btn-success">
-                    </div>
-                </form>
+<div id="add_rule" class="modal fade">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header flex-column">
+                <h5 class="modal-title w-100">Tambah Nilai Rule</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
+            <form action="<?= base_url('kalkulator/tambah_rule') ?>" method="POST">
+                <div class="modal-body" style="color: black;">
+                    <table width="100%">
+                        <tr>
+                            <td width="30%" align="left">Nama Rule</td>
+                            <td width="5%">:</td>
+                            <td align="left">
+                                <input type="text" name="idrule" id="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" class="then">Jika</td>
+                        </tr>
+                        <tr>
+                            <td align="left">Umur</td>
+                            <td width="5%">:</td>
+                            <td align="left">
+                                <select name="umur" id="">
+                                    <option value=""></option>
+                                    <option value="Tahap 1">Tahap 1</option>
+                                    <option value="Tahap 2">Tahap 2</option>
+                                    <option value="Tahap 3">Tahap 3</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left">Berat Badan</td>
+                            <td width="5%">:</td>
+                            <td align="left">
+                                <select name="berat" id="">
+                                    <option value=""></option>
+                                    <option value="Kurang Berat">Kurang Berat</option>
+                                    <option value="Normal">Normal</option>
+                                    <option value="Berat Lebih">Berat Lebih</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="left">Tinggi Badan</td>
+                            <td width="5%">:</td>
+                            <td align="left">
+                                <select name="tinggi" id="">
+                                    <option value=""></option>
+                                    <option value="Pendek">Pendek</option>
+                                    <option value="Normal">Normal</option>
+                                    <option value="Tinggi">Tinggi</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" class="then">Hasil</td>
+                        </tr>
+                        <tr>
+                            <td align="left">Maka</td>
+                            <td width="5%">:</td>
+                            <td align="left">
+                                <input type="text" name="maka" id="" width="50%">
+                        </tr>
+                        <tr>
+                            <td align="left">Output</td>
+                            <td width="5%">:</td>
+                            <td align="left">
+                                <select name="daerah" id="">
+                                    <option value=""></option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td align="left"><label for="" class="ket">*</label>Keterangan <br>
+                                1. Gizi Anak Buruk <br>
+                                2. Gizi Anak Kurang <br>
+                                3. Gizi Anak Normal <br>
+                                4. Gizi Anak Lebih <br>
+                                5. Gizi Anak Obesitas
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <input type="submit" name="submit" value="Tambah Data Rule" class="btn btn-success">
+                </div>
+            </form>
         </div>
     </div>
+</div>
 
-<script src="<?= base_url('assets') ?>/js/app.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    am4core.useTheme(am4themes_animated);
+
+    var chart = am4core.create("chartdiv", am4charts.XYChart);
+
+
+    chart.data = [{
+        "category": "One",
+        "value1": 1,
+        "value2": 5,
+        "value3": 3,
+        "value4": 3
+    }]
+
+    chart.padding(30, 30, 10, 30);
+    chart.legend = new am4charts.Legend();
+
+    chart.colors.step = 2;
+
+    var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+    categoryAxis.dataFields.category = "category";
+    categoryAxis.renderer.minGridDistance = 60;
+    categoryAxis.renderer.grid.template.location = 0;
+    categoryAxis.interactionsEnabled = false;
+
+    var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+    valueAxis.tooltip.disabled = true;
+    valueAxis.renderer.grid.template.strokeOpacity = 0.05;
+    valueAxis.renderer.minGridDistance = 20;
+    valueAxis.interactionsEnabled = false;
+    valueAxis.min = 0;
+    valueAxis.renderer.minWidth = 35;
+
+    var series1 = chart.series.push(new am4charts.ColumnSeries());
+    series1.columns.template.width = am4core.percent(80);
+    series1.columns.template.tooltipText = "{name}: {valueY.value}";
+    series1.name = "Series 1";
+    series1.dataFields.categoryX = "category";
+    series1.dataFields.valueY = "value1";
+    series1.stacked = true;
+
+    var series2 = chart.series.push(new am4charts.ColumnSeries());
+    series2.columns.template.width = am4core.percent(80);
+    series2.columns.template.tooltipText = "{name}: {valueY.value}";
+    series2.name = "Series 2";
+    series2.dataFields.categoryX = "category";
+    series2.dataFields.valueY = "value2";
+    series2.stacked = true;
+
+    var series3 = chart.series.push(new am4charts.ColumnSeries());
+    series3.columns.template.width = am4core.percent(80);
+    series3.columns.template.tooltipText = "{name}: {valueY.value}";
+    series3.name = "Series 3";
+    series3.dataFields.categoryX = "category";
+    series3.dataFields.valueY = "value3";
+    series3.stacked = true;
+
+    var series4 = chart.series.push(new am4charts.ColumnSeries());
+    series4.columns.template.width = am4core.percent(80);
+    series4.columns.template.tooltipText = "{name}: {valueY.value}";
+    series4.name = "Series 4";
+    series4.dataFields.categoryX = "category";
+    series4.dataFields.valueY = "value4";
+    series4.stacked = true;
+
+    chart.scrollbarX = new am4core.Scrollbar();
+</script>
+<!-- <script src="<?= base_url('assets') ?>/js/app.min.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(function() {
-        var a = {
-                labels: ["Januari", "Februari", "Maret", "Wednesday", "Thursday", "Friday", "Saturday"],
-                datasets: [{
-                    label: "Gizi Baik",
-                    borderColor: 'rgba(52,152,219,1)',
-                    // backgroundColor: 'rgba(52,152,219,1)',
-                    pointBackgroundColor: 'rgba(52,152,219,1)',
-                    data: [29, 48, 40, 19, 100, 31, 85]
-                }, {
-                    label: "Data 2",
-                    // backgroundColor: "#DADDE0",
-                    borderColor: "#DADDE0",
+        var barData = {
+            labels: ["Sunday", "Munday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            datasets: [{
+                    label: "Gizi Buruk",
+                    backgroundColor: '#f67280',
                     data: [45, 80, 58, 74, 54, 59, 40]
-                }]
-            },
-            t = {
-                responsive: !0,
-                maintainAspectRatio: !1
-            },
-            e = document.getElementById("bar_chart").getContext("2d");
-        new Chart(e, {
-            type: "line",
-            data: a,
-            options: t
+                },
+                {
+                    label: "Gizi Kurang",
+                    backgroundColor: '#c06c84',
+                    borderColor: "#fff",
+                    data: [29, 48, 40, 19, 78, 31, 85]
+                },
+                {
+                    label: "Gizi Normal",
+                    backgroundColor: '#6c5b7b',
+                    borderColor: "#fff",
+                    data: [29, 48, 40, 19, 78, 31, 85]
+                },
+                {
+                    label: "Gizi Lebih",
+                    backgroundColor: '#355c7d',
+                    borderColor: "#fff",
+                    data: [29, 48, 40, 19, 78, 31, 85]
+                },
+                {
+                    label: "Obesitas",
+                    backgroundColor: '#2ecc71',
+                    borderColor: "#fff",
+                    data: [29, 48, 40, 19, 78, 31, 85]
+                }
+            ]
+        };
+        var barOptions = {
+            responsive: true,
+            maintainAspectRatio: false
+        };
+
+        var ctx = document.getElementById("bar_chart").getContext("2d");
+        new Chart(ctx, {
+            type: 'bar',
+            data: barData,
+            options: barOptions
         });
     });
-</script>
+</script> -->

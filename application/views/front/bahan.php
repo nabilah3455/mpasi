@@ -12,25 +12,42 @@
     }
 
     .blog_details .button-group-area {
-        margin: 0 auto;
+        text-align: center;
     }
 
     .blog_item {
         /* background-color: aqua; */
         box-shadow: 0 0 1px black;
+        width: 250px;
+        height: 300px;
     }
 
     .modal-content {
-        height: 60%;
+        height: 70%;
     }
 
-    .search .form-group{
+    .search .form-group {
         float: right;
+    }
+
+    .bahan {
+        padding: 1rem;
+    }
+
+    @media screen and (max-width: 360px) {
+        .blog_item {
+            width: 350px;
+            height: 240px;
+        }
+
+        h3 {
+            font-size: 18px;
+        }
     }
 </style>
 
 <!--::breadcrumb part start::-->
-<section class="breadcrumb breadcrumb_bg" style="background-image: url('<?= $banner?>')">
+<section class="breadcrumb breadcrumb_bg" style="background-image: url('<?= $banner ?>')">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -65,22 +82,24 @@
                     </div>
                 </form>
             </div>
-            <?php foreach ($data_bahan as $d) {
-                $kandungan = character_limiter(nl2br($d->kandungan_bahan), 70); ?>
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <div class="blog_left_sidebar">
-                        <article class="blog_item">
-                            <div class="blog_details">
-                                <h2><b><?= $d->nama_bahan; ?></b></h2>
-                                <p><?= nl2br($kandungan) ?></p>
-                                <div class="button-group-area mt-10">
-                                    <a href="#" data-toggle="modal" data-target="#exampleModal<?= $d->id_bahan; ?>" class="genric-btn primary circle arrow">Lihat Kandungan Bahan</a>
+            <div class="row">
+                <?php foreach ($data_bahan as $d) {
+                    $kandungan = character_limiter(nl2br($d->kandungan_bahan), 50); ?>
+                    <div class="bahan mb-lg-0">
+                        <div class="blog_left_sidebar">
+                            <article class="blog_item">
+                                <div class="blog_details">
+                                    <h3><b><?= $d->nama_bahan; ?></b></h3>
+                                    <p><?= nl2br($kandungan) ?></p>
+                                    <div class="button-group-area mt-10">
+                                        <a href="#" data-toggle="modal" data-target="#exampleModal<?= $d->id_bahan; ?>" class="genric-btn primary circle arrow">Lihat Detail</a>
+                                    </div>
                                 </div>
-                            </div>
-                        </article>
+                            </article>
+                        </div>
                     </div>
-                </div>
-            <?php } ?>
+                <?php } ?>
+            </div>
         </div>
         <div class="blog-pagination justify-content-center d-flex">
             <?php echo $this->pagination->create_links(); ?>

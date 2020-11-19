@@ -31,12 +31,12 @@ class Login extends CI_Controller
             'password' => $password
         );
 
-        // $user = $this->db->get_where('admin', ['username' => $username])->row_array();
+        $user = $this->db->get_where('admin', ['username' => $username])->row_array();
         // $pass = $this->db->get_where('admin', ['password' => $password])->row_array();
 
-        $cek = $this->modlogin->cek_login("admin", $where)->num_rows();
-        if ($cek > 0) {
-
+        // $cek = $this->modlogin->cek_login("admin", $where)->num_rows();
+        if ($user > 0) {
+            if (password_verify($password, $user['password'])) {
             $data_session = array(
                 'nama' => $username,
                 'status' => "login"
@@ -46,7 +46,7 @@ class Login extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissable fade show" role="alert"><center><h4>Selamat Datang di Aplikasi Panduan Gizi Makanan Balita<h4></center></div>');
 
             redirect(base_url("dashboard"));
-
+        }
         // if ($user > 0) {
         //     if (password_verify($password, $user['password'])) {
         //         $data = [

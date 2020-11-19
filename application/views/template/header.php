@@ -1,9 +1,9 @@
 <!-- START HEADER-->
 <header class="header">
     <div class="page-brand">
-            <span class="brand">
-                <span class="brand-tip">Panduan Gizi Makan Balita</span>
-            </span>
+        <span class="brand">
+            <span class="brand-tip">Panduan Gizi Makan Balita</span>
+        </span>
     </div>
     <div class="flexbox flex-1">
         <!-- START TOP-LEFT TOOLBAR-->
@@ -25,10 +25,10 @@
         <ul class="nav navbar-toolbar">
             <li class="dropdown dropdown-user">
                 <a class="nav-link dropdown-toggle link" data-toggle="dropdown">
-                    <img src="<?=base_url('assets/')?>img/admin-avatar.png" />
+                    <img src="<?= base_url('assets/') ?>img/admin-avatar.png" />
                     <span></span><?= $nama ?></a>
-                <ul class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="<?= base_url('login/logout')?>"><i class="fa fa-power-off"></i>Logout</a>
+                <ul class="dropdown dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="<?= base_url('login/logout') ?>"><i class="fa fa-power-off"></i>Logout</a>
                 </ul>
             </li>
         </ul>

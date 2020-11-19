@@ -26,6 +26,7 @@ class Kalkulator extends CI_Controller
             'berat' => $this->modgizi->get_berat(),
             'gizi' => $this->modgizi->get_nilai_gizi(),
             'rule' => $this->modgizi->get_rule(),
+            'grafik' => $this->modgizi->data_grafik()
         );
 
         // var_dump($data['umur']);

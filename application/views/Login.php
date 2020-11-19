@@ -26,7 +26,8 @@
         justify-content: center;
         align-items: center;
         height: 100vh;
-        background-color: #fafafa;
+        background-image: url('assets/img/banner/element5-digital-acrBf9BlfvE-unsplash.jpg');
+        background-size: cover;
     }
 
     .login {
@@ -35,12 +36,13 @@
         align-items: center;
         flex-direction: column;
         margin-bottom: 1px;
-        padding: 50px;
+        padding: 3rem;
     }
 
-    .banner {
-        background-image: url('assets/img/banner/apple.jpg');
-        background-size: cover;
+    @media screen and (max-width: 760px) {
+        .menu {
+            width: 90%;
+        }
     }
 
     .register {
@@ -65,7 +67,7 @@
     }
 
     .menu {
-        width: 70%;
+        /* width: 30%; */
         box-shadow: 2px 10px 20px rgba(0, 0, 0, .1);
         border-radius: 20px;
         overflow: hidden;
@@ -75,45 +77,44 @@
 
 <body>
     <div class="menu">
-        <div class="row">
-            <div class="col-lg-5 login">
-                <form action="<?= base_url('login') ?>" method="post">
+        <!-- <div class="row"> -->
+        <div class="login">
+            <form action="<?= base_url('login') ?>" method="post" id="login-form">
+                <h2 class="login-title">
+                    <b>Aplikasi Panduan Gizi <br> Makanan Bayi</b></h2>
+                <h5>Login</h5>
+                <div class="col-lg-12">
+                    <?= $this->session->flashdata('message'); ?>
+                </div>
+                <div class="form-group">
+                    <div class="input-group-icon left">
+                        <div class="input-icon"><i class="fa fa-user"></i></div>
+                        <input class="form-control" type="text" name="username" placeholder="Username" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group-icon left">
+                        <div class="input-icon"><i class="fa fa-lock font-16"></i></div>
+                        <input class="form-control" type="password" name="password" placeholder="Password" required>
+                    </div>
 
-                    <h2 class="login-title">
-                        <b>Aplikasi Panduan Gizi Makanan Bayi</b></h2>
-                    <h5>Login</h5>
-                    <div class="col-lg-12">
-                        <?= $this->session->flashdata('message'); ?>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group-icon left">
-                            <div class="input-icon"><i class="fa fa-user"></i></div>
-                            <input class="form-control" type="text" name="username" placeholder="Username" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group-icon left">
-                            <div class="input-icon"><i class="fa fa-lock font-16"></i></div>
-                            <input class="form-control" type="password" name="password" placeholder="Password" required>
-                        </div>
-
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-info btn-block" type="submit">Login</button>
-                    </div>
-                    <!-- <div class="text-center">Not a member?
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-info btn-block" type="submit">Login</button>
+                </div>
+                <!-- <div class="text-center">Not a member?
                 <a class="color-blue" href="register.html">Create accaunt</a>
             </div> -->
-                </form>
-                <div class="register">
-                    <p>Belum Mempunyai Akun? <br>
-                        <a href="<?= base_url('login/register') ?>">Buat Akun</a></p>
-                </div>
-            </div>
-            <div class="col-lg-7 banner">
-                <!-- <img src="<?= base_url('assets/') ?>img/banner/hector-farahani-jvXX_1OK-ik-unsplash.jpg" alt="" style="float: right;"> -->
+            </form>
+            <div class="register">
+                <p>Belum Mempunyai Akun? <br>
+                    <a href="<?= base_url('login/register') ?>">Buat Akun</a></p>
             </div>
         </div>
+        <!-- <div class="col-lg-7 banner">
+                <img src="<?= base_url('assets/') ?>img/banner/hector-farahani-jvXX_1OK-ik-unsplash.jpg" alt="" style="float: right;">
+            </div> -->
+    </div>
     </div>
     <!-- BEGIN PAGA BACKDROPS-->
     <div class="sidenav-backdrop backdrop"></div>
@@ -135,9 +136,8 @@
             $('#login-form').validate({
                 errorClass: "help-block",
                 rules: {
-                    email: {
-                        required: true,
-                        email: true
+                    username: {
+                        required: true
                     },
                     password: {
                         required: true

@@ -29,7 +29,6 @@
         </div>
     </div>
 </section>
-<span style="float: right;">Photo by <a href="https://unsplash.com/@sarahjgualtieri?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Sarah Gualtieri</a> on <a href="https://unsplash.com/images/food?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
 <!-- banner part start-->
 
 <!-- about part start-->
@@ -44,8 +43,8 @@
             </div>
             <div class="col-md-5">
                 <div class="about_text">
-                    <!-- <img src="<?= base_url('assets/') ?>img/banner/hector-farahani-jvXX_1OK-ik-unsplash.jpg" class="about_icon" alt=""> -->
-                    <h2>Apa Itu MPASI?</h2>
+                    <h2>Apa Itu
+                        MPASI?</h2>
                     <p style="font-size: 17px;">Makanan Pendamping ASI (MP-ASI) adalah makanan atau minuman selain ASI yang mengandung zat gizi yang diberikan kepada bayi selama periode penyapihan (complementary feeding) yaitu pada saat makanan/minuman lain diberikan bersama pemberian ASI.</p>
                     <label for="">Sumber : (WHO) (Asosiasi Dietisien Indonesia, 2014)</label>
                 </div>
@@ -71,7 +70,8 @@
                 <div class="single_service_part">
                     <?php foreach ($menu1 as $m1) {
                         $bahan = character_limiter($m1['bahan_menu'], 100); ?>
-                        <img src="<?= base_url('assets/') ?>img/menu/<?= $m1['foto'] ?>" alt="#" width="280px" height="280px">
+                        <h4>Usia 6-7 Bulan</h4>
+                        <img src="<?= base_url('assets/') ?>img/menu/<?= $m1['foto'] ?>" alt="#" width="250px">
                         <h3><?= $m1['judul_menu'] ?></h3>
                         <p><?= $bahan ?></p>
                     <?php } ?>
@@ -81,7 +81,8 @@
                 <div class="single_service_part">
                     <?php foreach ($menu2 as $m2) {
                         $bahan = character_limiter($m2['bahan_menu'], 100); ?>
-                        <img src="<?= base_url('assets/') ?>img/menu/<?= $m2['foto'] ?>" alt="#" width="280px" height="280px">
+                        <h4>Usia 8 Bulan</h4>
+                        <img src="<?= base_url('assets/') ?>img/menu/<?= $m2['foto'] ?>" alt="#" width="250px">
                         <h3><?= $m2['judul_menu'] ?></h3>
                         <p><?= $bahan ?></p>
                     <?php } ?>
@@ -91,7 +92,8 @@
                 <div class="single_service_part">
                     <?php foreach ($menu3 as $m3) {
                         $bahan = character_limiter($m3['bahan_menu'], 100); ?>
-                        <img src="<?= base_url('assets/') ?>img/menu/<?= $m3['foto'] ?>" alt="#" width="280px" height="280px">
+                        <h4>Usia 9 Bulan</h4>
+                        <img src="<?= base_url('assets/') ?>img/menu/<?= $m3['foto'] ?>" alt="#" width="250px">
                         <h3><?= $m3['judul_menu'] ?></h3>
                         <p><?= $bahan ?></p>
                     <?php } ?>

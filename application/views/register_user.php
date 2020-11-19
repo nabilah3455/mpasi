@@ -157,6 +157,7 @@
     <!-- CORE SCRIPTS-->
     <script src="<?= base_url('assets/') ?>js/app.min.js" type="text/javascript"></script>
     <script type="text/javascript">
+    // #form-sample-1 di dapet dari tag form id=form-sampe-1
         $("#form-sample-1").validate({
             rules: {
                 nama_anak: {

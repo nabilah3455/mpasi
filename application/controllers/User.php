@@ -291,7 +291,7 @@ class User extends CI_Controller
         // $idvisitor=$_POST[idvisitor];
         $nilai=$_POST['nilai'];
         $tgl_sekarang = date('Y-m-d');
-        $this->db->query("insert into kalkulator_gizi values('','$id','$idvar[$i]','$nilai[$i]','','','','','$tgl_sekarang')");
+        $this->db->query("INSERT into kalkulator_gizi values('','$id','$idvar[$i]','$nilai[$i]','','','','','$tgl_sekarang')");
 
         $i++;
         }

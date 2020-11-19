@@ -357,7 +357,7 @@
                                                 $tgl = date('Y-m');
                                                 // foreach($d as $def){
                                                 if ($def == 0) {
-                                                    $this->db->query("INSERT into defuzzy values ('$id','$defuzzy', '$tgl_sekarang')");
+                                                    $this->db->query("INSERT into defuzzy values ('$id','$defuzzy', '$tgl_sekarang','')");
                                                 } else {
                                                     $this->db->query("UPDATE defuzzy set defuzzy='$defuzzy' where id_user='$id' AND tgl_cek LIKE '$tgl%'");
                                                 }
@@ -432,8 +432,8 @@
                                                             $kendali1 = $solusi['kendali5'];
                                                         }
                                                         /////////////////////////////////
-
                                                     }
+                                                    $this->db->query("UPDATE defuzzy set hasil_gizi='$solusi1' where id_user='$id' AND tgl_cek LIKE '$tgl_sekarang%'");
                                                 }
 
                                                 // $data1 = mysqli_fetch_array($hasil1);

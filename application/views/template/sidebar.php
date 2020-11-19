@@ -33,7 +33,7 @@
             </li>
             <li <?= $this->uri->segment(1) == 'kalkulator' ? 'class="active"' : ''; ?>>
                 <a href=<?= base_url('kalkulator'); ?>><i class="sidebar-item-icon fa fa-calculator"></i>
-                    <span class="nav-label">Kalkulator MPASI</span>
+                    <span class="nav-label">Kalkulator Gizi</span>
                 </a>
             </li>
             <!-- <li <?= $this->uri->segment(1) == 'admin' ? 'class="active"' : ''; ?>>
