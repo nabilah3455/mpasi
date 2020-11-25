@@ -21,17 +21,17 @@
      <div class="sub_header">
          <div class="container">
              <div class="row align-items-center">
-                 <div class="col-8 col-md-4 col-xl-6">
+                 <div class="col-7 col-md-4 col-xl-6">
                      <div id="logo">
                          <!-- <a href="index.htm?l"><img src="img/Logo.png" alt="" title="" /></a> -->
                          <img src="<?= base_url('assets/front/') ?>img/android-chrome-192x192.png" width="40px"> Aplikasi Panduan Makanan Gizi Bayi
                      </div>
                  </div>
-                 <div class="col-4 col-md-8 col-xl-6 ">
+                 <div class="col-5 col-md-8 col-xl-6 ">
                      <div class="sub_header_social_icon float-right">
                          <!-- <a href="#"><i class="flaticon-phone"></i>+02 213 - 256 (365)</a>
                          <a href="#" class="btn_1 d-none d-md-inline-block">Become a Volunteer</a> -->
-                         <a href="<?= base_url('login_user/logout') ?>" class="genric-btn danger circle" style="color: white;">Logout</a>
+                         <a href="<?= base_url('login_user/logout') ?>" class="btn_1 d-md-inline-block" style="color: white;">Logout</a>
                      </div>
                  </div>
              </div>

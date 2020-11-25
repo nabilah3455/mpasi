@@ -15,11 +15,11 @@
     }
 
     .blog_item {
-        /* background-color: aqua; */
-        box-shadow: 0 0 1px black;
+        box-shadow: 1px 1px 10px rgba(1, 1, 1, .1);
+        /* border: 1px solid #f05454; */
     }
 
-    h4{
+    h4 {
         font-weight: bold;
     }
 
@@ -76,8 +76,8 @@
             <div class="col-lg-4">
                 <div class="blog_right_sidebar">
                     <aside class="single_sidebar_widget search_widget">
-                            <h4>Cari Berita</h4>
-                        <form action="<?= base_url('user/berita')?>" method="POST">
+                        <h4>Cari Berita</h4>
+                        <form action="<?= base_url('user/berita') ?>" method="POST">
                             <div class="form-group">
                                 <div class="input-group mb-3">
                                     <input type="text" name="cari" class="form-control" placeholder='Search Keyword' onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">

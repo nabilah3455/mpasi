@@ -10,12 +10,13 @@
         font-weight: bold;
     }
 
-    .input_anak td {
+    .input_anak th {
+        width: 25%;
         padding-top: 1rem;
-        font-size: 16px;
-        font-weight: bold;
-        /* width: 5%; */
-        /* padding-right: 1rem; */
+    }
+    
+    .input_anak td{
+        padding-top: 1rem;
     }
 
     label {
@@ -26,31 +27,8 @@
         width: 150px;
     }
 
-    .data {
-        width: 500px;
-    }
-
-    .hasil td {
-        font-size: 15px;
-    }
-
     .umur {
         background-color: aqua;
-    }
-
-    .total {
-        text-align: center;
-        padding-top: 2rem;
-        font-size: 15px;
-    }
-
-    .total b {
-        color: black;
-    }
-
-    .cetak {
-        padding-top: 4rem;
-        text-align: center;
     }
 
     h4 {
@@ -59,8 +37,27 @@
         padding-top: 1rem;
     }
 
-    .btn {
-        float: center;
+    .submit {
+        text-align: center;
+        padding-top: 2rem;
+    }
+
+    .submit .btn {
+        width: 15%;
+    }
+
+    @media screen and (max-width: 760px) {
+        .input_anak th {
+            width: 40%;
+        }
+
+        .submit .btn {
+            width: 30%;
+        }
+
+        .judul h1{
+            font-size: 50px;
+        }
     }
 </style>
 
@@ -88,10 +85,10 @@
             <div class="col-lg-12 mb-5 mb-lg-0">
                 <h3>Input Data Anak</h3>
                 <form action="<?= base_url('user/input_hasil'); ?>" method="POST">
-                    <table width="100%" class="input_anak">
-                        <tbody>
+                    <table class="input_anak">
+                        <tbody valign="center">
                             <tr>
-                                <td width="20%">Nama Anak
+                                <td>Nama Anak
                                     <label>*</label>
                                 </td>
                                 <td width="1%">:</td>
@@ -122,7 +119,7 @@
                                     <td>:</td>
                                     <td>
                                         <input name="idvar[]" type="hidden" id="idvar[]" value="<?php echo "$v[idvariabel]"; ?>" />
-                                        <input name="nilai[]" type="text" id="nilai[]" class="form-control data_anak" autocomplete='off'/>
+                                        <input name="nilai[]" type="text" id="nilai[]" class="form-control data_anak" autocomplete='off' />
                                     </td>
                                 </tr>
                                 <tr>
@@ -148,52 +145,12 @@
                                     </td>
                                 </tr>
                             <?php } ?>
-                            <!-- <tr>
-                                <td>Tanggal Lahir
-                                    <label>*</label>
-                                </td>
-                                <td>:</td>
-                                <td>
-                                    <input type="date" name="tgl_lahir" value="<?= $tgl_lahir ?>" class="form-control data" readonly>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Berat Badan Sekarang
-                                    <label>*</label>
-                                </td>
-                                <td>:</td>
-                                <td>
-                                    <div class="data_anak input-group">
-                                        <input type="number" name="berat" class="form-control" required>
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon3">Kg</span>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Tinggi Badan Sekarang
-                                    <label>*</label>
-                                </td>
-                                <td>:</td>
-                                <td>
-                                    <div class="data_anak input-group">
-                                        <input type="number" name="tinggi" class="form-control" required>
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon3">Cm</span>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr> -->
-                            <tr>
-                                <td colspan="3" align=center>
-                                    <input type="submit" name="submit" value="Diagnosa" id="" class="btn btn-success">
-                                    <input type="reset" name="reset" class="btn btn-danger">
-                                    <!-- <a href="#" data-toggle="modal" data-target="#exampleModal<?= $nama; ?>" class="btn btn-primary circle arrow">Profil Anak</!-->
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
+                    <div class="submit col-lg-12">
+                        <input type="submit" name="submit" value="Diagnosa" id="" class="btn btn-success" width="300px">
+                        <input type="reset" name="reset" class="btn btn-danger">
+                    </div>
                 </form>
             </div>
         </div>

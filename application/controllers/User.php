@@ -44,7 +44,7 @@ class User extends CI_Controller
         $config['base_url'] = base_url() . '/user/berita';
         $jumlah_data = $this->modberita->jml_berita($judul_berita);
         $config['total_rows'] = $jumlah_data;
-        $config['per_page'] = 5;
+        $config['per_page'] = 10;
         $from = $this->uri->segment(3);
 
         $config['next_link'] = '<i class="ti-angle-right"></i>';
@@ -61,7 +61,7 @@ class User extends CI_Controller
         $config['prev_tag_close'] = '</li>';
         $config['next_tag_open'] = '<li class="page-link">';
         $config['next_tag_close'] = '</li>';
-        $config['last_tag_open'] = '<li class="page-item active">';
+        $config['last_tag_open'] = '<li class="page-item">';
         $config['last_tag_close'] = '</li>';
         $config['first_tag_open'] = '<li class="page-item">';
         $config['first_tag_close'] = '</li>';
@@ -94,7 +94,7 @@ class User extends CI_Controller
         $this->load->library('pagination');
         $config['base_url'] = base_url() . 'user/menu';
         $config['total_rows'] = $jumlah_data;
-        $config['per_page'] = 12;
+        $config['per_page'] = 20;
         $from = $this->uri->segment(3);
 
         $config['next_link'] = '<i class="ti-angle-right"></i>';
@@ -170,7 +170,7 @@ class User extends CI_Controller
         $config['base_url'] = base_url() . 'user/bahan';
         $jumlah_data = $this->modbahan->jml_bahan($judul_bahan);
         $config['total_rows'] = $jumlah_data;
-        $config['per_page'] = 12;
+        $config['per_page'] = 20;
         $from = $this->uri->segment(3);
 
         $config['next_link'] = '<i class="ti-angle-right"></i>';
@@ -199,7 +199,7 @@ class User extends CI_Controller
             'banner' => base_url('assets/img/banner/banner1.jpg')
         );
 
-        // var_dump($data['banner']);
+        // var_dump($judul_bahan);
         // die();
 
         $this->template->front('front/bahan', $data);

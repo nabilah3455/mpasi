@@ -45,24 +45,11 @@ class Login extends CI_Controller
             $this->session->set_userdata($data_session);
             $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissable fade show" role="alert"><center><h4>Selamat Datang di Aplikasi Panduan Gizi Makanan Balita<h4></center></div>');
 
-            redirect(base_url("dashboard"));
+            redirect("dashboard");
         }
-        // if ($user > 0) {
-        //     if (password_verify($password, $user['password'])) {
-        //         $data = [
-        //             'username' => $user['username'],
-        //             'password' => $user['password']
-        //         ];
-
-        //         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Selamat Datang di Aplikasi Pelayanan dan Pengelolaan Laundry</center></div>');
-        //         $this->session->set_userdata($data);
-        //         redirect('dashboard');
-        //     } else {
-        //         $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password Salah!</div>');
-        //         redirect('login');
-        //     }
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username atau Password Salah!</div>');
+            // var_dump($user);
+            $this->session->set_flashdata('message', '<div class="alert alert-danger alert-bordered" role="alert">Username atau Password Salah!</div>');
             redirect('login');
         }
     }

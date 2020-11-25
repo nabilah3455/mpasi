@@ -1,8 +1,4 @@
 <style>
-    /* .breadcrumb {
-        background-image: url('../assets/img/banner/food.jpg')
-    } */
-
     .judul h1 {
         text-align: center;
         padding-top: 2rem;
@@ -11,17 +7,48 @@
         font-weight: bold;
     }
 
-    .search .form-group{
+    .search .form-group {
         float: right;
     }
 
     .blog_item {
-        /* background-color: aqua; */
-        box-shadow: 0 0 1px black;
+        width: 250px;
+        height: 20rem;
     }
 
-    .button-group-area{
-        font-size: 15px;
+    .blog_details {
+        box-shadow: 1px 1px 10px rgba(1, 1, 1, .1);
+        height: 150px;
+        padding: 2rem;
+    }
+
+    .menu {
+        padding: 1rem;
+    }
+
+    @media screen and (max-width: 760px) {
+        .blog_item {
+            width: 100%;
+        }
+
+        .blog_item img {
+            width: 300px;
+            height: 150px;
+        }
+
+        .blog_details {
+            height: 160px;
+            padding: 1rem;
+        }
+
+        .menu {
+            width: 50%;
+            height: 18rem;
+        }
+
+        h3 {
+            font-size: 18px;
+        }
     }
 </style>
 
@@ -60,32 +87,27 @@
                     </div>
                 </form>
             </div>
-            <?php foreach($data_menu as $d) { 
-                $bahan = character_limiter(nl2br($d['bahan_menu']), 80); ?>
-                <div class="col-lg-4 mb-5 mb-lg-0">
+            <?php foreach ($data_menu as $d) {
+                $bahan = character_limiter(nl2br($d['bahan_menu']), 100); ?>
+                <div class="menu mb-5 mb-lg-0">
                     <div class="blog_left_sidebar">
-                        <article class="blog_item">
-                            <div class="blog_item_img">
-                                <?php if($d['foto'] != null) { ?>
-                                    <img class="card-img rounded-0" src="<?= base_url('assets/') ?>img/menu/<?= $d['foto'] ?>" alt="" width="50px" height="250px">
-                                <?php } else { ?>
-                                    <img class="card-img rounded-0" src="<?= base_url('assets/') ?>img/image.png" alt="" width="50px" height="250px">
-                                <?php } ?>
-                            </div>
-
-                            <div class="blog_details">
-                                <a class="d-inline-block" href="single-blog.html">
-                                    <h3><b><?= $d['judul_menu']; ?></b></h2>
-                                    <label>Usia <?= $d['usia']?> Bulan</label>
-                                </a>
-                                <p><?= $bahan ?></p>
-                                <div class="button-group-area mt-10">
-                                    <a href="<?= base_url('user/detail_menu') ?>?id=<?= $d['id_menu']; ?>" class="genric-btn primary circle arrow">Lihat Cara Membuat</a>
+                        <a href="<?= base_url('user/detail_menu') ?>?id=<?= $d['id_menu']; ?>">
+                            <article class="blog_item">
+                                <div class="blog_item_img">
+                                    <?php if ($d['foto'] != null) { ?>
+                                        <img class="card-img rounded-0" src="<?= base_url('assets/') ?>img/menu/<?= $d['foto'] ?>" alt="" width="50px" height="200px">
+                                    <?php } else { ?>
+                                        <img class="card-img rounded-0" src="<?= base_url('assets/') ?>img/image.jpg" alt="" width="50px" height="200px">
+                                    <?php } ?>
                                 </div>
-                            </div>
-                        </article>
+                                <div class=" blog_details">
+                                    <h4><b><?= $d['judul_menu']; ?></b></h2>
+                                        <label>Usia <?= $d['usia'] ?> Bulan</label>
+                                </div>
+                            </article>
                     </div>
                 </div>
+                </a>
             <?php } ?>
         </div>
         <div class="blog-pagination justify-content-center d-flex">

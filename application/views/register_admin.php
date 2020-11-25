@@ -80,8 +80,8 @@
         /* overflow: hidden; */
         background-color: white;
     }
-    
-    tr{
+
+    tr {
         padding-top: 2rem;
     }
 
@@ -95,7 +95,7 @@
     <div class="menu">
         <div class="login">
             <h2 class="login-title">
-                <b>Aplikasi Panduan Gizi Makanan Bayi</b></h2>
+                <b>Panduan Gizi Makanan Bayi</b></h2>
             <h5>Register Akun Admin</h5>
             <form action="<?= base_url('login/register') ?>" method="post" id="form-register">
                 <table width="80%" style="margin: 0% auto;">
@@ -129,14 +129,14 @@
                     </tr>
                     <tr>
                         <th colspan="3" class="button">
-                            <input type="submit" name="submit" value="Buat Akun" class="btn btn-success btn-rounded">
-                            <a href="#" onclick="window.history.back();" class="btn btn-danger btn-rounded">Kembali</a>
+                            <input type="submit" name="submit" value="Buat Akun" class="btn btn-success btn-rounded btn-block">
+                            <!-- <a href="#" onclick="window.history.back();" class="btn btn-danger btn-rounded">Kembali</a> -->
                         </th>
                     </tr>
                 </table>
             </form>
             <div class="register" style="text-align:center;">
-                <p>Sudah Mempunyai Akun? <br>
+                <p>Sudah Mempunyai Akun?
                     <a href="<?= base_url('login') ?>">Login</a></p>
             </div>
         </div>
@@ -180,6 +180,19 @@
                 $(e).closest(".pass").removeClass("error")
             },
         });
+
+        function validation() {
+            var validasiHuruf = /^[a-zA-Z ]+$/;
+            var nama = document.getElementById("username");
+            if (nama.value.match(validasiHuruf)) {
+                alert("Nama Anda adalah " + nama.value);
+            } else {
+                alert("Masukkan nama Anda!\nFormat wajib huruf!");
+                nama.value = "";
+                nama.focus();
+                return false;
+            }
+        }
         // });
     </script>
 </body>

@@ -40,7 +40,7 @@
 
     .total {
         text-align: center;
-        padding-top: 2rem;
+        padding-top: 1rem;
         font-size: 15px;
     }
 
@@ -57,6 +57,17 @@
         font-weight: bold;
         text-align: center;
         padding-top: 1rem;
+    }
+
+    @media screen and (max-width: 760px) {
+
+        .judul h1 {
+            font-size: 50px;
+        }
+
+        .data_gizi td{
+            font-size: 10px;
+        }
     }
 </style>
 
@@ -86,7 +97,7 @@
                 <?php foreach ($data_anak as $d) { ?>
                     <table>
                         <tr>
-                            <td width="40%">Nama Anak</td>
+                            <td width="45%">Nama Anak</td>
                             <td>:</td>
                             <td><?= $d['nama_user'] ?></td>
                         </tr>
@@ -146,7 +157,7 @@
                 </tr>
                 <?php foreach ($rule as $b) { ?>
 
-                    <tr>
+                    <tr class="data_gizi">
                         <td>
                             <div align="center"><?php echo "$b[idrule]"; ?></div>
                         </td>
@@ -174,7 +185,7 @@
 
                             ?></td>
                     </tr>
-                    <tr>
+                    <tr class="data_gizi">
                         <td colspan="2">
                             <table width="100%" border="1" cellpadding="0" cellspacing="0">
                                 <tr>
@@ -450,7 +461,7 @@
         </div>
         <div class="total">
             <?php
-            echo "Defuzzy :<strong> $pr/$alpa=$defuzzy<strong><br /><br />";
+            echo "Defuzzy :<strong> $pr/$alpa=$defuzzy</strong><br /><br />";
             echo "Hasil Konsultasi Gizi Anak Anda Adalah : <strong>$solusi1</strong><br />";
             echo "Solusinya dengan Cara  : <strong>$kendali1</strong><br />";
 
@@ -458,7 +469,7 @@
             <!-- <a href="#" class="btn btn-info">Lihat Rekomendasi Menu MPASI</a> -->
         </div>
         <div class="cetak">
-            <a href="<?= base_url('user/cetak')?>?id_user=<?= $id ?>" class="btn btn-danger">Cetak Hasil</a>
+            <a href="<?= base_url('user/cetak') ?>?id_user=<?= $id ?>" class="btn btn-danger">Cetak Hasil</a>
         </div>
     </div>
 </section>

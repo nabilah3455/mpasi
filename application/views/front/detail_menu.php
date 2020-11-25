@@ -6,7 +6,7 @@
     .judul h1 {
         text-align: center;
         padding-top: 2rem;
-        font-size: 59px;
+        /* font-size: 59px; */
         /* text-decoration: underline; */
         font-weight: bold;
     }
@@ -24,7 +24,8 @@
     }
 
     .garis_vertical {
-        border-left: 1px #00334e solid;
+        border-left: 3px #f05454 solid;
+        border-radius: 100px;
         height: 0px auto;
         width: 0px;
     }
@@ -40,6 +41,13 @@
     .button-group-area {
         padding-bottom: 4rem;
         padding-top: 2rem;
+    }
+
+    @media screen and (max-width: 760px) {
+        .judul h1 {
+            font-size: 35px;
+            padding: 1rem;
+        }
     }
 </style>
 

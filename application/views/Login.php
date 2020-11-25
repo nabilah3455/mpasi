@@ -43,27 +43,25 @@
         .menu {
             width: 90%;
         }
+
+        .alert {
+            font-size: 15px;
+        }
     }
 
     .register {
-        padding-top: 3rem;
+        padding-top: 2rem;
         text-align: center;
     }
 
-    .login-title {
-        padding-bottom: 2rem;
-    }
-
-    h5 {
+    h3 {
         text-align: center;
-        padding-bottom: 1rem;
         font-weight: bold;
     }
 
-    label {
-        color: red;
-        font-size: 13px;
-        font-style: italic;
+    .sign_in {
+        font-size: 12px;
+        text-align: center;
     }
 
     .menu {
@@ -81,9 +79,10 @@
         <div class="login">
             <form action="<?= base_url('login') ?>" method="post" id="login-form">
                 <h2 class="login-title">
-                    <b>Aplikasi Panduan Gizi <br> Makanan Bayi</b></h2>
-                <h5>Login</h5>
-                <div class="col-lg-12">
+                    <b>Panduan Gizi Makanan Bayi</b></h2>
+                <!-- <h3>Welcome ! <br>Sign In To Your Account</h3> -->
+                <div class="sign_in">Sign in to your account !</div>
+                <div class="col-lg-12 alert">
                     <?= $this->session->flashdata('message'); ?>
                 </div>
                 <div class="form-group">
@@ -99,7 +98,7 @@
                     </div>
 
                 </div>
-                <div class="form-group">
+                <div class="">
                     <button class="btn btn-info btn-block" type="submit">Login</button>
                 </div>
                 <!-- <div class="text-center">Not a member?
@@ -107,8 +106,8 @@
             </div> -->
             </form>
             <div class="register">
-                <p>Belum Mempunyai Akun? <br>
-                    <a href="<?= base_url('login/register') ?>">Buat Akun</a></p>
+                <p>Belum Mempunyai Akun? 
+                    <a href="<?= base_url('login/register') ?>">Sign Up</a></p>
             </div>
         </div>
         <!-- <div class="col-lg-7 banner">

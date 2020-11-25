@@ -47,10 +47,9 @@ class Modbahan extends CI_Model
         if($nama_bahan == null){
         return $query = $this->db->get('kandungan_gizi_bahan_mpasi', $number, $offset)->result();
         }else{
-            $this->db->like('nama_bahan',$nama_bahan, 'both');
-            $q = $this->db->get('kandungan_gizi_bahan_mpasi', $number, $offset)->result();
+           $q = $this->db->query("SELECT * FROM kandungan_gizi_bahan_mpasi WHERE nama_bahan LIKE '%$nama_bahan%' OR kandungan_bahan LIKE '%$nama_bahan%'");
 
-            return $q;
+            return $q->result();
         }
     }
 
@@ -59,10 +58,14 @@ class Modbahan extends CI_Model
         if($jml == null){
             return $this->db->get('kandungan_gizi_bahan_mpasi')->num_rows();
         }else{
-             $this->db->like('nama_bahan', $jml);
-             $q = $this->db->get('kandungan_gizi_bahan_mpasi')->num_rows();
+            //  $this->db->like('nama_bahan', $jml);
+            //  $this->db->like('kandungan_bahan', $jml, 'both');
+            //  $q = $this->db->get('kandungan_gizi_bahan_mpasi')->num_rows();
 
-        return $q;
+  $q = $this->db->query("SELECT * FROM kandungan_gizi_bahan_mpasi WHERE nama_bahan LIKE '%$jml%' OR kandungan_bahan LIKE '%$jml%'");
+
+        return $q->num_rows();
+        // return $q;
         }
     }
 
