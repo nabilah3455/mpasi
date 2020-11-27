@@ -31,22 +31,27 @@
     }
 
     .login {
-        display: flex;
+        /* display: flex; */
         justify-content: center;
         align-items: center;
         flex-direction: column;
         margin-bottom: 1px;
         padding: 3rem;
+        width: 600px;
     }
 
     @media screen and (max-width: 760px) {
         .menu {
-            width: 200%;
+            width: 85%;
             padding: 1rem;
         }
 
-        .col-lg-6 input, select {
-            width: 100px;
+        .login{
+            width: 150%;
+        }
+
+        .data-anak{
+            width: 200%;
         }
     }
 
@@ -66,10 +71,6 @@
     .data-anak{
         padding: 1rem;
         width: 50%;
-    }
-
-    .form-control{
-        width: 300px;
     }
 
     .submit {
