@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 10, 2020 at 06:03 PM
+-- Generation Time: Nov 27, 2020 at 11:38 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `admin` (
   `id_admin` int(3) NOT NULL,
   `username` text NOT NULL,
-  `password` varchar(9) NOT NULL
+  `password` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -40,7 +40,9 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id_admin`, `username`, `password`) VALUES
 (3, 'nabilah123', '1234'),
-(4, 'admin', 'admin');
+(4, 'admin', 'admin'),
+(5, 'nabilah', '$2y$10$4jAAr7KYXcf/6RHm.8yTmOhFzum.A1/idhW.d8jNEke.9xwAUW.fK'),
+(6, 'na bilah', '$2y$10$yY55GR42/61HLPPnaYoxUO/Me79MwLjrjXfW5nKRckfXKSDH8ns2O');
 
 -- --------------------------------------------------------
 
@@ -51,17 +53,16 @@ INSERT INTO `admin` (`id_admin`, `username`, `password`) VALUES
 CREATE TABLE `defuzzy` (
   `id_user` int(10) NOT NULL,
   `defuzzy` float NOT NULL,
-  `tgl_cek` date NOT NULL
+  `tgl_cek` date NOT NULL,
+  `hasil_gizi` varchar(30) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `defuzzy`
 --
 
-INSERT INTO `defuzzy` (`id_user`, `defuzzy`, `tgl_cek`) VALUES
-(77, 45.8429, '0000-00-00'),
-(81, 30.7039, '0000-00-00'),
-(1, 43.1255, '2020-10-10');
+INSERT INTO `defuzzy` (`id_user`, `defuzzy`, `tgl_cek`, `hasil_gizi`) VALUES
+(7, 44.585, '2020-11-20', 'Gizi Kurang ');
 
 -- --------------------------------------------------------
 
@@ -86,12 +87,9 @@ CREATE TABLE `kalkulator_gizi` (
 --
 
 INSERT INTO `kalkulator_gizi` (`id_hitung`, `id_user`, `idvariabel`, `nilai`, `predikat`, `nilai1`, `nilai2`, `nilai3`, `tgl_cek`) VALUES
-(82, 1, 1, 20, 'Tahap 3', '0', '0', '1', '2020-09-01'),
-(83, 1, 2, 25, 'Berat lebih', '0', '0', '1', '2020-09-01'),
-(84, 1, 3, 76, 'Tinggi', '0', '0.807', '0.1923', '2020-09-01'),
-(106, 1, 1, 30, 'Tahap 3', '0', '0', '1', '2020-10-10'),
-(107, 1, 2, 11, 'Berat lebih', '0', '1.142', '-0.142', '2020-10-10'),
-(108, 1, 3, 60, 'Tinggi', '0', '1.576', '-0.576', '2020-10-10');
+(19, 7, 1, 15, 'Tahap 3', '0', '0.75', '0.25', '2020-11-20'),
+(20, 7, 2, 20, 'Berat lebih', '0', '0', '1', '2020-11-20'),
+(21, 7, 3, 60, 'Tinggi', '0', '1.576', '-0.576', '2020-11-20');
 
 -- --------------------------------------------------------
 
@@ -159,381 +157,51 @@ CREATE TABLE `min1` (
 --
 
 INSERT INTO `min1` (`id_user`, `idrule`, `min`) VALUES
-(0, 'R8', '0'),
-(0, 'R9', '0'),
-(0, 'R10', '0.2'),
-(0, 'R1', ''),
-(0, 'R2', ''),
-(0, 'R3', ''),
-(0, 'R4', ''),
-(0, 'R5', ''),
-(0, 'R6', ''),
-(0, 'R7', ''),
-(0, 'R8', ''),
-(0, 'R9', ''),
-(0, 'R10', ''),
-(0, 'R1', ''),
-(0, 'R2', ''),
-(0, 'R3', ''),
-(0, 'R4', ''),
-(0, 'R5', ''),
-(0, 'R6', ''),
-(0, 'R7', ''),
-(0, 'R8', ''),
-(0, 'R9', ''),
-(0, 'R10', ''),
-(0, 'R1', '0'),
-(0, 'R2', '0'),
-(0, 'R3', '0'),
-(0, 'R4', '0'),
-(0, 'R5', '0'),
-(0, 'R6', '0'),
-(0, 'R7', '0'),
-(0, 'R8', '0'),
-(0, 'R9', '0'),
-(0, 'R10', '0.2'),
-(0, 'R1', '0'),
-(0, 'R2', '0'),
-(0, 'R3', '0'),
-(0, 'R4', '0'),
-(0, 'R5', '0'),
-(0, 'R6', '0'),
-(0, 'R7', '0'),
-(0, 'R8', '0'),
-(0, 'R9', '0'),
-(0, 'R10', '0.2'),
-(0, 'R1', '0'),
-(0, 'R2', '0'),
-(0, 'R3', '0'),
-(0, 'R4', '0'),
-(0, 'R5', '0'),
-(0, 'R6', '0'),
-(0, 'R7', '0'),
-(0, 'R8', '0'),
-(0, 'R9', '0'),
-(0, 'R10', '0.2'),
-(0, 'R1', '0'),
-(0, 'R2', '0'),
-(0, 'R3', '0'),
-(0, 'R4', '0'),
-(0, 'R5', '0'),
-(0, 'R6', '0'),
-(0, 'R7', '0'),
-(0, 'R1', '0'),
-(0, 'R2', '0'),
-(0, 'R3', '-0.461'),
-(0, 'R4', '0'),
-(0, 'R5', '0'),
-(0, 'R6', '-0.461'),
-(0, 'R7', '-0.285'),
-(0, 'R8', '-0.285'),
-(0, 'R9', '-0.285'),
-(0, 'R10', '0'),
-(0, 'R11', '0'),
-(0, 'R12', '-0.461'),
-(0, 'R13', '0'),
-(0, 'R14', '0'),
-(0, 'R15', '-0.461'),
-(0, 'R16', '-0.285'),
-(0, 'R17', '-0.285'),
-(0, 'R18', '-0.285'),
-(0, 'R19', '0'),
-(0, 'R20', '0'),
-(0, 'R21', '-0.461'),
-(0, 'R22', '0'),
-(0, 'R23', '1'),
-(0, 'R24', '-0.461'),
-(0, 'R25', '-0.285'),
-(0, 'R26', '-0.285'),
-(0, 'R27', '-0.285'),
-(0, 'R28', '0'),
-(0, 'R29', '0'),
-(0, 'R30', '-0.461'),
-(0, 'R31', '0'),
-(0, 'R32', '1'),
-(0, 'R33', '-0.461'),
-(0, 'R34', '-0.285'),
-(0, 'R35', '-0.285'),
-(0, 'R36', '-0.285'),
-(0, 'R37', '0'),
-(0, 'R38', '0'),
-(0, 'R39', '-0.461'),
-(0, 'R40', '0'),
-(0, 'R41', '1'),
-(0, 'R42', '-0.461'),
-(0, 'R43', '-0.285'),
-(0, 'R44', '-0.285'),
-(0, 'R45', '-0.285'),
-(0, 'R1', '0'),
-(0, 'R2', '0'),
-(0, 'R3', '-0.461'),
-(0, 'R4', '0'),
-(0, 'R5', '0'),
-(0, 'R6', '-0.461'),
-(0, 'R7', '-0.285'),
-(0, 'R8', '-0.285'),
-(0, 'R9', '-0.285'),
-(0, 'R10', '0'),
-(0, 'R11', '0'),
-(0, 'R12', '-0.461'),
-(0, 'R13', '0'),
-(0, 'R14', '0'),
-(0, 'R15', '-0.461'),
-(0, 'R16', '-0.285'),
-(0, 'R17', '-0.285'),
-(0, 'R18', '-0.285'),
-(0, 'R19', '0'),
-(0, 'R20', '0'),
-(0, 'R21', '-0.461'),
-(0, 'R22', '0'),
-(0, 'R23', '1'),
-(0, 'R24', '-0.461'),
-(0, 'R25', '-0.285'),
-(0, 'R26', '-0.285'),
-(0, 'R27', '-0.285'),
-(0, 'R28', '0'),
-(0, 'R29', '0'),
-(0, 'R30', '-0.461'),
-(0, 'R31', '0'),
-(0, 'R32', '1'),
-(0, 'R33', '-0.461'),
-(0, 'R34', '-0.285'),
-(0, 'R35', '-0.285'),
-(0, 'R36', '-0.285'),
-(0, 'R37', '0'),
-(0, 'R38', '0'),
-(0, 'R39', '-0.461'),
-(0, 'R40', '0'),
-(0, 'R41', '1'),
-(0, 'R42', '-0.461'),
-(0, 'R43', '-0.285'),
-(0, 'R44', '-0.285'),
-(0, 'R45', '-0.285'),
-(0, 'R1', '0'),
-(0, 'R2', '0'),
-(0, 'R3', '-0.461'),
-(0, 'R4', '0'),
-(0, 'R5', '0'),
-(0, 'R6', '-0.461'),
-(0, 'R7', '-0.285'),
-(0, 'R8', '-0.285'),
-(0, 'R9', '-0.285'),
-(0, 'R10', '0'),
-(0, 'R11', '0'),
-(0, 'R12', '-0.461'),
-(0, 'R13', '0'),
-(0, 'R14', '0'),
-(0, 'R15', '-0.461'),
-(0, 'R16', '-0.285'),
-(0, 'R17', '-0.285'),
-(0, 'R18', '-0.285'),
-(0, 'R19', '0'),
-(0, 'R20', '0'),
-(0, 'R21', '-0.461'),
-(0, 'R22', '0'),
-(0, 'R23', '1'),
-(0, 'R24', '-0.461'),
-(0, 'R25', '-0.285'),
-(0, 'R26', '-0.285'),
-(0, 'R27', '-0.285'),
-(0, 'R28', '0'),
-(0, 'R29', '0'),
-(0, 'R30', '-0.461'),
-(0, 'R31', '0'),
-(0, 'R32', '1'),
-(0, 'R33', '-0.461'),
-(0, 'R34', '-0.285'),
-(0, 'R35', '-0.285'),
-(0, 'R36', '-0.285'),
-(0, 'R37', '0'),
-(0, 'R38', '0'),
-(0, 'R39', '-0.461'),
-(0, 'R40', '0'),
-(0, 'R41', '1'),
-(0, 'R42', '-0.461'),
-(0, 'R43', '-0.285'),
-(0, 'R44', '-0.285'),
-(0, 'R45', '-0.285'),
-(0, 'R1', '0'),
-(0, 'R2', '0'),
-(0, 'R3', '-0.461'),
-(0, 'R4', '0'),
-(0, 'R5', '0'),
-(0, 'R6', '-0.461'),
-(0, 'R7', '-0.285'),
-(0, 'R8', '-0.285'),
-(0, 'R9', '-0.285'),
-(0, 'R10', '0'),
-(0, 'R11', '0'),
-(0, 'R12', '-0.461'),
-(0, 'R13', '0'),
-(0, 'R14', '0'),
-(0, 'R15', '-0.461'),
-(0, 'R16', '-0.285'),
-(0, 'R17', '-0.285'),
-(0, 'R18', '-0.285'),
-(0, 'R19', '0'),
-(0, 'R20', '0'),
-(0, 'R21', '-0.461'),
-(0, 'R22', '0'),
-(0, 'R23', '1'),
-(0, 'R24', '-0.461'),
-(0, 'R25', '-0.285'),
-(0, 'R26', '-0.285'),
-(0, 'R27', '-0.285'),
-(0, 'R28', '0'),
-(0, 'R29', '0'),
-(0, 'R30', '-0.461'),
-(0, 'R31', '0'),
-(0, 'R32', '1'),
-(0, 'R33', '-0.461'),
-(0, 'R34', '-0.285'),
-(0, 'R35', '-0.285'),
-(0, 'R36', '-0.285'),
-(0, 'R37', '0'),
-(0, 'R38', '0'),
-(0, 'R39', '-0.461'),
-(0, 'R40', '0'),
-(0, 'R41', '1'),
-(0, 'R42', '-0.461'),
-(0, 'R43', '-0.285'),
-(0, 'R44', '-0.285'),
-(0, 'R45', '-0.285'),
-(0, 'R1', '0'),
-(0, 'R2', '0'),
-(0, 'R3', '-0.461'),
-(0, 'R4', '0'),
-(0, 'R5', '0'),
-(0, 'R6', '-0.461'),
-(0, 'R7', '-0.285'),
-(0, 'R8', '-0.285'),
-(0, 'R9', '-0.285'),
-(0, 'R10', '0'),
-(0, 'R11', '0'),
-(0, 'R12', '-0.461'),
-(0, 'R13', '0'),
-(0, 'R14', '0'),
-(0, 'R15', '-0.461'),
-(0, 'R16', '-0.285'),
-(0, 'R17', '-0.285'),
-(0, 'R18', '-0.285'),
-(0, 'R19', '0'),
-(0, 'R20', '0'),
-(0, 'R21', '-0.461'),
-(0, 'R22', '0'),
-(0, 'R23', '1'),
-(0, 'R24', '-0.461'),
-(0, 'R25', '-0.285'),
-(0, 'R26', '-0.285'),
-(0, 'R27', '-0.285'),
-(0, 'R28', '0'),
-(0, 'R29', '0'),
-(0, 'R30', '-0.461'),
-(0, 'R31', '0'),
-(0, 'R32', '1'),
-(0, 'R33', '-0.461'),
-(0, 'R34', '-0.285'),
-(0, 'R35', '-0.285'),
-(0, 'R36', '-0.285'),
-(0, 'R37', '0'),
-(0, 'R38', '0'),
-(0, 'R39', '-0.461'),
-(0, 'R40', '0'),
-(0, 'R41', '1'),
-(0, 'R42', '-0.461'),
-(0, 'R43', '-0.285'),
-(0, 'R44', '-0.285'),
-(0, 'R45', '-0.285'),
-(0, 'R1', '0'),
-(0, 'R2', '0'),
-(0, 'R3', '-0.346'),
-(0, 'R4', '0'),
-(0, 'R5', '0'),
-(0, 'R6', '-0.346'),
-(0, 'R7', '0'),
-(0, 'R8', '0'),
-(0, 'R9', '-0.346'),
-(0, 'R10', '0'),
-(0, 'R11', '0'),
-(0, 'R12', '-0.346'),
-(0, 'R13', '0'),
-(0, 'R14', '0'),
-(0, 'R15', '-0.346'),
-(0, 'R16', '0'),
-(0, 'R17', '0.166'),
-(0, 'R18', '-0.346'),
-(0, 'R19', '0'),
-(0, 'R20', '0'),
-(0, 'R21', '-0.346'),
-(0, 'R22', '0'),
-(0, 'R23', '0'),
-(0, 'R24', '-0.346'),
-(0, 'R25', '0'),
-(0, 'R26', '0.8333'),
-(0, 'R27', '-0.346'),
-(0, 'R28', '0'),
-(0, 'R29', '0'),
-(0, 'R30', '-0.346'),
-(0, 'R31', '0'),
-(0, 'R32', '0'),
-(0, 'R33', '-0.346'),
-(0, 'R34', '0'),
-(0, 'R35', '0.8333'),
-(0, 'R36', '-0.346'),
-(0, 'R37', '0'),
-(0, 'R38', '0'),
-(0, 'R39', '-0.346'),
-(0, 'R40', '0'),
-(0, 'R41', '0'),
-(0, 'R42', '-0.346'),
-(0, 'R43', '0'),
-(0, 'R44', '0.8333'),
-(0, 'R45', '-0.346'),
-(1, 'R1', '0'),
-(1, 'R2', '0'),
-(1, 'R3', '-0.576'),
-(1, 'R4', '0'),
-(1, 'R5', '0'),
-(1, 'R6', '-0.576'),
-(1, 'R7', '-0.142'),
-(1, 'R8', '-0.142'),
-(1, 'R9', '-0.142'),
-(1, 'R10', '0'),
-(1, 'R11', '0'),
-(1, 'R12', '-0.576'),
-(1, 'R13', '0'),
-(1, 'R14', '0'),
-(1, 'R15', '-0.576'),
-(1, 'R16', '-0.142'),
-(1, 'R17', '-0.142'),
-(1, 'R18', '-0.142'),
-(1, 'R19', '0'),
-(1, 'R20', '0'),
-(1, 'R21', '-0.576'),
-(1, 'R22', '0'),
-(1, 'R23', '1'),
-(1, 'R24', '-0.576'),
-(1, 'R25', '-0.142'),
-(1, 'R26', '-0.142'),
-(1, 'R27', '-0.142'),
-(1, 'R28', '0'),
-(1, 'R29', '0'),
-(1, 'R30', '-0.576'),
-(1, 'R31', '0'),
-(1, 'R32', '1'),
-(1, 'R33', '-0.576'),
-(1, 'R34', '-0.142'),
-(1, 'R35', '-0.142'),
-(1, 'R36', '-0.142'),
-(1, 'R37', '0'),
-(1, 'R38', '0'),
-(1, 'R39', '-0.576'),
-(1, 'R40', '0'),
-(1, 'R41', '1'),
-(1, 'R42', '-0.576'),
-(1, 'R43', '-0.142'),
-(1, 'R44', '-0.142'),
-(1, 'R45', '-0.142');
+(7, 'R1', '0'),
+(7, 'R2', '0'),
+(7, 'R3', '-0.576'),
+(7, 'R4', '0'),
+(7, 'R5', '0'),
+(7, 'R6', '-0.576'),
+(7, 'R7', '0'),
+(7, 'R8', '0'),
+(7, 'R9', '-0.576'),
+(7, 'R10', '0'),
+(7, 'R11', '0'),
+(7, 'R12', '-0.576'),
+(7, 'R13', '0'),
+(7, 'R14', '0'),
+(7, 'R15', '-0.576'),
+(7, 'R16', '0'),
+(7, 'R17', '0.75'),
+(7, 'R18', '-0.576'),
+(7, 'R19', '0'),
+(7, 'R20', '0'),
+(7, 'R21', '-0.576'),
+(7, 'R22', '0'),
+(7, 'R23', '0'),
+(7, 'R24', '-0.576'),
+(7, 'R25', '0'),
+(7, 'R26', '0.25'),
+(7, 'R27', '-0.576'),
+(7, 'R28', '0'),
+(7, 'R29', '0'),
+(7, 'R30', '-0.576'),
+(7, 'R31', '0'),
+(7, 'R32', '0'),
+(7, 'R33', '-0.576'),
+(7, 'R34', '0'),
+(7, 'R35', '0.25'),
+(7, 'R36', '-0.576'),
+(7, 'R37', '0'),
+(7, 'R38', '0'),
+(7, 'R39', '-0.576'),
+(7, 'R40', '0'),
+(7, 'R41', '0'),
+(7, 'R42', '-0.576'),
+(7, 'R43', '0'),
+(7, 'R44', '0.25'),
+(7, 'R45', '-0.576');
 
 -- --------------------------------------------------------
 
@@ -567,13 +235,13 @@ INSERT INTO `mpasi_menu` (`id_menu`, `judul_menu`, `bahan_menu`, `resep_menu`, `
 (16, 'Pure Beras Merah dan Hati Ayam', '1. 2 sdm tepung beras merah\r\n2. 30 gram hati ayam rebus, potong kecil\r\n3. 250 ml air matang\r\n4. 100 ml ASI/PASI (3 sendok takar peres PASI dilarutkan dalam 100 ml air matang)\r\n', '1.	Larutkan tepung beras merah dengan air matang, aduk rata.\r\n2.	Masak larutkan tepung beras di atas api kecil sampai mendidih. Aduk-aduk terus agar tidak menggumpal. Sisihkan.\r\n3.	Masukkan potongan hati ayam ke dalam blender, haluskan dan sisihkan\r\n4.	Tuang tepung beras merah ke dalam mangkuk, campur ASI/PASI dan aduk rata. Hidangkan dengan pure hati ayam\r\n', '', '6-7'),
 (17, 'Pure Labu Kuning Kentang', '1. 50 gram labu kuning, potong menjadi empat\r\n2. 50 gram kentang, potong menjadi empat\r\n3. 100 ml kaldu\r\n4. 100 ml ASI/PASI\r\n', '1.	Rebus kentang dan labu kuning dengan 100 ml kaldu sampai lunak\r\n2.	Campurkan kentang yang sudah lunak dengan 50 ml ASI/PASI lalu haluskan dengan blender atau alat penyaring khusus.\r\n3.	Campurkan pula labu kuning dengan 50 ml ASI/PASI lalu haluskan dengan blender atau alat penyaring khusus. Hidangkan.', '', '6-7'),
 (18, 'Pure Ubi Merang Avokad', '1. 50 gram ubi merah (jingga), potong menjadi empat\r\n2. 50 gram avokad, daging buah yang sudah dikerok\r\n3. 100 ml kaldu\r\n4. 100 ml ASI/PASI\r\n', '1.	Rebus ubi merah (jingga) dengan 100 ml kaldu sampai lunak\r\n2.	Campurkan avokad dengan 50 ml ASI/PASI, lalu haluskan dengan blender atau alat penyaring khusus\r\n3.	Campurkan pula ubi merah (jingga) dengaan 50 ml ASI/PASI, lalu haluskan dengan blender atau alat penyaring khusus. Hidangkan\r\n', '', '6-7'),
-(19, 'Pure Jagung Manis dan Hati Ayam', '1. 100 gr jagung manis pipil\r\n2. 1 buah hati ayam kampung, kukus dan potong dadu\r\n3. 100 air\r\n4. 1 buah bawang putih, cincang halus\r\n5. 1 sdm mentega tawar\r\n', '1.	Kukus jagung manis hingga sangat lunak.\r\n2.	Blender jagung hingga lembut.\r\n3.	Tumis hati ayam dengan mentega tawar dan bawang putih cincang sebentar hingga harum.\r\n4.	Campurkan tumisan hati ayam di atas pure jagung.\r\n5.	Pure jagung manis dan hati ayam siap dihidangkan.\r\n\r\nRasa manis dari jagung dan gurihnya hati ayam pasti akan sangat disukai oleh bayi, Bu. Selain itu, kandungan nutrisinya pun tak perlu diragukan lagi.', '', '8'),
+(19, 'Pure Jagung Manis dan Hati Ayam', '1. 100 gr jagung manis pipil\r\n2. 1 buah hati ayam kampung, kukus dan potong dadu\r\n3. 100 air\r\n4. 1 buah bawang putih, cincang halus\r\n5. 1 sdm mentega tawar\r\n', '1.	Kukus jagung manis hingga sangat lunak.\r\n2.	Blender jagung hingga lembut.\r\n3.	Tumis hati ayam dengan mentega tawar dan bawang putih cincang sebentar hingga harum.\r\n4.	Campurkan tumisan hati ayam di atas pure jagung.\r\n5.	Pure jagung manis dan hati ayam siap dihidangkan.\r\n\r\nRasa manis dari jagung dan gurihnya hati ayam pasti akan sangat disukai oleh bayi, Bu. Selain itu, kandungan nutrisinya pun tak perlu diragukan lagi.', 'tepung_beras.jpg', '8'),
 (20, 'Bubur Beras Merah dengan Daging Ayam dan Sayuran', '1. 100 gr beras merah\r\n2. 1 buah bawang putih, cincang halus\r\n3. 1 sdm mentega tawar\r\n4. 100 gr daging ayam giling\r\n5. 1 buah wortel, kukus dan cincang lembut\r\n6. 1 buah brokoli ukuran kecil, kukus dan rajang lembut bagian atasnya saja\r\n', '1.	Masak beras merah dengan cara ditumbuk sampai menjadi tepung atau bisa dimasak seperti biasa menggunakan perbandingan 1:9 air untuk mendapatkan tekstur yang sangat lunak. Masak dengan api kecil.\r\n2.	Aduk-aduk bubur supaya tidak hangus.\r\n3.	Tumis ayam giling dengan minyak mentega tawar dan bawang putih cincang hingga matang.\r\n4.	Masukkan tumisan ayam, wortel dan brokoli kukus pada bubur yang sudah matang. Aduk-aduk rata.\r\n5.	Hidangkan dalam wadah dan tambahkan keju parut untuk menambahkan rasa gurih.\r\n\r\nMenu MPASI 8 bulan ini sudah tergolong menu 4 bintang ya, Bu. Jadi bayi sudah mendapatkan banyak nutrisi yang ia butuhkan untuk tumbuh kembangnya. Bubur ini juga bisa dimakan untuk siang dan malam hari. Ibu hanya perlu menghangatkannya saja dengan api kecil.\r\n', '', '8'),
 (21, 'Bubur Pisang Susu', '1. 1 buah pisang raja\r\n2. 150-200 ml susu cair/ASIP\r\n', '1.	Lumat pisang hingga teksturnya lembut.\r\n2.	Tambahkan susu sedikit demi sedikit sambil diaduk rata.\r\n3.	Untuk usia 8 bulan, buat bubur dengan tekstur yang agak kental.\r\n4.	Bubur pisang susu siap dihidangkan.\r\n\r\nMenu ini cocok dihidangkan untuk sarapan yang memiliki waktu singkat untuk memasak. Tekstur yang lembut, rasa yang manis, dan kandungan nutrisi dari pisang membuat bubur ini bisa jadi menu andalan Ibu dan pastinya disukai oleh bayi.\r\n', '', '8'),
 (22, 'Bubur Kacang Hijau Kurma', '1. 100 gr kacang hijau kupas, rendam dengan air semalaman\r\n2. 2 buah kurma, ambil dagingnya\r\n3. ASIP atau susu cair secukupnya\r\n', '1.	Rebus kacang hijau hingga empuk.\r\n2.	Blender daging kurma sampai lembut.\r\n3.	Saring kacang hijau lalu campurkan ke dalam blender dan tambahkan ASIP atau susu cair, haluskan.\r\n4.	Tuang ke dalam wadah, sajikan selagi hangat.\r\n\r\nKombinasi antara kacang hijau dan kurma akan memberikan berbagai nutrisi yang baik untuk bayi. Untuk penyimpanan bisa ditunggu hingga dingin lalu simpan dalam wadah dan masukkan ke dalam kulkas.\r\n', '', '8'),
 (23, 'Bubur Kentang dan Salmon', '1. 100 gr kentang, kupas dan kukus\r\n2. 50 gr salmon\r\n3. 1 ikat bayam\r\n4. Keju parut secukupnya\r\n5. 1 sdm mentega tawar\r\n6. 100 ml susu cair/ASIP\r\n', '1.	Haluskan kentang kukus kemudian letakkan ke dalam panci.\r\n2.	Tuang susu cair/ASIP, masak dengan api kecil hingga mengental.\r\n3.	Panggang salmon dengan mentega tawar hingga matang, lalu suwir-suwir kecil.\r\n4.	Tuang kentang ke dalam wadah, taburkan suwiran salmon dan keju parut.\r\n5.	Bubur kentang salmon siap disantap.\r\n\r\nKentang sebagai sumber karbohidrat dan salmon yang kaya omega 3 memberikan manfaat untuk otak bayi. Karena memiliki rasa yang gurih dan lezat, dijamin bayi  akan sangat menyukai menu MPASI 8 bulan ini.\r\n', '', '8'),
 (24, 'Nasi Tim Daging Cincang dan Sayuran', '1. 100 gram beras putih, cuci bersih\r\n2. 50 gram daging sapi cincang\r\n3. 1 ikat sawi sendok, cincang halus\r\n4. 1 buah bawang putih, cincang halus\r\n5. 1 sdm mentega tawar\r\n', '1.	Rebus beras putih dengan air hingga lembut dengan api kecil. Aduk-aduk agar tidak hangus.\r\n2.	Tumis daging sapi dengan mentega tawar, bawang cincang, dan sawi cincang.\r\n3.	Setelah beras mulai lembek, campurkan tumisan daging lalu aduk rata.\r\n4.	Tuang dalam wadah, sajikan selagi hangat.\r\n\r\nTekstur daging sapi yang cenderung kasar mungkin bagi beberapa bayi akan kesulitan untuk menelannya. Ibu bisa mencincangnya lebih halus lagi agar mudah dikunyah oleh bayi.\r\n', '', '8'),
-(25, 'Bubur Tim Hati ayam dan Wortel', '1. 2 sdm beras\r\n2. 1/2 potong hati ayam\r\n3. 25 gr daging giling ayam\r\n4. 1/2 labu siam\r\n5. 3 buah baby carrots\r\n6. 1/2 daun bawang\r\n7. 1/2 siung bawang putih\r\n8. 300 ml kaldu ayam\r\n', '1.	Rendam beras selama empat jam, kemudian tumbuk tapi jangan sampai terlalu halus.\r\n2.	Kukus hati ayam dan daging giling ayam, lalu cincang.\r\n3.	Potong dadu kecil labu siam dan baby carrots.\r\n4.	Cincang halus bawang putih dan daun bawang, tumis.\r\n5.	Setelah harum, masukkan potongan labu siam, baby carrots, hati ayam, dan daging giling.\r\n6.	Masukkan beras, tuang kaldu ayam.\r\n7.	Masak hingga matang, sajikan ke si Kecil.', '', '9'),
+(25, 'Bubur Tim Hati ayam dan Wortel', '1. 2 sdm beras\r\n2. 1/2 potong hati ayam\r\n3. 25 gr daging giling ayam\r\n4. 1/2 labu siam\r\n5. 3 buah baby carrots\r\n6. 1/2 daun bawang\r\n7. 1/2 siung bawang putih\r\n8. 300 ml kaldu ayam\r\n', '1.	Rendam beras selama empat jam, kemudian tumbuk tapi jangan sampai terlalu halus.\r\n2.	Kukus hati ayam dan daging giling ayam, lalu cincang.\r\n3.	Potong dadu kecil labu siam dan baby carrots.\r\n4.	Cincang halus bawang putih dan daun bawang, tumis.\r\n5.	Setelah harum, masukkan potongan labu siam, baby carrots, hati ayam, dan daging giling.\r\n6.	Masukkan beras, tuang kaldu ayam.\r\n7.	Masak hingga matang, sajikan ke si Kecil.', 'tepung_beras.jpg', '9'),
 (26, 'Tim Kacang Merah dan Daging', '1. 20 gr beras, cuci bersih\r\n2. 625 ml air\r\n3. 25 gr dagung giling\r\n4. 10 gr kacang merah\r\n5. 25 gr buncis\r\n6. 25 gr tomat\r\n7. 1 sdm kecap manis\r\n8. 1 sdm santan encer\r\n', '1.	Rendam kacang merah minimal lima jam sebelum memasaknya terlebih dahulu, kemudian dicincang.\r\n2.	Rebus beras dengan air, daging giling, dan kecang merah sambil terus diaduk hingga jadi bubur.\r\n3.	Masukkan buncis dan tomat, masak hingga sayuran matang.\r\n4.	Tambahkan kecap manis dan santan, aduk rata.\r\n5.	Angkat, sajikan ke si Kecil.', '', '9'),
 (27, 'Nugget Ayam Wortel', '1. 150 gr daging ayam giling\r\n2. 1 wortel ukuran sedang\r\n3. 3 siung bawang putih\r\n4. 1 sdm bawang merah goreng\r\n5. 1 sdm terigu\r\n6. Tepung roti secukupnya\r\n7. 1 butir telur ayam\r\n', '1.	Haluskan daging ayam, wortel, bawang putih, bawang merah goreng.\r\n2.	Tambahkan terigu pada adonan yang sudah dihaluskan.\r\n3.	Kocok telur, siapkan tepung roti untuk melapisi nugget.\r\n4.	Olesi tangan dengan tepung atau mentega supaya adonan nugget tidak menempel. Ambil adonan secukupnya, bentuk-bentuk, masukkan dalam telur, tiriskan kemudian balurkan pada tepung roti.\r\n5.	Lakukan langkah di atas hingga adonan habis.\r\n6.	Goreng setengah matang dengan api sedang, dinginkan kemudian masukkan dalam freezer.\r\n7.	Jika ingin digunakan, tinggal goreng lagi dan hangatkan, sajikan ke si Kecil.', '', '9'),
 (28, 'Bubur Oat Labu Brokoli', '1. 5 sdm oatmeal\r\n2. 200 gr labu kuning atau kabocha\r\n3. 2 kuntum brokoli\r\n4. UB (unsalted butter) secukupnya\r\n5. 200 ml air\r\n', '1.	Potong kecil-kecil labu dan brokoli sampai sesuai selera.\r\n2.	Masak air hingga mendidih, masukkan labu kuning. Masak hingga setengah matang.\r\n3.	Masukkan oatmeal dan brokoli, masak hingga matang.\r\n4.	Dinginkan, sajikan ke si Kecil.', '', '9'),
@@ -619,41 +287,6 @@ INSERT INTO `mpasi_news` (`id_news`, `judul_news`, `isi_news`) VALUES
 (1020, 'MP-ASI Tidak tepat Waktu', 'Sejumlah risiko dapat terjadi bila pemberian MP_ASI tidak tepat waktu alias terlalu dini (kurang dari usia 4bulan) atau terlambat (lebih dari usia 7 bulan).\r\n\r\nRisiko MP-ASI terlalu dini:\r\n• Risiko diare dan dehidrasi, antara lain karena organ pencernaan bayi belum siap. \r\n• Produksi ASI menurun akibat bayi kenyang sehingga tidak mau menyusu.  • Risiko bayi tersedak.  Gangguan tumbuh kembang.  \r\n\r\nRisiko MP-ASI terlambat:\r\n• Potensial terjadi gagal tumbuh, mengingat zat gizi ASI tidak lagi mencukupi kebutuhan bayi.  • Defisiensi (kekurangan) zat besi. \r\n• Gangguan tumbuh kembang.\r\n'),
 (1021, 'Bayi Vegetarian', 'Anda membesarkan bayi sebagai vegetarian dari lahir?  Cara sederhana untuk memastikan bahwa ia mendapatkan zat gizi yang cukup, tepat, dan selalu bergantung pada makanan, kacang-kacangan (khususnya kacang kedelai), susu dan / atau telur, buah dan sayuran.\r\nTahap makan MP-ASI bayi vegetarian pada acara sama dengan bayi pada umumnya yaitu dari porsi sedikit dan tekstur lembut ke porsi lebih banyak dan tekstur makin kasar hingga ke menu makanan keluarga usia satu tahun.\r\nBedanya, gantikan zat-zat gizi dari makanan hewani (seperti daging dan ikar ke makanan nabati (seperti kacang-kacangan) Zat gizi yang penting diperhatikan adalah protein, zat besi, kalsium, dan vitamin B12.\r\nDalam hal ini, sebaiknya konsultasikan pola makan bayi Anda pada dokter anak Anda, mengingat tumbuh kembang tiap bayi berbeda, termasuk bila diperlukan suplementasi.\r\n'),
 (1022, 'Jangan Putus Asa', 'Setelah memasuki bulan kedua mencobakan MP-ASI kepada bayi, ternyata petualangan ini tidak semulus yang Anda harapkan.  Bayi selalu melepeh makanan- nya, menepis sendok yang akan disuapkan sehingga makanan berhamburan, bahkan rewel berkepanjangan.  Jangan putus asa, Bu!  Belum tentu bayi Anda tidak suka makanannya atau menolak makanan Anda.  Perilakunya tersebut sebenarnya merupakan refleks bayi. Dia tidak bermaksud menolak, apalagi membuang, makanan yang Anda tawarkan. \r\nBisa juga hal tersebut karena bayi memerlukan waktu untuk menerima jenis makanan baru. Penelitian menunjukkan bahwa setelah 8-10 kali dicobakan, umumnya bayi baru mau menerima jenis makanan baru tersebut. Dan, orang tua cenderung cepat menyerah.\r\n');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `nilai`
---
-
-CREATE TABLE `nilai` (
-  `idnilai` int(3) NOT NULL,
-  `idpasien` int(10) NOT NULL,
-  `idvariabel` int(3) NOT NULL,
-  `nilai` float NOT NULL,
-  `predikat` varchar(30) NOT NULL,
-  `nilai1` varchar(5) NOT NULL,
-  `nilai2` varchar(5) NOT NULL,
-  `nilai3` varchar(6) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `nilai`
---
-
-INSERT INTO `nilai` (`idnilai`, `idpasien`, `idvariabel`, `nilai`, `predikat`, `nilai1`, `nilai2`, `nilai3`) VALUES
-(359, 77, 1, 25, 'Tahap 3', '0', '0', '1'),
-(360, 77, 2, 10, 'Berat lebih', '0', '1.285', '-0.285'),
-(361, 77, 3, 63, 'Tinggi', '0', '1.461', '-0.461'),
-(362, 78, 1, 0, '', '', '', ''),
-(363, 78, 2, 0, '', '', '', ''),
-(364, 78, 3, 0, '', '', '', ''),
-(365, 80, 1, 22, '', '', '', ''),
-(366, 80, 2, 22, '', '', '', ''),
-(367, 80, 3, 66, '', '', '', ''),
-(368, 81, 1, 22, 'Tahap 2', '0', '0.166', '0.8333'),
-(369, 81, 2, 22, 'Berat lebih', '0', '0', '1'),
-(370, 81, 3, 66, 'Tinggi', '0', '1.346', '-0.346');
 
 -- --------------------------------------------------------
 
@@ -881,11 +514,11 @@ CREATE TABLE `user` (
   `id_user` int(5) NOT NULL,
   `nama_user` text NOT NULL,
   `username` varchar(10) NOT NULL,
-  `pass_user` varchar(9) NOT NULL,
-  `jenis_kelamin` varchar(3) DEFAULT NULL,
-  `tgl_lahir` date DEFAULT NULL,
-  `berat_badan_kelahiran` varchar(5) DEFAULT NULL,
-  `tinggi_badan_kelahiran` varchar(3) DEFAULT NULL
+  `pass_user` varchar(256) NOT NULL,
+  `jenis_kelamin` varchar(3) NOT NULL,
+  `tgl_lahir` date NOT NULL,
+  `berat_badan_kelahiran` varchar(5) NOT NULL,
+  `tinggi_badan_kelahiran` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -893,7 +526,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `nama_user`, `username`, `pass_user`, `jenis_kelamin`, `tgl_lahir`, `berat_badan_kelahiran`, `tinggi_badan_kelahiran`) VALUES
-(1, 'nabilah', 'nabil', 'nabil', 'P', '2019-04-09', '12', '12');
+(5, 'Nabilah', 'nabilah123', '$2y$10$nbk09.XjuAoiX4dBuWaCvufcfVNvAD0lSfU15XbfAf44mFOeSxyXa', 'P', '2020-11-11', '12', '12'),
+(7, 'nabil', 'user', '$2y$10$5Q1MhI6t.jCw53BWvxWEP.xYBBmGdVG8aqf7xGDvDg7EiSdD5sDHa', 'P', '2020-11-03', '12', '12');
 
 -- --------------------------------------------------------
 
@@ -1007,12 +641,6 @@ ALTER TABLE `mpasi_news`
   ADD PRIMARY KEY (`id_news`);
 
 --
--- Indexes for table `nilai`
---
-ALTER TABLE `nilai`
-  ADD PRIMARY KEY (`idnilai`);
-
---
 -- Indexes for table `rule`
 --
 ALTER TABLE `rule`
@@ -1038,13 +666,13 @@ ALTER TABLE `variabel`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_admin` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `kalkulator_gizi`
 --
 ALTER TABLE `kalkulator_gizi`
-  MODIFY `id_hitung` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `id_hitung` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `kandungan_gizi_bahan_mpasi`
@@ -1065,16 +693,10 @@ ALTER TABLE `mpasi_news`
   MODIFY `id_news` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1023;
 
 --
--- AUTO_INCREMENT for table `nilai`
---
-ALTER TABLE `nilai`
-  MODIFY `idnilai` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=371;
-
---
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `variabel`
