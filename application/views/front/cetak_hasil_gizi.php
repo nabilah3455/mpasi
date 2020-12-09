@@ -102,7 +102,7 @@
 </div>
 <div class="hasil">
 <h4>Tabel Nilai Gizi</h4>
-<table border="1" cellpadding="0" cellspacing="1" class="">
+<table border="1" cellpadding="0" cellspacing="1" class="" width="">
     <thead align="center">
     <tr>
         <th width="">Nama Rule</th>
@@ -114,7 +114,7 @@
             <td width="">
                 <div align="center"><?php echo "$b[idrule]"; ?></div>
             </td>
-            <td><?php
+            <td width="240"><?php
                 // $z = mysqli_num_rows(mysqli_query($koneksi, "select * from rule1 where idrule='$b[0]'"));
                 $z = $this->modgizi->get_rule1($b['idrule']);
                 // $c = mysqli_query($koneksi, "select * from rule1 where idrule='$b[0]' order by idvariabel asc");
@@ -192,7 +192,7 @@
                             $this->db->query("INSERT into min values ('$id','$b[idrule]','$t13')");
 
                         ?>
-                            <td width="230">
+                            <td width="180">
                                 <div align="center"><?php echo "$t13"; ?></div>
                             </td>
                         <?php
@@ -405,7 +405,7 @@
 
 <div class="total">
     <?php
-    echo "Defuzzy :<strong> $pr/$alpa=$defuzzy<strong><br /><br />";
+    echo "Defuzzy :<strong> $pr/$alpa=$defuzzy</strong><br /><br />";
     echo "Hasil Konsultasi Gizi Anak Anda Adalah : <strong>$solusi1</strong><br />";
     echo "Solusinya dengan Cara  : <strong>$kendali1</strong><br />";
 

@@ -103,20 +103,27 @@
         display: inline-block;
         margin: 100px auto;
     }
+
+    .judul {
+        font-size: 35px;
+        font-weight: bold;
+    }
 </style>
 
 <div class="page-content fade-in-up">
+   <div class="judul col-lg-6">
+        Bahan MPASI
+    </div>
     <div class="col-lg-12">
         <?= $this->session->flashdata('message'); ?>
     </div>
     <div class="ibox">
         <div class="ibox-head">
-            <div class="ibox-title">Bahan MPASI</div>
+            <div class="ibox-title col-lg-12">
+                <a href="{tambah}" style="float: right;"><i class="fa fa-plus"> </i> Tambah Bahan MPASI</a>
+            </div>
         </div>
         <div class="ibox-body">
-            <div class="add-btn">
-                <a href="{tambah}" class="btn btn-success col-lg-12">Tambah Bahan MPASI</a>
-            </div>
             <table class="table table-striped table-bordered zero-configuration" cellspacing="0" width="100%">
                 <thead>
                     <tr>

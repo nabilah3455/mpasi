@@ -65,7 +65,7 @@
     }
 
     .menu {
-        /* width: 30%; */
+        /* width: 25%; */
         box-shadow: 2px 10px 20px rgba(0, 0, 0, .1);
         border-radius: 20px;
         overflow: hidden;
@@ -79,7 +79,7 @@
         <div class="login">
             <form action="<?= base_url('login') ?>" method="post" id="login-form">
                 <h2 class="login-title">
-                    <b>Panduan Gizi Makanan Bayi</b></h2>
+                    <b>Panduan Gizi Makanan <br> Bayi</b></h2>
                 <!-- <h3>Welcome ! <br>Sign In To Your Account</h3> -->
                 <div class="sign_in">Sign in to your account !</div>
                 <div class="col-lg-12 alert">

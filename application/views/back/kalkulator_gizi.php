@@ -234,8 +234,56 @@
                 </div>
             </div>
         </div>
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-head">
+                    Data Anak
+                </div>
+                <div class="ibox-body">
+                    <table class="table table-striped table-bordered zero-configuration" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th width="1%">No.</th>
+                                <th width="20%">Nama Anak</th>
+                                <th width="15%">Tanggal Lahir</th>
+                                <th width="15%">Jenis Kelamin</th>
+                                <th width="15%">Berat Badan Kelahiran</th>
+                                <th width="15%">Tinggi Badan Kelahiran</th>
+                                <th>Nilai Gizi</th>
+                            </tr>
+                        </thead>
+                        <?php $no = 1;
+                        foreach ($data_anak as $a) { ?>
+                            <tr>
+                                <td><?= $no; ?></td>
+                                <td><?= $a['nama_user']; ?></td>
+                                <td><?= $a['tgl_lahir']; ?></td>
+                                <td>
+                                    <?php if ($a['jenis_kelamin'] == 'P') {
+                                        echo "Perempuan";
+                                    } else {
+                                        echo "Laki-Laki";
+                                    }
+                                    ?>
+                                </td>
+                                <td><?= $a['berat_badan_kelahiran']; ?> Kg</td>
+                                <td><?= $a['tinggi_badan_kelahiran']; ?> Cm</td>
+                                <td>
+                                    <a href="<?= base_url('kalkulator/hasil_gizi') ?>?id_user=<?= $a['id_user'] ?>">Nilai Gizi</a>
+                                </td>
+                            </tr>
+                        <?php $no++;
+                        } ?>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+
 <!-- Modal HTML -->
 <?php foreach ($rule as $r) { ?>
     <div id="myModal<?= $r['idrule'] ?>" class="modal fade">
@@ -692,14 +740,16 @@
 
     var chart = am4core.create("chartdiv", am4charts.XYChart);
 
+    chart.data = {grafik};
 
-    chart.data = [{
-        "category": "One",
-        "value1": 1,
-        "value2": 5,
-        "value3": 3,
-        "value4": 3
-    }]
+    // chart.data = [{
+    //     "category": "Jumlah Anak",
+    //     "value1": <?= $gizi_buruk ?>,
+    //     "value2": <?= $gizi_kurang ?>,
+    //     "value3": <?= $gizi_normal ?>,
+    //     "value4": <?= $gizi_lebih ?>,
+    //     "value5": <?= $obesitas ?>
+    // }]
 
     chart.padding(30, 30, 10, 30);
     chart.legend = new am4charts.Legend();
@@ -723,7 +773,7 @@
     var series1 = chart.series.push(new am4charts.ColumnSeries());
     series1.columns.template.width = am4core.percent(80);
     series1.columns.template.tooltipText = "{name}: {valueY.value}";
-    series1.name = "Series 1";
+    series1.name = "Gizi Buruk";
     series1.dataFields.categoryX = "category";
     series1.dataFields.valueY = "value1";
     series1.stacked = true;
@@ -731,7 +781,7 @@
     var series2 = chart.series.push(new am4charts.ColumnSeries());
     series2.columns.template.width = am4core.percent(80);
     series2.columns.template.tooltipText = "{name}: {valueY.value}";
-    series2.name = "Series 2";
+    series2.name = "Gizi Kurang";
     series2.dataFields.categoryX = "category";
     series2.dataFields.valueY = "value2";
     series2.stacked = true;
@@ -739,7 +789,7 @@
     var series3 = chart.series.push(new am4charts.ColumnSeries());
     series3.columns.template.width = am4core.percent(80);
     series3.columns.template.tooltipText = "{name}: {valueY.value}";
-    series3.name = "Series 3";
+    series3.name = "Gizi Normal";
     series3.dataFields.categoryX = "category";
     series3.dataFields.valueY = "value3";
     series3.stacked = true;
@@ -747,9 +797,17 @@
     var series4 = chart.series.push(new am4charts.ColumnSeries());
     series4.columns.template.width = am4core.percent(80);
     series4.columns.template.tooltipText = "{name}: {valueY.value}";
-    series4.name = "Series 4";
+    series4.name = "Gizi Lebih";
     series4.dataFields.categoryX = "category";
     series4.dataFields.valueY = "value4";
+    series4.stacked = true;
+
+    var series4 = chart.series.push(new am4charts.ColumnSeries());
+    series4.columns.template.width = am4core.percent(80);
+    series4.columns.template.tooltipText = "{name}: {valueY.value}";
+    series4.name = "Obesitas";
+    series4.dataFields.categoryX = "category";
+    series4.dataFields.valueY = "value5";
     series4.stacked = true;
 
     chart.scrollbarX = new am4core.Scrollbar();

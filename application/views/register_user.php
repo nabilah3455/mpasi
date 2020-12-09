@@ -41,17 +41,20 @@
     }
 
     @media screen and (max-width: 760px) {
-        .menu {
-            width: 85%;
-            padding: 1rem;
+        .menu{
+            width: 95%;
         }
 
         .login{
-            width: 150%;
+            width: 100%;
         }
 
         .data-anak{
-            width: 200%;
+            font-size: 15px;
+        }
+
+        .submit {
+            width: 10%;
         }
     }
 
@@ -77,6 +80,10 @@
         text-align: center;
         padding-top: 2rem;
         width: 100%;
+    }
+
+    .submit input, a{
+        width: 30%;
     }
 
     .sign_in {
@@ -107,16 +114,18 @@
                         </select>
                     </div>
                     <div class="data-anak">
+                        Berat Badan(Kg)<sup>*</sup>
+                        <input type="number" name="berat_badan_kelahiran" id="berat" placeholder="Berat Kelahiran" value="<?= set_value('berat_badan_kelahiran'); ?>" class="form-control input-sm berat" autocomplete="off" />
+                        <!-- <sup>Ket : Berat Kelahiran</sup> -->
+                    </div>
+                    <div class="data-anak">
+                        TInggi Badan(Cm)<sup>*</sup>
+                        <input type="number" name="tinggi_badan_kelahiran" placeholder="Tinggi Kelahiran" value="<?= set_value('berat_badan_kelahiran'); ?>" class="form-control input-sm berat" autocomplete="false" required />
+                        <!-- <sup>Ket : Tinggi Kelahiran</sup> -->
+                    </div>
+                    <div class="data-anak">
                         Tanggal Lahir <sup>*</sup>
                         <input type="date" name="tgl_lahir" value="<?= set_value('tgl_lahir'); ?>" id="tgl_lahir" placeholder="" class="form-control input-sm">
-                    </div>
-                    <div class="data-anak">
-                        Berat Badan Kelahiran (Kg)<sup>*</sup>
-                        <input type="number" name="berat_badan_kelahiran" id="berat" placeholder="Contoh : 4" value="<?= set_value('berat_badan_kelahiran'); ?>" class="form-control input-sm berat" autocomplete="off" />
-                    </div>
-                    <div class="data-anak">
-                        TInggi Badan Kelahiran (Cm)<sup>*</sup>
-                        <input type="number" name="tinggi_badan_kelahiran" placeholder="Contoh : 10,5" value="<?= set_value('berat_badan_kelahiran'); ?>" class="form-control input-sm berat" autocomplete="false" required />
                     </div>
                     <div class="data-anak">
                         Username <sup>*</sup>
@@ -131,9 +140,9 @@
                         Ulangi Password <sup>*</sup>
                         <input type="password" name="password_confirm" placeholder="Input Ulang Password" class="form-control input-sm pass">
                     </div>
-                    <div class="col-gl-12 submit">
-                        <input type="submit" name="submit" value="Sign Up" class="btn btn-success btn-rounded col-md-3">
-                        <a href="#" onclick="window.history.back();" class="btn btn-danger btn-rounded col-md-3">Kembali</a>
+                    <div class="submit">
+                        <input type="submit" name="submit" value="Sign Up" class="btn btn-success btn-rounded">
+                        <a href="#" onclick="window.history.back();" class="btn btn-danger btn-rounded">Kembali</a>
                     </div>
                 </div>
                 <!-- <div class="text-center">

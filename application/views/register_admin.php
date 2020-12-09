@@ -114,7 +114,7 @@
                         <td width="5%" align="center">:</td>
                         <td>
                             <div class="pass">
-                                <input type="password" name="password" class="form-control" id="password" placeholder="Input Password" value="<?= set_value('username'); ?>" maxlength="8" maxlength="9">
+                                <input type="password" name="password" class="form-control" id="password" placeholder="Input Password" value="<?= set_value('username'); ?>" minlength="8">
                             </div>
                         </td>
                     </tr>

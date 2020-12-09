@@ -351,6 +351,6 @@ class User extends CI_Controller
         //  die();
 
         $html = $this->parser->parse("front/cetak_hasil_gizi", $data);
-        $this->pdfgenerator->generate($html, "Hasil Nilai Gizi ", true, 'legal', 'landscape');
+        $this->pdfgenerator->generate($html, "Hasil Nilai Gizi ", true, 'a4', 'landscape');
     }
 }

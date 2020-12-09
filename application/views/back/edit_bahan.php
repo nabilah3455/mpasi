@@ -35,3 +35,7 @@
         </div>
     </div>
 </div>
+
+<script>
+    CKEDITOR.replace('kandungan_bahan');
+</script>

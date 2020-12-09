@@ -26,12 +26,33 @@ class Kalkulator extends CI_Controller
             'berat' => $this->modgizi->get_berat(),
             'gizi' => $this->modgizi->get_nilai_gizi(),
             'rule' => $this->modgizi->get_rule(),
-            'grafik' => $this->modgizi->data_grafik()
+            'grafik' =>json_encode($this->modgizi->data_grafik()),
+            'gizi_buruk' => $this->modgizi->gizi_buruk(),
+            'gizi_kurang' => $this->modgizi->gizi_kurang(),
+            'gizi_normal' => $this->modgizi->gizi_normal(),
+            'gizi_lebih' => $this->modgizi->gizi_lebih(),
+            'obesitas' => $this->modgizi->obesitas(),
+            'data_anak' => $this->modgizi->dataanak()
         );
 
-        // var_dump($data['umur']);
+        // var_dump($data['grafik']);
         // die();
         $this->template->back('back/kalkulator_gizi', $data);
+    }
+    
+    public function hasil_gizi()
+    {
+        $data['user'] = $this->db->get_where('admin', ['username' => $this->session->userdata('nama')])->row_array();
+        $id = $this->input->get('id_user');
+        $data = array(
+            'nama' => $data['user']['username'],
+            'data_anak' => $this->modgizi->dataanak1($id),
+            'gizi_anak' => $this->modgizi->gizi_anak($id)
+        );
+
+        // var_dump($data['data_anak']);
+        // die();
+        $this->template->back('back/hasil_gizi', $data);
     }
 
     public function insert_menu()

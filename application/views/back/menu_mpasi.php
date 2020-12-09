@@ -4,31 +4,26 @@
         float: left;
     }
 
-
     .judul {
-        font-size: 40px;
+        font-size: 35px;
         font-weight: bold;
     }
 </style>
 
 <div class="page-content fade-in-up">
-    <div class="row">
-        <div class="judul col-lg-6">
-            Menu MPASI
-        </div>
-        <div class="add-btn col-lg-6">
-            <a href="{tambah}" class="btn btn-success">Tambah Menu MPASI</a>
-        </div>
+    <div class="judul col-lg-6">
+        Menu MPASI
     </div>
     <div class="col-lg-12">
         <?= $this->session->flashdata('message'); ?>
     </div>
     <div class="ibox">
-        <!-- <div class="ibox-head">
-            <div class="ibox-title">Menu MPASI</div>
-        </div> -->
+        <div class="ibox-head">
+            <div class="ibox-title col-lg-12">
+                <a href="{tambah}" style="float: right;"><i class="fa fa-plus"> </i> Tambah Menu MPASI</a>
+            </div>
+        </div>
         <div class="ibox-body">
-
             <ul class="nav nav-tabs">
                 <li class="nav-item">
                     <a class="nav-link active" href="#tab-7-1" data-toggle="tab">6-7 Bulan</a>

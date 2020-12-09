@@ -253,15 +253,15 @@
                                     foreach ($m as $min) {
 
                                         // $tmin = mysqli_num_rows(mysqli_query($koneksi, "select * from min1 where idpasien='$_GET[id]' and idrule='$b[0]'"));
+                                        $tgl_sekarang = date('Y-m-d');
                                         $tmin = $this->modgizi->get_tmin($id, $b['idrule']);
-
-                                        // var_dump($tmin);
+                                        // var_dump($tgl_sekarang);
                                         // die();
 
                                         if ($tmin == 0) {
-                                            $this->db->query("INSERT into min1 values ('$id','$b[idrule]','$min[min]')");
+                                            $this->db->query("INSERT into min1 values ('$id','$b[idrule]','$min[min]', '$tgl_sekarang')");
                                         } else {
-                                            $this->db->query("UPDATE min1 set min='$min[min]' where id_user='$id' and idrule='$b[idrule]' ");
+                                            $this->db->query("UPDATE min1 set min='$min[min]' where id_user='$id' and idrule='$b[idrule]' and tgl_cek LIKE '$tgl%'");
                                         }
 
                                         $this->db->query("DELETE from min where id_user='$id' and idrule='$b[idrule]'");
@@ -363,9 +363,9 @@
                                                 $defuzzy = $pr / $alpa;
 
                                                 // $def = mysqli_num_rows(mysqli_query($koneksi, "select * from defuzzy where idpasien='$_GET[id]'"));
-                                                $def = $this->modgizi->get_defuzzy($id);
                                                 $tgl_sekarang = date('Y-m-d');
                                                 $tgl = date('Y-m');
+                                                $def = $this->modgizi->get_defuzzy($id, $tgl);
                                                 // foreach($d as $def){
                                                 if ($def == 0) {
                                                     $this->db->query("INSERT into defuzzy values ('$id','$defuzzy', '$tgl_sekarang','')");
@@ -375,7 +375,7 @@
                                                 // }
 
                                                 // $def1 = mysqli_fetch_array(mysqli_query($koneksi, "select * from defuzzy where idpasien='$_GET[id]'"));
-                                                $def_1 = $this->modgizi->get_def1($id);
+                                                $def_1 = $this->modgizi->get_def1($id, $tgl);
                                                 foreach ($def_1 as $def1) {
                                                     $defuzzy = $def1['defuzzy'];
 

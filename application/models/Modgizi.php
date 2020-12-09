@@ -333,8 +333,86 @@ class Modgizi extends CI_Model
     function data_grafik()
     {
         $q = $this->db->query("
-        SELECT * from var_output
+        SELECT * FROM(
+            SELECT CASE
+                WHEN MONTH(tgl_cek) = 1 THEN 'Januari'
+                WHEN MONTH(tgl_cek) = 2 THEN 'Februari'
+                WHEN MONTH(tgl_cek) = 3 THEN 'Maret'
+                WHEN MONTH(tgl_cek) = 4 THEN 'April'
+                WHEN MONTH(tgl_cek) = 5 THEN 'Mei'
+                WHEN MONTH(tgl_cek) = 6 THEN 'Juni'
+                WHEN MONTH(tgl_cek) = 7 THEN 'Juli'
+                WHEN MONTH(tgl_cek) = 8 THEN 'Agustus'
+                WHEN MONTH(tgl_cek) = 9 THEN 'September'
+                WHEN MONTH(tgl_cek) = 10 THEN 'Oktober'
+                WHEN MONTH(tgl_cek) = 11 THEN 'November'
+                ELSE 'Desember'
+                END AS category, 
+                (select Count(*) from defuzzy where hasil_gizi='Gizi Buruk') as value1,
+                (select Count(*) from defuzzy where hasil_gizi='Gizi Kurang') as value2,
+                (select Count(*) from defuzzy where hasil_gizi='Gizi Normal') as value3,
+                (select Count(*) from defuzzy where hasil_gizi='Gizi Lebih') as value4,
+                (select Count(*) from defuzzy where hasil_gizi='Obesitas') as value5
+            FROM defuzzy
+            GROUP BY MONTH(tgl_cek)
+            )A
         ");
+
+        return $q->result_array();
+    }
+
+    function gizi_buruk()
+    {
+        $q = $this->db->query("SELECT * from defuzzy where hasil_gizi='Gizi Buruk'");
+
+        return $q->num_rows();
+    }
+   
+    function gizi_kurang()
+    {
+        $q = $this->db->query("SELECT * from defuzzy where hasil_gizi='Gizi Kurang'");
+
+        return $q->num_rows();
+    }
+
+    function gizi_normal()
+    {
+        $q = $this->db->query("SELECT * from defuzzy where hasil_gizi='Gizi Normal'");
+
+        return $q->num_rows();
+    }
+
+    function gizi_lebih()
+    {
+        $q = $this->db->query("SELECT * from defuzzy where hasil_gizi='Gizi Lebih'");
+
+        return $q->num_rows();
+    }
+    
+    function obesitas()
+    {
+        $q = $this->db->query("SELECT * from defuzzy where hasil_gizi='Obesitas'");
+
+        return $q->num_rows();
+    }
+
+    function dataanak()
+    {
+        $q = $this->db->query("SELECT *, DATE_FORMAT(tgl_lahir, '%d %M %Y') as tgl_lahir from user order by id_user desc");
+
+        return $q->result_array();
+    }
+   
+    function dataanak1($id)
+    {
+        $q = $this->db->query("SELECT *, DATE_FORMAT(tgl_lahir, '%d %M %Y') as tgl_lahir from user where id_user='$id'");
+
+        return $q->result_array();
+    }
+    
+    function gizi_anak($id)
+    {
+        $q = $this->db->query("SELECT *, DATE_FORMAT(tgl_cek, '%d %M %Y') as tgl_cek from defuzzy where id_user='$id' ORDER BY id_defuzzy DESC");
 
         return $q->result_array();
     }
