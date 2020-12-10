@@ -368,7 +368,7 @@
                                                 $def = $this->modgizi->get_defuzzy($id, $tgl);
                                                 // foreach($d as $def){
                                                 if ($def == 0) {
-                                                    $this->db->query("INSERT into defuzzy values ('$id','$defuzzy', '$tgl_sekarang','')");
+                                                    $this->db->query("INSERT into defuzzy values ('', '$id','$defuzzy', '$tgl_sekarang','')");
                                                 } else {
                                                     $this->db->query("UPDATE defuzzy set defuzzy='$defuzzy' where id_user='$id' AND tgl_cek LIKE '$tgl%'");
                                                 }

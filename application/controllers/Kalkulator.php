@@ -16,6 +16,7 @@ class Kalkulator extends CI_Controller
     
     public function index()
     {
+        $tahun = date('Y');
         $data['user'] = $this->db->get_where('admin', ['username' => $this->session->userdata('nama')])->row_array();
         $data = array(
             'nama' => $data['user']['username'],
@@ -26,16 +27,17 @@ class Kalkulator extends CI_Controller
             'berat' => $this->modgizi->get_berat(),
             'gizi' => $this->modgizi->get_nilai_gizi(),
             'rule' => $this->modgizi->get_rule(),
-            'grafik' =>json_encode($this->modgizi->data_grafik()),
+            'grafik' =>json_encode($this->modgizi->data_grafik($tahun)),
             'gizi_buruk' => $this->modgizi->gizi_buruk(),
             'gizi_kurang' => $this->modgizi->gizi_kurang(),
             'gizi_normal' => $this->modgizi->gizi_normal(),
             'gizi_lebih' => $this->modgizi->gizi_lebih(),
             'obesitas' => $this->modgizi->obesitas(),
-            'data_anak' => $this->modgizi->dataanak()
+            'data_anak' => $this->modgizi->dataanak(),
+            'jml_anak' => $this->moduser->jml_anak()
         );
 
-        // var_dump($data['grafik']);
+        // var_dump($data['jml_anak']);
         // die();
         $this->template->back('back/kalkulator_gizi', $data);
     }
@@ -47,7 +49,8 @@ class Kalkulator extends CI_Controller
         $data = array(
             'nama' => $data['user']['username'],
             'data_anak' => $this->modgizi->dataanak1($id),
-            'gizi_anak' => $this->modgizi->gizi_anak($id)
+            'gizi_anak' => $this->modgizi->gizi_anak($id),
+            'back' => base_url('kalkulator')
         );
 
         // var_dump($data['data_anak']);

@@ -31,6 +31,39 @@ class User extends CI_Controller
     
         $this->template->front('front/index', $data);
     }
+
+    public function profil()
+    {
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('nama')])->row_array();
+        $nama = $data['user']['nama_user'];
+        $id = $data['user']['id_user'];
+        $data = array(
+            'nama' => $nama,
+            'title' => 'Home',
+            'data_anak' => $this->moduser->data_anak($nama),
+            'gizi_anak' => $this->modgizi->gizi_anak($id)
+        );
+
+        $this->template->front('front/profil', $data);
+    }
+
+    public function update_profil()
+    {
+        $id = $this->input->post('id_user');;
+        $data = array(
+            'id_user' => $id,
+            'nama_user' => $this->input->post('nama_user'),
+            'jenis_kelamin' => $this->input->post('jk'),
+            'tgl_lahir' => $this->input->post('tgl_lahir'),
+            'berat_badan_kelahiran' => $this->input->post('berat'),
+            'tinggi_badan_kelahiran' => $this->input->post('tinggi'),
+        );
+
+        $this->moduser->update_profil($id, $data);
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Data Anak Berhasil Di Ubah!</center></div>');
+        redirect('user/profil', 'refresh');
+    }
     
     public function berita()
     {
@@ -312,7 +345,7 @@ class User extends CI_Controller
         $tgl = date('Y-m');
 
         $data = array(
-            'data_anak' => $this->modgizi->data_anak($id, $tgl),
+            'data_anak' => $this->modgizi->get_anak($id),
             'variabel' => $this->modgizi->get_nilai_variabel(),
             'id' => $id,
             'tgl' => $tgl,
@@ -321,7 +354,7 @@ class User extends CI_Controller
             // 'nilai' => $this->modgizi->get_nilai($id, $variabel1, $tgl)
         );
 
-        // var_dump($variabel1);
+        // var_dump($data['data_anak']);
         // die();
         
         $this->template->front('front/hasil_gizi', $data);
@@ -337,7 +370,7 @@ class User extends CI_Controller
         $tgl = date('Y-m');
 
         $data = array(
-            'data_anak' => $this->modgizi->data_anak($id, $tgl),
+            'data_anak' => $this->modgizi->get_anak($id),
             'variabel' => $this->modgizi->get_nilai_variabel(),
             'id' => $id,
             'tgl' => $tgl,
@@ -348,6 +381,33 @@ class User extends CI_Controller
         );
 
         //  var_dump($data['variabel']);
+        //  die();
+
+        $html = $this->parser->parse("front/cetak_hasil_gizi", $data);
+        $this->pdfgenerator->generate($html, "Hasil Nilai Gizi ", true, 'a4', 'landscape');
+    }
+    
+    public function cetak_defuzzy()
+    {
+        $this->load->library('pdfgenerator');
+        // $this->load->model('modgizi');
+
+        $id = $this->input->get('id_user');
+        $variabel1 = $this->modgizi->get_variabel1();
+        $tgl = $this->input->get('tgl_cek');;
+
+        $data = array(
+            'data_anak' => $this->modgizi->data_anak($id, $tgl),
+            'variabel' => $this->modgizi->get_nilai_variabel(),
+            'id' => $id,
+            'tgl' => $tgl,
+            'variabel1' => $variabel1,
+            'rule' => $this->modgizi->get_rule(),
+            'nama_anak' => $this->modgizi->nama_anak($id)
+            // 'nilai' => $this->modgizi->get_nilai($id, $variabel1, $tgl)
+        );
+
+        //  var_dump($data['data_anak']);
         //  die();
 
         $html = $this->parser->parse("front/cetak_hasil_gizi", $data);

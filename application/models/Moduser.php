@@ -61,4 +61,26 @@ class Moduser extends CI_Model
         $q = $this->db->where('id_bahan', $id)->delete('bahan_mpasi');
         return $q;
     }
+
+    function data_anak($nama)
+    {
+        $q = $this->db->query("SELECT *, DATE_FORMAT(tgl_lahir, '%d %M %Y') as tgl FROM user where nama_user='$nama'");
+
+        return $q->result_array();
+    }
+
+    function update_profil($id, $data)
+    {
+        $this->db->where('id_user', $id);
+        $q = $this->db->update('user', $data);
+
+        return $q;
+    }
+
+    function jml_anak()
+    {
+        $q = $this->db->query("SELECT COUNT(*) as total, (select count(*) from user where jenis_kelamin='P') as perempuan, (select count(*) from user where jenis_kelamin='L') as laki from user");
+
+        return $q->result_array();
+    }
 }

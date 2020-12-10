@@ -28,6 +28,12 @@
         font-size: 40px;
         font-weight: bold;
     }
+
+    .jml_anak {
+        font-weight: bold;
+        text-align: center;
+        font-size: 70px;
+    }
 </style>
 <script src="<?= base_url('assets/') ?>js/scripts/core.js" type="text/javascript"></script>
 <script src="<?= base_url('assets/') ?>js/scripts/charts.js" type="text/javascript"></script>
@@ -56,34 +62,22 @@
         <div class="col-lg-4">
             <div class="ibox">
                 <div class="ibox-head">
-                    Tahap Umur
-                    <a href="#edit_umur" data-toggle="modal"><i class="fa fa-edit"></i></a>
+                    Jumlah Anak
                 </div>
                 <div class="ibox-body">
-                    <table class="table table-bordered">
-                        <?php foreach ($umur as $u) { ?>
-                            <tr>
-                                <th><?= $u['atr1'] ?></th>
-                                <td><?= $u['nilai1'] ?>&nbsp;-&nbsp;<?= $u['nilai11'] ?></td>
-                            </tr>
-                            <tr>
-                                <th><?= $u['atr2'] ?></th>
-                                <td><?= $u['nilai2'] ?>&nbsp;-&nbsp;<?= $u['nilai22'] ?></td>
-                            </tr>
-                            <tr>
-                                <th><?= $u['atr3'] ?></th>
-                                <td><?= $u['nilai3'] ?>&nbsp;-&nbsp;<?= $u['nilai33'] ?></td>
-                            </tr>
-                            <tr>
-                                <th><?= $u['atr4'] ?></th>
-                                <td><?= $u['nilai4'] ?>&nbsp;-&nbsp;<?= $u['nilai44'] ?></td>
-                            </tr>
-                            <tr>
-                                <th><?= $u['atr5'] ?></th>
-                                <td><?= $u['nilai5'] ?>&nbsp;-&nbsp;<?= $u['nilai55'] ?></td>
-                            </tr>
-                        <?php } ?>
-                    </table>
+                    {jml_anak}
+                    <div class="jml_anak">
+                        {total}
+                    </div>
+                    <div class="row" style="padding-top: 1rem;">
+                        <div class="col-lg-6">
+                            Anak Perempuan : {perempuan}
+                        </div>
+                        <div class="col-lg-6">
+                            Anak Laki-Laki : {laki}
+                        </div>
+                    </div>
+                    {/jml_anak}
                 </div>
             </div>
         </div>
@@ -140,7 +134,41 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-12">
+        <div class="col-lg-6">
+            <div class="ibox">
+                <div class="ibox-head">
+                    Tahap Umur
+                    <a href="#edit_umur" data-toggle="modal"><i class="fa fa-edit"></i></a>
+                </div>
+                <div class="ibox-body">
+                    <table class="table table-bordered">
+                        <?php foreach ($umur as $u) { ?>
+                            <tr>
+                                <th><?= $u['atr1'] ?></th>
+                                <td><?= $u['nilai1'] ?>&nbsp;-&nbsp;<?= $u['nilai11'] ?></td>
+                            </tr>
+                            <tr>
+                                <th><?= $u['atr2'] ?></th>
+                                <td><?= $u['nilai2'] ?>&nbsp;-&nbsp;<?= $u['nilai22'] ?></td>
+                            </tr>
+                            <tr>
+                                <th><?= $u['atr3'] ?></th>
+                                <td><?= $u['nilai3'] ?>&nbsp;-&nbsp;<?= $u['nilai33'] ?></td>
+                            </tr>
+                            <tr>
+                                <th><?= $u['atr4'] ?></th>
+                                <td><?= $u['nilai4'] ?>&nbsp;-&nbsp;<?= $u['nilai44'] ?></td>
+                            </tr>
+                            <tr>
+                                <th><?= $u['atr5'] ?></th>
+                                <td><?= $u['nilai5'] ?>&nbsp;-&nbsp;<?= $u['nilai55'] ?></td>
+                            </tr>
+                        <?php } ?>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
             <div class="ibox">
                 <div class="ibox-head">
                     Nilai Gizi
@@ -151,16 +179,22 @@
                         <?php foreach ($gizi as $g) { ?>
                             <tr>
                                 <th><?= $g['atr1'] ?></th>
-                                <th><?= $g['atr2'] ?></th>
-                                <th><?= $g['atr3'] ?></th>
-                                <th><?= $g['atr4'] ?></th>
-                                <th><?= $g['atr5'] ?></th>
+                                <td><?= $g['nilai1'] ?>&nbsp;-&nbsp;<?= $g['nilai11'] ?></td>
                             </tr>
                             <tr>
-                                <td><?= $g['nilai1'] ?>&nbsp;-&nbsp;<?= $g['nilai11'] ?></td>
+                                <th><?= $g['atr2'] ?></th>
                                 <td><?= $g['nilai2'] ?>&nbsp;-&nbsp;<?= $g['nilai22'] ?></td>
+                            </tr>
+                            <tr>
+                                <th><?= $g['atr3'] ?></th>
                                 <td><?= $g['nilai3'] ?>&nbsp;-&nbsp;<?= $g['nilai33'] ?></td>
+                            </tr>
+                            <tr>
+                                <th><?= $g['atr4'] ?></th>
                                 <td><?= $g['nilai4'] ?>&nbsp;-&nbsp;<?= $g['nilai44'] ?></td>
+                            </tr>
+                            <tr>
+                                <th><?= $g['atr5'] ?></th>
                                 <td><?= $g['nilai5'] ?>&nbsp;-&nbsp;<?= $g['nilai55'] ?></td>
                             </tr>
                         <?php } ?>
@@ -269,7 +303,7 @@
                                 <td><?= $a['berat_badan_kelahiran']; ?> Kg</td>
                                 <td><?= $a['tinggi_badan_kelahiran']; ?> Cm</td>
                                 <td>
-                                    <a href="<?= base_url('kalkulator/hasil_gizi') ?>?id_user=<?= $a['id_user'] ?>">Nilai Gizi</a>
+                                    <a href="<?= base_url('kalkulator/hasil_gizi') ?>?id_user=<?= $a['id_user'] ?>">Riwayat Hasil Gizi</a>
                                 </td>
                             </tr>
                         <?php $no++;
@@ -741,15 +775,6 @@
     var chart = am4core.create("chartdiv", am4charts.XYChart);
 
     chart.data = {grafik};
-
-    // chart.data = [{
-    //     "category": "Jumlah Anak",
-    //     "value1": <?= $gizi_buruk ?>,
-    //     "value2": <?= $gizi_kurang ?>,
-    //     "value3": <?= $gizi_normal ?>,
-    //     "value4": <?= $gizi_lebih ?>,
-    //     "value5": <?= $obesitas ?>
-    // }]
 
     chart.padding(30, 30, 10, 30);
     chart.legend = new am4charts.Legend();

@@ -1,7 +1,20 @@
+<style>
+    .back {
+        padding-top: 2rem;
+    }
+
+    table td {
+        padding-top: 1rem;
+    }
+</style>
+
 <div class="page-content fade-in-up">
     <div class="row">
         <div class="col-lg-4">
             <div class="ibox">
+                <div class="ibox-head">
+                    <h3>Informasi Anak</h3>
+                </div>
                 <div class="ibox-body">
                     <table width="100%">
                         <?php $no = 1;
@@ -40,6 +53,9 @@
                             </tr>
                         <?php } ?>
                     </table>
+                    <div class="back">
+                        <a href="{back}" class="btn btn-warning mb-2">Kembali</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -57,14 +73,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $no=1; foreach($gizi_anak as $g){?>
-                            <tr>
-                                <td><?= $no; ?></td>
-                                <td><?= $g['tgl_cek']; ?></td>
-                                <td><?= $g['defuzzy']; ?></td>
-                                <td><?= $g['hasil_gizi']; ?></td>
-                            </tr>
-                            <?php } ?>
+                            <?php $no = 1;
+                            foreach ($gizi_anak as $g) { ?>
+                                <tr>
+                                    <td><?= $no; ?></td>
+                                    <td><?= $g['tgl_cek']; ?></td>
+                                    <td><?= $g['defuzzy']; ?></td>
+                                    <td><?= $g['hasil_gizi']; ?></td>
+                                </tr>
+                            <?php $no++; } ?>
                         </tbody>
                     </table>
                 </div>

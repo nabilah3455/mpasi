@@ -81,7 +81,7 @@
                                      <a href="<?= base_url('user/kalkulator') ?>" class=" nav-link">Kalkulator Gizi</a>
                                  </li>
                                  <li class="nav-item">
-                                     <a href="<?= base_url('user/kalkulator') ?>" class=" nav-link">Profil</a>
+                                     <a href="<?= base_url('user/profil') ?>" class=" nav-link">Profil</a>
                                  </li>
                              </ul>
                          </div>

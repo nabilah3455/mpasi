@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Panduan Gizi Makanan Bayi</title>
+    <title>Panduan Gizi Makan Bayi</title>
     <link rel="icon" href="<?= base_url('assets/front/') ?>img/android-chrome-192x192.png">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?= base_url('assets/front/') ?>css/bootstrap.min.css">
@@ -22,6 +22,7 @@
     <!-- style CSS -->
     <link rel="stylesheet" href="<?= base_url('assets/front/') ?>css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="<?= base_url('assets/'); ?>tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -47,6 +48,10 @@
     <script src="<?= base_url('assets/front/') ?>js/owl.carousel.min.js"></script>
     <!-- custom js -->
     <script src="<?= base_url('assets/front/') ?>js/custom.js"></script>
+    <script src="<?= base_url('assets/'); ?>tables/js/jquery.dataTables.min.js"></script>
+    <script src="<?= base_url('assets/'); ?>tables/js/datatable/dataTables.bootstrap4.min.js"></script>
+    <script src="<?= base_url('assets/'); ?>tables/js/datatable-init/datatable-basic.min.js"></script>
+
 </body>
 
 </html>

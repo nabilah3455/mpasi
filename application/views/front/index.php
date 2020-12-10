@@ -142,7 +142,7 @@
 <!-- counter adopt number end -->
 
 <!-- client review part here -->
-<section class="client_review">
+<!-- <section class="client_review">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-7">
@@ -166,7 +166,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!-- client review part end -->
 
 <!-- about part start-->
@@ -175,16 +175,17 @@
         <div class="row align-items-center justify-content-between">
             <div class="col-md-6">
                 <div class="about_img">
-                    <img src="<?= base_url('assets/front/') ?>img/valunteer_img.png" alt="">
+                    <img src="<?= base_url('assets/front/') ?>img/providence-doucet-5za6niH4qpw-unsplash.jpg" alt="">
                 </div>
             </div>
             <div class="col-md-5">
                 <div class="about_text">
-                    <img src="<?= base_url('assets/front/') ?>img/about_icon.png" class="about_icon" alt="">
-                    <h2>Become a Volunteer
-                        To help them</h2>
-                    <p>A created won't created subdue a every green his set which above firmament earth firmament. Seed firmament be likeness fruitful to called waters. Given great said seasons his midst beast.</p>
-                    <a href="#" class="btn_1">read more</a>
+                    <!-- <img src="<?= base_url('assets/front/') ?>img/about_icon.png" class="about_icon" alt=""> -->
+                    <h2>Tentang Kami</h2>
+                    <p>Website Panduan Gizi Makan Bayi ini digunakan untuk membantu para orang tua dalam melihat perkembangan gizi anak setiap bulannya dari usia 6 - 18 bulan.
+                        Disini juga disediakan berbagai menu sesuai dengan usia si kecil dan nilai informasi gizi yang terkandung dari setiap bahan yang digunakan. Jadi para orang tua tidak perlu kawatir
+                        akan kandungan gizi yang terkandung dari setiap menu yang disediakan.
+                    </p>
                 </div>
             </div>
         </div>

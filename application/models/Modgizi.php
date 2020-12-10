@@ -21,7 +21,14 @@ class Modgizi extends CI_Model
         return $e;
     }
 
-    function data_anak($id)
+    function data_anak($id, $tgl)
+    {
+        $q = $this->db->query("SELECT u.*, k.*, DATE_FORMAT(u.tgl_lahir, '%d %M %Y') as tgl_lahir FROM user u, kalkulator_gizi k WHERE u.id_user=k.id_user AND u.id_user='$id' and k.tgl_cek='$tgl' LIMIT 1");
+
+        return $q->result_array();
+    }
+    
+    function get_anak($id)
     {
         $q = $this->db->query("SELECT u.*, k.*, DATE_FORMAT(u.tgl_lahir, '%d %M %Y') as tgl_lahir FROM user u, kalkulator_gizi k WHERE u.id_user=k.id_user AND u.id_user='$id' LIMIT 1");
 
@@ -330,7 +337,7 @@ class Modgizi extends CI_Model
         return $e;
     }
 
-    function data_grafik()
+    function data_grafik($tahun)
     {
         $q = $this->db->query("
         SELECT * FROM(
@@ -354,6 +361,7 @@ class Modgizi extends CI_Model
                 (select Count(*) from defuzzy where hasil_gizi='Gizi Lebih') as value4,
                 (select Count(*) from defuzzy where hasil_gizi='Obesitas') as value5
             FROM defuzzy
+            WHERE tgl_cek LIKE '$tahun%'
             GROUP BY MONTH(tgl_cek)
             )A
         ");
@@ -412,7 +420,7 @@ class Modgizi extends CI_Model
     
     function gizi_anak($id)
     {
-        $q = $this->db->query("SELECT *, DATE_FORMAT(tgl_cek, '%d %M %Y') as tgl_cek from defuzzy where id_user='$id' ORDER BY id_defuzzy DESC");
+        $q = $this->db->query("SELECT *, DATE_FORMAT(tgl_cek, '%d %M %Y') as tgl from defuzzy where id_user='$id' ORDER BY id_defuzzy DESC");
 
         return $q->result_array();
     }
