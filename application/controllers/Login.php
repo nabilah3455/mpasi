@@ -37,24 +37,23 @@ class Login extends CI_Controller
         // $cek = $this->modlogin->cek_login("admin", $where)->num_rows();
         if ($user > 0) {
             if (password_verify($password, $user['password'])) {
-            $data_session = array(
-                'nama' => $username,
-                'status' => "login"
-            );
+                $data_session = array(
+                    'nama' => $username,
+                    'status' => "login"
+                );
 
-            $this->session->set_userdata($data_session);
-            $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissable fade show" role="alert"><center><h4>Selamat Datang di Aplikasi Panduan Gizi Makanan Balita<h4></center></div>');
+                $this->session->set_userdata($data_session);
+                $this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissable fade show" role="alert"><center><h4>Selamat Datang di Aplikasi Panduan Gizi Makanan Balita<h4></center></div>');
 
-            redirect("dashboard");
-        
-        } else {
-            // var_dump($user);
-            $this->session->set_flashdata('message', '<div class="alert alert-danger alert-bordered" role="alert">Username atau Password Salah!</div>');
-            redirect('login');
+                redirect("dashboard");
+            } else {
+                // var_dump($user);
+                $this->session->set_flashdata('message', '<div class="alert alert-danger alert-bordered" role="alert">Username atau Password Salah!</div>');
+                redirect('login');
+            }
         }
-            $this->session->set_flashdata('message', '<div class="alert alert-danger alert-bordered" role="alert">Username atau Password Salah!</div>');
-            redirect('login');
-    }
+        $this->session->set_flashdata('message', '<div class="alert alert-danger alert-bordered" role="alert">Username atau Password Salah!</div>');
+        redirect('login');
     }
 
     public function register()

@@ -36,20 +36,22 @@ class Login_user extends CI_Controller
 
         if ($user > 0) {
             if (password_verify($password, $user['pass_user'])) {
-            $data_session = array(
-                'nama' => $username,
-                'status' => "login_user"
-            );
+                $data_session = array(
+                    'nama' => $username,
+                    'status' => "login_user"
+                );
 
-            $this->session->set_userdata($data_session);
-            $this->session->set_flashdata('message', '<label><center>Selamat Datang di Aplikasi Panduan Gizi Makanan Balita</center></label>');
-            // var_dump($data_session);
-            redirect("user");
+                $this->session->set_userdata($data_session);
+                $this->session->set_flashdata('message', '<label><center>Selamat Datang di Aplikasi Panduan Gizi Makanan Balita</center></label>');
+                // var_dump($data_session);
+                redirect("user");
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger alert-bordered">Username atau Password Salah!</div>');
+                redirect('login_user');
             }
-        } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger alert-bordered">Username atau Password Salah!</div>');
-            redirect('login_user');
         }
+        $this->session->set_flashdata('message', '<div class="alert alert-danger alert-bordered">Username atau Password Salah!</div>');
+        redirect('login_user');
     }
 
     public function register()
@@ -81,7 +83,7 @@ class Login_user extends CI_Controller
 
             // var_export($data);
             // die();
-            
+
 
             $this->moduser->register_user($data);
 

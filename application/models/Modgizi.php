@@ -10,7 +10,7 @@ class Modgizi extends CI_Model
 
         return $q->result_array();
     }
-    
+
     function insert_nilai($data)
     {
         if ($this->db->insert('kalkulator_gizi', $data)) {
@@ -27,7 +27,7 @@ class Modgizi extends CI_Model
 
         return $q->result_array();
     }
-    
+
     function get_anak($id)
     {
         $q = $this->db->query("SELECT u.*, k.*, DATE_FORMAT(u.tgl_lahir, '%d %M %Y') as tgl_lahir FROM user u, kalkulator_gizi k WHERE u.id_user=k.id_user AND u.id_user='$id' LIMIT 1");
@@ -41,56 +41,56 @@ class Modgizi extends CI_Model
 
         return $q->result_array();
     }
-    
+
     function get_nilai_variabel()
     {
         $q = $this->db->query("SELECT * FROM variabel ORDER BY idvariabel ASC LIMIT 1");
 
         return $q->result_array();
     }
-    
+
     function get_idvariabel()
     {
         $q = $this->db->query("SELECT idvariabel FROM variabel");
 
         return $q->result_array();
     }
-    
+
     function get_variabel2($variabel)
     {
         $q = $this->db->query("SELECT * FROM variabel WHERE idvariabel='$variabel'");
 
         return $q->result_array();
     }
-   
+
     function get_user()
     {
         $q = $this->db->query("SELECT * FROM user ORDER BY id_user ASC LIMIT 1");
 
         return $q->result_array();
     }
-    
+
     function get_variabel1()
     {
         $q = $this->db->query("SELECT idvariabel FROM variabel ORDER BY idvariabel asc");
 
         return $q->result_array();
     }
-    
+
     function get_nilai($id, $b)
     {
         $q = $this->db->query("SELECT k.*, v.variabel FROM kalkulator_gizi k, variabel v WHERE v.idvariabel = k.idvariabel AND k.id_user='$id' AND k.idvariabel='$b'");
 
         return $q->result_array();
     }
-    
+
     function get_nilai2($id, $b, $tgl)
     {
         $q = $this->db->query("SELECT k.*, v.variabel FROM kalkulator_gizi k, variabel v WHERE v.idvariabel = k.idvariabel AND k.id_user='$id' AND k.idvariabel='$b' AND k.tgl_cek LIKE '$tgl%' LIMIT 1");
 
         return $q->result_array();
     }
-   
+
     function get_nilai1($id, $b)
     {
         $q = $this->db->query("SELECT * FROM kalkulator_gizi WHERE id_user='$id'");
@@ -104,84 +104,84 @@ class Modgizi extends CI_Model
 
         return $q->result_array();
     }
-    
+
     function get_rule1($b)
     {
         $q = $this->db->query("SELECT * FROM rule1 WHERE idrule='$b'");
 
         return $q->num_rows();
     }
-   
+
     function data_rule1($b)
     {
         $q = $this->db->query("SELECT * FROM rule1 WHERE idrule='$b' ORDER BY idvariabel ASC");
 
         return $q->result_array();
     }
-    
+
     function get_data_rule1($b)
     {
         $q = $this->db->query("SELECT * FROM rule1 WHERE idrule='$b' LIMIT 3");
 
         return $q->result_array();
     }
-    
+
     function get_var_output()
     {
         $q = $this->db->query("SELECT * FROM var_output");
 
         return $q->result_array();
     }
-    
+
     function get_rule2($b)
     {
         $q = $this->db->query("SELECT * FROM rule1 WHERE idrule='$b' ORDER BY idvariabel ASC");
 
         return $q->result_array();
     }
-    
+
     function get_var_rule($d)
     {
         $q = $this->db->query("SELECT * from variabel where idvariabel='$d'");
 
         return $q->result_array();
     }
-    
-    function data_kalkulator($id,$d)
+
+    function data_kalkulator($id, $d)
     {
         $q = $this->db->query("SELECT * from kalkulator_gizi where id_user='$id' and idvariabel='$d' ");
 
         return $q->result_array();
     }
-    
-    function get_min($id,$b)
+
+    function get_min($id, $b)
     {
         $q = $this->db->query("SELECT * from min where id_user='$id' and idrule='$b' order by min asc LIMIT 1");
 
         return $q->result_array();
     }
-    
-    function get_tmin($id,$b)
+
+    function get_tmin($id, $b)
     {
         $q = $this->db->query("SELECT * from min1 where id_user='$id' and idrule='$b' order by min asc LIMIT 1");
 
         return $q->num_rows();
     }
-    
+
     function get_defuzzy($id)
     {
         $q = $this->db->query("SELECT * from defuzzy where id_user='$id'");
 
         return $q->num_rows();
     }
-    
+
     function get_def1($id)
     {
         $q = $this->db->query("SELECT * from defuzzy where id_user='$id'");
 
         return $q->result_array();
     }
-    
+
     function get_solusi()
     {
         $q = $this->db->query("SELECT * from var_output");
@@ -195,7 +195,7 @@ class Modgizi extends CI_Model
 
         return $q->result();
     }
-    
+
     function jml_anak($id, $tgl)
     {
         $q = $this->db->query("SELECT * from kalkulator_gizi WHERE id_user='$id' AND tgl_cek LIKE '$tgl%'");
@@ -209,21 +209,21 @@ class Modgizi extends CI_Model
 
         return $q->result_array();
     }
-    
+
     function get_tinggi()
     {
         $q = $this->db->query("SELECT * from variabel WHERE idvariabel='3'");
 
         return $q->result_array();
     }
-    
+
     function get_berat()
     {
         $q = $this->db->query("SELECT * from variabel WHERE idvariabel='2'");
 
         return $q->result_array();
     }
-    
+
     function get_nilai_gizi()
     {
         $q = $this->db->query("SELECT * from var_output");
@@ -245,7 +245,7 @@ class Modgizi extends CI_Model
 
         return $q;
     }
-    
+
     function update_berat($id, $data)
     {
         $this->db->where('idvariabel', $id);
@@ -253,7 +253,7 @@ class Modgizi extends CI_Model
 
         return $q;
     }
-    
+
     function update_rule_berat($idrule, $id, $berat)
     {
         $this->db->where('idrule', $idrule);
@@ -262,7 +262,7 @@ class Modgizi extends CI_Model
 
         return $q;
     }
-    
+
     function update_rule_tinggi($idrule, $id, $tinggi)
     {
         $this->db->where('idrule', $idrule);
@@ -271,7 +271,7 @@ class Modgizi extends CI_Model
 
         return $q;
     }
-    
+
     function update_rule_umur($idrule, $id, $umur)
     {
         $this->db->where('idrule', $idrule);
@@ -280,7 +280,7 @@ class Modgizi extends CI_Model
 
         return $q;
     }
-    
+
     function update_rule($id, $rule1)
     {
         $this->db->where('idrule', $id);
@@ -288,7 +288,7 @@ class Modgizi extends CI_Model
 
         return $q;
     }
-   
+
     function update_gizi($data)
     {
         // $this->db->where('idvariabel', $id);
@@ -306,7 +306,7 @@ class Modgizi extends CI_Model
         }
         return $e;
     }
-    
+
     function tambah_rule_umur($umur)
     {
         if ($this->db->insert('rule1', $umur)) {
@@ -316,7 +316,7 @@ class Modgizi extends CI_Model
         }
         return $e;
     }
-    
+
     function tambah_rule_berat($berat)
     {
         if ($this->db->insert('rule1', $berat)) {
@@ -326,7 +326,7 @@ class Modgizi extends CI_Model
         }
         return $e;
     }
-    
+
     function tambah_rule_tinggi($tinggi)
     {
         if ($this->db->insert('rule1', $tinggi)) {
@@ -354,7 +354,7 @@ class Modgizi extends CI_Model
                 WHEN MONTH(tgl_cek) = 10 THEN 'Oktober'
                 WHEN MONTH(tgl_cek) = 11 THEN 'November'
                 ELSE 'Desember'
-                END AS category, 
+                END AS category,
                 (select Count(*) from defuzzy where hasil_gizi='Gizi Buruk') as value1,
                 (select Count(*) from defuzzy where hasil_gizi='Gizi Kurang') as value2,
                 (select Count(*) from defuzzy where hasil_gizi='Gizi Normal') as value3,
@@ -375,7 +375,7 @@ class Modgizi extends CI_Model
 
         return $q->num_rows();
     }
-   
+
     function gizi_kurang()
     {
         $q = $this->db->query("SELECT * from defuzzy where hasil_gizi='Gizi Kurang'");
@@ -396,7 +396,7 @@ class Modgizi extends CI_Model
 
         return $q->num_rows();
     }
-    
+
     function obesitas()
     {
         $q = $this->db->query("SELECT * from defuzzy where hasil_gizi='Obesitas'");
@@ -410,14 +410,14 @@ class Modgizi extends CI_Model
 
         return $q->result_array();
     }
-   
+
     function dataanak1($id)
     {
         $q = $this->db->query("SELECT *, DATE_FORMAT(tgl_lahir, '%d %M %Y') as tgl_lahir from user where id_user='$id'");
 
         return $q->result_array();
     }
-    
+
     function gizi_anak($id)
     {
         $q = $this->db->query("SELECT *, DATE_FORMAT(tgl_cek, '%d %M %Y') as tgl from defuzzy where id_user='$id' ORDER BY id_defuzzy DESC");

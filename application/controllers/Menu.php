@@ -9,10 +9,10 @@ class Menu extends CI_Controller
         if ($this->session->userdata('status') != "login") {
             redirect(base_url("login"));
         }
-        
+
         $this->load->helper(array('form', 'url'));
     }
-    
+
     public function index()
     {
         $data['user'] = $this->db->get_where('admin', ['username' => $this->session->userdata('nama')])->row_array();
@@ -24,13 +24,7 @@ class Menu extends CI_Controller
             'menu_9' => $this->modmenu->get_menu_9(),
             'menu_10' => $this->modmenu->get_menu_10(),
             'menu_11' => $this->modmenu->get_menu_11(),
-            'menu_12' => $this->modmenu->get_menu_12(),
-            'menu_13' => $this->modmenu->get_menu_13(),
-            'menu_14' => $this->modmenu->get_menu_14(),
-            'menu_15' => $this->modmenu->get_menu_15(),
-            'menu_16' => $this->modmenu->get_menu_16(),
-            'menu_17' => $this->modmenu->get_menu_17(),
-            'menu_18' => $this->modmenu->get_menu_18()
+            'menu_12' => $this->modmenu->get_menu_12()
         );
         $this->template->back('back/menu_mpasi', $data);
     }

@@ -26,6 +26,12 @@
         padding: 1rem;
     }
 
+    .null {
+        margin: 0% auto;
+        font-size: 20px;
+        text-align: center;
+    }
+
     @media screen and (max-width: 760px) {
         .blog_item {
             width: 100%;
@@ -48,6 +54,11 @@
 
         h3 {
             font-size: 18px;
+        }
+
+        .null p {
+            font-size: 15px;
+            text-align: center;
         }
     }
 </style>
@@ -87,28 +98,38 @@
                     </div>
                 </form>
             </div>
-            <?php foreach ($data_menu as $d) {
-                $bahan = character_limiter(nl2br($d['bahan_menu']), 100); ?>
-                <div class="menu mb-5 mb-lg-0">
-                    <div class="blog_left_sidebar">
-                        <a href="<?= base_url('user/detail_menu') ?>?id=<?= $d['id_menu']; ?>">
-                            <article class="blog_item">
-                                <div class="blog_item_img">
-                                    <?php if ($d['foto'] != null) { ?>
-                                        <img class="card-img rounded-0" src="<?= base_url('assets/') ?>img/menu/<?= $d['foto'] ?>" alt="" width="50px" height="200px">
-                                    <?php } else { ?>
-                                        <img class="card-img rounded-0" src="<?= base_url('assets/') ?>img/image.jpg" alt="" width="50px" height="200px">
-                                    <?php } ?>
-                                </div>
-                                <div class=" blog_details">
-                                    <h4><b><?= $d['judul_menu']; ?></b></h2>
-                                        <label>Usia <?= $d['usia'] ?> Bulan</label>
-                                </div>
-                            </article>
+            <?php if ($total == '0') {  ?>
+                <div class="col-lg-12">
+                    <div class="blog_left_sidebar null">
+                        <img src="<?= $null; ?>" alt="" width=20%;><br>
+                        <p>Tidak Ada Hasil</p>
                     </div>
                 </div>
-                </a>
-            <?php } ?>
+                <?php
+            } else {
+                foreach ($data_menu as $d) {
+                    $bahan = character_limiter(nl2br($d['bahan_menu']), 100); ?>
+                    <div class="menu mb-5 mb-lg-0">
+                        <div class="blog_left_sidebar">
+                            <a href="<?= base_url('user/detail_menu') ?>?id=<?= $d['id_menu']; ?>">
+                                <article class="blog_item">
+                                    <div class="blog_item_img">
+                                        <?php if ($d['foto'] != null) { ?>
+                                            <img class="card-img rounded-0" src="<?= base_url('assets/') ?>img/menu/<?= $d['foto'] ?>" alt="" width="50px" height="200px">
+                                        <?php } else { ?>
+                                            <img class="card-img rounded-0" src="<?= base_url('assets/') ?>img/image.jpg" alt="" width="50px" height="200px">
+                                        <?php } ?>
+                                    </div>
+                                    <div class=" blog_details">
+                                        <h4><b><?= $d['judul_menu']; ?></b></h2>
+                                            <label>Usia <?= $d['usia'] ?> Bulan</label>
+                                    </div>
+                                </article>
+                        </div>
+                    </div>
+                    </a>
+            <?php }
+            } ?>
         </div>
         <div class="blog-pagination justify-content-center d-flex">
             <?php echo $this->pagination->create_links(); ?>

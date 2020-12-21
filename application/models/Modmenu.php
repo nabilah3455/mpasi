@@ -10,28 +10,28 @@ class Modmenu extends CI_Model
 
         return $q->result_array();
     }
-    
+
     function get_menu_6()
     {
         $q = $this->db->query("SELECT * FROM mpasi_menu WHERE usia='6-7'");
 
         return $q->result_array();
     }
-    
+
     function get_menu_8()
     {
         $q = $this->db->query("SELECT * FROM mpasi_menu WHERE usia='8'");
 
         return $q->result_array();
     }
-    
+
     function get_menu_9()
     {
         $q = $this->db->query("SELECT * FROM mpasi_menu WHERE usia='9'");
 
         return $q->result_array();
     }
-    
+
     function get_menu_10()
     {
         $q = $this->db->query("SELECT * FROM mpasi_menu WHERE usia='10'");
@@ -49,48 +49,6 @@ class Modmenu extends CI_Model
     function get_menu_12()
     {
         $q = $this->db->query("SELECT * FROM mpasi_menu WHERE usia='12'");
-
-        return $q->result_array();
-    }
-
-    function get_menu_13()
-    {
-        $q = $this->db->query("SELECT * FROM mpasi_menu WHERE usia='13'");
-
-        return $q->result_array();
-    }
-
-    function get_menu_14()
-    {
-        $q = $this->db->query("SELECT * FROM mpasi_menu WHERE usia='14'");
-
-        return $q->result_array();
-    }
-
-    function get_menu_15()
-    {
-        $q = $this->db->query("SELECT * FROM mpasi_menu WHERE usia='15'");
-
-        return $q->result_array();
-    }
-
-    function get_menu_16()
-    {
-        $q = $this->db->query("SELECT * FROM mpasi_menu WHERE usia='16'");
-
-        return $q->result_array();
-    }
-
-    function get_menu_17()
-    {
-        $q = $this->db->query("SELECT * FROM mpasi_menu WHERE usia='17'");
-
-        return $q->result_array();
-    }
-
-    function get_menu_18()
-    {
-        $q = $this->db->query("SELECT * FROM mpasi_menu WHERE usia='18'");
 
         return $q->result_array();
     }
@@ -129,49 +87,49 @@ class Modmenu extends CI_Model
     function menu($number, $offset, $bulan)
     {
         // return $query = $this->db->get('mpasi_menu', $number, $offset)->result();
-        if ($bulan == '6-7') { 
+        if ($bulan == '6-7') {
             $q = $this->db->where('usia', $bulan)->get('mpasi_menu', $number, $offset);
             return $q->result_array();
-        } elseif($bulan == '8') {
+        } elseif ($bulan == '8') {
             $q = $this->db->where('usia', $bulan)->get('mpasi_menu', $number, $offset);
             return $q->result_array();
-        } elseif($bulan == '9') {
+        } elseif ($bulan == '9') {
             $q = $this->db->where('usia', $bulan)->get('mpasi_menu', $number, $offset);
             return $q->result_array();
-        } elseif($bulan == '10') {
+        } elseif ($bulan == '10') {
             $q = $this->db->where('usia', $bulan)->get('mpasi_menu', $number, $offset);
             return $q->result_array();
-        } elseif($bulan == '11') {
+        } elseif ($bulan == '11') {
             $q = $this->db->where('usia', $bulan)->get('mpasi_menu', $number, $offset);
             return $q->result_array();
-        } elseif($bulan == '12') {
+        } elseif ($bulan == '12') {
             $q = $this->db->where('usia', $bulan)->get('mpasi_menu', $number, $offset);
             return $q->result_array();
-        } elseif($bulan == '13') {
+        } elseif ($bulan == '13') {
             $q = $this->db->where('usia', $bulan)->get('mpasi_menu', $number, $offset);
             return $q->result_array();
-        } elseif($bulan == '14') {
+        } elseif ($bulan == '14') {
             $q = $this->db->where('usia', $bulan)->get('mpasi_menu', $number, $offset);
             return $q->result_array();
-        } elseif($bulan == '15') {
+        } elseif ($bulan == '15') {
             $q = $this->db->where('usia', $bulan)->get('mpasi_menu', $number, $offset);
             return $q->result_array();
-        } elseif($bulan == '16') {
+        } elseif ($bulan == '16') {
             $q = $this->db->where('usia', $bulan)->get('mpasi_menu', $number, $offset);
             return $q->result_array();
-        } elseif($bulan == '17') {
+        } elseif ($bulan == '17') {
             $q = $this->db->where('usia', $bulan)->get('mpasi_menu', $number, $offset);
             return $q->result_array();
-        } elseif($bulan == '18') {
+        } elseif ($bulan == '18') {
             $q = $this->db->where('usia', $bulan)->get('mpasi_menu', $number, $offset);
             return $q->result_array();
-        }else {
+        } else {
             $q = $this->db->get('mpasi_menu', $number, $offset);
             return $q->result_array();
         }
     }
 
-     function jml_menu1($judul_menu)
+    function jml_menu1($judul_menu)
     {
         $this->db->like('judul_menu', $judul_menu, 'both');
         $q = $this->db->get('mpasi_menu')->num_rows();
@@ -180,8 +138,8 @@ class Modmenu extends CI_Model
     }
 
     function judul_menu($number, $offset, $judul_menu)
-    { 
-        $this->db->like('judul_menu',$judul_menu, 'both');
+    {
+        $this->db->like('judul_menu', $judul_menu, 'both');
         $q = $this->db->get('mpasi_menu', $number, $offset)->result_array();
 
         return $q;
@@ -189,35 +147,35 @@ class Modmenu extends CI_Model
 
     function jml_menu($bulan)
     {
-        if($bulan == '6-7') {
-           return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
-        }elseif($bulan == '8'){
-           return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
+        if ($bulan == '6-7') {
+            return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
+        } elseif ($bulan == '8') {
+            return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
         } elseif ($bulan == '9') {
-           return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
+            return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
         } elseif ($bulan == '10') {
-           return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
+            return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
         } elseif ($bulan == '11') {
-           return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
+            return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
         } elseif ($bulan == '12') {
-           return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
+            return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
         } elseif ($bulan == '13') {
-           return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
+            return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
         } elseif ($bulan == '14') {
-           return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
+            return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
         } elseif ($bulan == '15') {
-           return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
+            return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
         } elseif ($bulan == '16') {
-           return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
+            return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
         } elseif ($bulan == '17') {
-           return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
+            return $this->db->where('usia', $bulan)->get('mpasi_menu')->num_rows();
         } elseif ($bulan == '') {
-           return $this->db->get('mpasi_menu')->num_rows();
-        // } elseif($bulan == '') {
-        //     $this->db->like('judul_menu', $bulan);
-        //      $q = $this->db->get('mpasi_menu')->num_rows();
+            return $this->db->get('mpasi_menu')->num_rows();
+            // } elseif($bulan == '') {
+            //     $this->db->like('judul_menu', $bulan);
+            //      $q = $this->db->get('mpasi_menu')->num_rows();
 
-        //      return $q;
+            //      return $q;
         }
         // return $this->db->get('mpasi_menu')->num_rows();
     }
@@ -228,21 +186,21 @@ class Modmenu extends CI_Model
 
         return $q->result_array();
     }
-   
+
     function menu1()
     {
         $q = $this->db->query("SELECT * FROM mpasi_menu WHERE usia='6-7' LIMIT 1");
 
         return $q->result_array();
     }
-    
+
     function menu2()
     {
         $q = $this->db->query("SELECT * FROM mpasi_menu WHERE usia='8' LIMIT 1");
 
         return $q->result_array();
     }
-    
+
     function menu3()
     {
         $q = $this->db->query("SELECT * FROM mpasi_menu WHERE usia='9' LIMIT 1");

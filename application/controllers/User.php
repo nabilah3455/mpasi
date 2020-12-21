@@ -12,7 +12,7 @@ class User extends CI_Controller
 
         $this->load->helper(array('form', 'url'));
     }
-    
+
     public function index()
     {
         $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('nama')])->row_array();
@@ -28,7 +28,7 @@ class User extends CI_Controller
 
         // var_dump($data['nama']);
         // die();
-    
+
         $this->template->front('front/index', $data);
     }
 
@@ -64,12 +64,12 @@ class User extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"><center>Data Anak Berhasil Di Ubah!</center></div>');
         redirect('user/profil', 'refresh');
     }
-    
+
     public function berita()
     {
         if ($this->input->post('submit')) {
             $judul_berita = $this->input->post('cari');
-        }else{
+        } else {
             $judul_berita = null;
         }
         $this->load->database();
@@ -98,27 +98,29 @@ class User extends CI_Controller
         $config['last_tag_close'] = '</li>';
         $config['first_tag_open'] = '<li class="page-item">';
         $config['first_tag_close'] = '</li>';
-        
+
         $this->pagination->initialize($config);
-      
-        $data = array (
-        'data_berita' => $this->modberita->berita($config['per_page'], $from, $judul_berita),
-        'banner' => base_url('assets/img/banner/jamie-coupaud-3fbI4ouy0Lw-unsplash.jpg')
+
+        $data = array(
+            'data_berita' => $this->modberita->berita($config['per_page'], $from, $judul_berita),
+            'banner' => base_url('assets/img/banner/jamie-coupaud-3fbI4ouy0Lw-unsplash.jpg'),
+            'null' => base_url('assets/img/folder.png'),
+            'total' => $config['total_rows']
         );
 
         // var_dump($jumlah_data);
         // die();
-    
+
         $this->template->front('front/berita', $data);
     }
-   
+
     public function menu()
     {
         $bulan = $this->input->get('bulan');
         if ($this->input->post('submit')) {
             $judul_menu = $this->input->post('cari');
             $jumlah_data = $this->modmenu->jml_menu1($judul_menu);
-        }else{
+        } else {
             $judul_menu = null;
             $jumlah_data = $this->modmenu->jml_menu($bulan);
         }
@@ -148,23 +150,25 @@ class User extends CI_Controller
         $config['last_tag_close'] = '</li>';
         $config['first_tag_open'] = '<li class="page-item">';
         $config['first_tag_close'] = '</li>';
-        
+
         $this->pagination->initialize($config);
 
-        if($judul_menu == null){
+        if ($judul_menu == null) {
             $data_menu = $this->modmenu->menu($config['per_page'], $from, $bulan);
-        }else{
+        } else {
             $data_menu = $this->modmenu->judul_menu($config['per_page'], $from, $judul_menu);
         }
-        
-        $data = array (
-        'data_menu' => $data_menu,
-        'banner' => base_url('assets/img/banner/food.jpg')
+
+        $data = array(
+            'data_menu' => $data_menu,
+            'banner' => base_url('assets/img/banner/food.jpg'),
+            'null' => base_url('assets/img/folder.png'),
+            'total' => $config['total_rows']
         );
 
-        // var_dump($data);
+        // var_dump($data['total']);
         // die();
-    
+
         $this->template->front('front/menu', $data);
     }
 
@@ -178,7 +182,7 @@ class User extends CI_Controller
 
         $this->template->front('front/detail_menu', $data);
     }
-    
+
     public function detail_berita()
     {
         $id = $this->input->get('id');
@@ -194,7 +198,7 @@ class User extends CI_Controller
     {
         if ($this->input->post('submit')) {
             $judul_bahan = $this->input->post('cari');
-        }else{
+        } else {
             $judul_bahan = null;
         }
 
@@ -229,7 +233,9 @@ class User extends CI_Controller
 
         $data = array(
             'data_bahan' => $this->modbahan->bahan($config['per_page'], $from, $judul_bahan),
-            'banner' => base_url('assets/img/banner/banner1.jpg')
+            'banner' => base_url('assets/img/banner/banner1.jpg'),
+            'null' => base_url('assets/img/folder.png'),
+            'total' => $config['total_rows']
         );
 
         // var_dump($judul_bahan);
@@ -253,10 +259,10 @@ class User extends CI_Controller
             'variabel' => $this->modgizi->get_variabel()
         );
 
-        if ($user > 0){
-            redirect('user/nilai_gizi?id_user='. $id);
-        }else{
-        $this->template->front('front/kalkulator', $data);
+        if ($user > 0) {
+            redirect('user/nilai_gizi?id_user=' . $id);
+        } else {
+            $this->template->front('front/kalkulator', $data);
         }
     }
 
@@ -264,73 +270,68 @@ class User extends CI_Controller
     {
         // include("koneksi_db.php");
         $id = $_POST['id'];
-        $idvar=$_POST['idvar'];
-        $q=count($idvar);
-        $i=0;
-        $t=0;
-        while ($i<$q) 
-        {
-        $nilai=$_POST['nilai'];
-        if(empty($nilai[$i])) { $t=1; }
-        elseif(!is_numeric($nilai[$i])) { $t=1; } 
-        else { $t==0; }
-        $i++;
+        $idvar = $_POST['idvar'];
+        $q = count($idvar);
+        $i = 0;
+        $t = 0;
+        while ($i < $q) {
+            $nilai = $_POST['nilai'];
+            if (empty($nilai[$i])) {
+                $t = 1;
+            } elseif (!is_numeric($nilai[$i])) {
+                $t = 1;
+            } else {
+                $t == 0;
+            }
+            $i++;
         }
-            
-            
-        $idvar=$_POST['idvar'];
-        $q=count($idvar);
-        $i=0;
-        $z=0;
-        while ($i<$q) 
-        {
-        $idvar=$_POST['idvar'];
-        $nilai=$_POST['nilai'];
+
+
+        $idvar = $_POST['idvar'];
+        $q = count($idvar);
+        $i = 0;
+        $z = 0;
+        while ($i < $q) {
+            $idvar = $_POST['idvar'];
+            $nilai = $_POST['nilai'];
             //   $yoyon=$this->db->query("select * from variabel where idvariabel='$idvar'");
             $yoyon = $this->modgizi->get_variabel2($idvar[$i]);
 
-        foreach ($yoyon as $y){
-        
-        if($nilai[$i]>$y['nilai33'])
-        {
-        $z=$z+1;
+            foreach ($yoyon as $y) {
+
+                if ($nilai[$i] > $y['nilai33']) {
+                    $z = $z + 1;
+                } else {
+                    $z = $z + 0;
+                }
+                $i++;
+            }
         }
-        else
-        {
-        $z=$z+0;
-        }
-        $i++;
-        }
-        }
-        
-        if($z>=1) 
-        {
-        echo"<center><font color=red size=5><strong><br /><br />Nilai Gejala Penyakit Belum Diisi Dengan Benar<br /><br />
+
+        if ($z >= 1) {
+            echo "<center><font color=red size=5><strong><br /><br />Nilai Gejala Penyakit Belum Diisi Dengan Benar<br /><br />
             <input type=button  value=Kembali onclick='self.history.back()'/>";
-        }
-        else
-        {
+        } else {
             // mysqli_query("insert into pasien values ('','$_POST[a]','$_POST[jk]','$_POST[b]','$_POST[c]')");
             // $user=$this->db->query("select * from pasien order by idpasien desc");
             $user = $this->modgizi->get_user();
 
 
-        $idvar=$_POST['idvar'];
-        $q=count($idvar);
-        $i=0;
-        while ($i<$q) 
-        {
-        $idvar=$_POST['idvar'];
-        // $idvisitor=$_POST[idvisitor];
-        $nilai=$_POST['nilai'];
-        $tgl_sekarang = date('Y-m-d');
-        $this->db->query("INSERT into kalkulator_gizi values('','$id','$idvar[$i]','$nilai[$i]','','','','','$tgl_sekarang')");
+            $idvar = $_POST['idvar'];
+            $q = count($idvar);
+            $i = 0;
+            while ($i < $q) {
+                $idvar = $_POST['idvar'];
+                // $idvisitor=$_POST[idvisitor];
+                $nilai = $_POST['nilai'];
+                $tgl_sekarang = date('Y-m-d');
+                $this->db->query("INSERT into kalkulator_gizi values('','$id','$idvar[$i]','$nilai[$i]','','','','','$tgl_sekarang')");
 
-        $i++;
-        }
+                $i++;
+            }
         }
         //}
-        redirect('user/simpan_nilai?id_user='.$id);
+        redirect('user/simpan_nilai?id_user=' . $id);
     }
 
     public function simpan_nilai()
@@ -340,7 +341,7 @@ class User extends CI_Controller
 
     public function nilai_gizi()
     {
-        $id=$this->input->get('id_user');
+        $id = $this->input->get('id_user');
         $variabel1 = $this->modgizi->get_variabel1();
         $tgl = date('Y-m');
 
@@ -356,7 +357,7 @@ class User extends CI_Controller
 
         // var_dump($data['data_anak']);
         // die();
-        
+
         $this->template->front('front/hasil_gizi', $data);
     }
 
@@ -386,7 +387,7 @@ class User extends CI_Controller
         $html = $this->parser->parse("front/cetak_hasil_gizi", $data);
         $this->pdfgenerator->generate($html, "Hasil Nilai Gizi ", true, 'a4', 'landscape');
     }
-    
+
     public function cetak_defuzzy()
     {
         $this->load->library('pdfgenerator');

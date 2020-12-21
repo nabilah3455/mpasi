@@ -48,6 +48,10 @@
                             <a href="#myModal" data-toggle="modal" class=" btn btn-danger"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
+
+
+
+
                     <!-- Modal HTML -->
                     <div id="myModal" class="modal fade">
                         <div class="modal-dialog modal-confirm">
@@ -74,5 +78,3 @@
             </tbody>
         </table>
     </div>
-</div>
-</div>

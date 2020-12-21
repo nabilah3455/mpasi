@@ -28,13 +28,7 @@
                         <option value="9">9 Bulan</option>
                         <option value="10">10 Bulan</option>
                         <option value="11">11 Bulan</option>
-                        <option value="12">12 Bulan</option>
-                        <option value="13">13 Bulan</option>
-                        <option value="14">14 Bulan</option>
-                        <option value="15">15 Bulan</option>
-                        <option value="16">16 Bulan</option>
-                        <option value="17">17 Bulan</option>
-                        <option value="18">18 Bulan</option>
+                        <option value="12">12-18 Bulan</option>
                     </select>
                 </div>
                 <div class="col-lg-6">

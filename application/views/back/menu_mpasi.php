@@ -41,25 +41,7 @@
                     <a class="nav-link" href="#tab-7-5" data-toggle="tab"></i> 11 Bulan</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#tab-7-6" data-toggle="tab"></i> 12 Bulan</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#tab-7-7" data-toggle="tab"></i> 13 Bulan</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#tab-7-8" data-toggle="tab"></i> 14 Bulan</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#tab-7-9" data-toggle="tab"></i> 15 Bulan</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#tab-7-10" data-toggle="tab"></i> 16 Bulan</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#tab-7-11" data-toggle="tab"></i> 17 Bulan</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#tab-7-12" data-toggle="tab"></i> 18 Bulan</a>
+                    <a class="nav-link" href="#tab-7-6" data-toggle="tab"></i> 12-18 Bulan</a>
                 </li>
             </ul>
             <div class="tab-content">

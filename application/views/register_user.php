@@ -41,15 +41,15 @@
     }
 
     @media screen and (max-width: 760px) {
-        .menu{
+        .menu {
             width: 95%;
         }
 
-        .login{
+        .login {
             width: 100%;
         }
 
-        .data-anak{
+        .data-anak {
             font-size: 15px;
         }
 
@@ -71,7 +71,7 @@
         font-size: 10px;
     }
 
-    .data-anak{
+    .data-anak {
         padding: 1rem;
         width: 50%;
     }
@@ -82,7 +82,8 @@
         width: 100%;
     }
 
-    .submit input, a{
+    .submit input,
+    a {
         width: 30%;
     }
 
@@ -134,7 +135,7 @@
                     </div>
                     <div class="data-anak">
                         Password <sup>*</sup>
-                        <input type="password" id="password" name="password" placeholder="Input Password" value="<?= set_value('password'); ?>" class="form-control input-sm pass">
+                        <input type="password" id="password" name="password" placeholder="Input Password" value="<?= set_value('password'); ?>" class="form-control input-sm pass" minlength="8">
                     </div>
                     <div class="data-anak">
                         Ulangi Password <sup>*</sup>

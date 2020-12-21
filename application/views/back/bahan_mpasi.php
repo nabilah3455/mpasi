@@ -111,7 +111,7 @@
 </style>
 
 <div class="page-content fade-in-up">
-   <div class="judul col-lg-6">
+    <div class="judul col-lg-6">
         Bahan MPASI
     </div>
     <div class="col-lg-12">

@@ -42,6 +42,12 @@
         padding-bottom: 1rem;
     }
 
+    .null {
+        margin: 0% auto;
+        font-size: 20px;
+        text-align: center;
+    }
+
     @media screen and (max-width: 760px) {
         .blog_item {
             width: 100%;
@@ -64,7 +70,7 @@
             height: 50%;
         }
 
-        .modal-dialog{
+        .modal-dialog {
             padding: 1rem;
         }
     }
@@ -106,8 +112,17 @@
                     </div>
                 </form>
             </div>
-            <div class="row">
-                <?php foreach ($data_bahan as $d) {
+            <!-- <div class="row"> -->
+            <?php if ($total == '0') {  ?>
+                <div class="col-lg-12">
+                    <div class="blog_left_sidebar null">
+                        <img src="<?= $null; ?>" alt="" width="20%"><br>
+                        <p>Tidak Ada Hasil</p>
+                    </div>
+                </div>
+                <?php
+            } else {
+                foreach ($data_bahan as $d) {
                     $kandungan = character_limiter(nl2br($d->kandungan_bahan), 100); ?>
                     <div class="bahan">
                         <div class="blog_left_sidebar">
@@ -124,30 +139,31 @@
                             </article>
                         </div>
                     </div>
-                <?php } ?>
-            </div>
+            <?php }
+            } ?>
         </div>
-        <div class="blog-pagination justify-content-center d-flex">
-            <?php echo $this->pagination->create_links(); ?>
-        </div>
-        <?php foreach ($data_bahan as $b) { ?>
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal<?= $b->id_bahan ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title" id="exampleModalLabel"><b><?= $b->nama_bahan ?></b></h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <?= nl2br($b->kandungan_bahan) ?>
-                        </div>
+    </div>
+    <div class="blog-pagination justify-content-center d-flex">
+        <?php echo $this->pagination->create_links(); ?>
+    </div>
+    <?php foreach ($data_bahan as $b) { ?>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal<?= $b->id_bahan ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLabel"><b><?= $b->nama_bahan ?></b></h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <?= nl2br($b->kandungan_bahan) ?>
                     </div>
                 </div>
             </div>
-        <?php } ?>
+        </div>
+    <?php } ?>
     </div>
 </section>
 

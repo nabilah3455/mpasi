@@ -62,13 +62,7 @@
                                          <a class="dropdown-item" href="<?= base_url('user/menu') ?>?bulan=9">9 Bulan</a>
                                          <a class="dropdown-item" href="<?= base_url('user/menu') ?>?bulan=10">10 Bulan</a>
                                          <a class="dropdown-item" href="<?= base_url('user/menu') ?>?bulan=11">11 Bulan</a>
-                                         <a class="dropdown-item" href="<?= base_url('user/menu') ?>?bulan=12">12 Bulan</a>
-                                         <a class="dropdown-item" href="<?= base_url('user/menu') ?>?bulan=13">13 Bulan</a>
-                                         <a class="dropdown-item" href="<?= base_url('user/menu') ?>?bulan=14">14 Bulan</a>
-                                         <a class="dropdown-item" href="<?= base_url('user/menu') ?>?bulan=15">15 Bulan</a>
-                                         <a class="dropdown-item" href="<?= base_url('user/menu') ?>?bulan=16">16 Bulan</a>
-                                         <a class="dropdown-item" href="<?= base_url('user/menu') ?>?bulan=17">17 Bulan</a>
-                                         <a class="dropdown-item" href="<?= base_url('user/menu') ?>?bulan=18">18 Bulan</a>
+                                         <a class="dropdown-item" href="<?= base_url('user/menu') ?>?bulan=12">12 - 18 Bulan</a>
                                      </div>
                                  </li>
                                  <li class="nav-item">

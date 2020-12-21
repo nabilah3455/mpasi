@@ -23,9 +23,18 @@
         font-weight: bold;
     }
 
-    /* .blog_details .button-group-area {
-        margin: 0 auto;
-    } */
+    .null {
+        margin: 0% auto;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    @media screen and (max-width: 760px) {
+        .null p {
+            font-size: 15px;
+            text-align: center;
+        }
+    }
 </style>
 
 <!--::breadcrumb part start::-->
@@ -52,20 +61,28 @@
         <div class="row">
             <div class="col-lg-8 mb-5 mb-lg-0">
                 <div class="blog_left_sidebar">
-                    <?php foreach ($data_berita as $b) {
-                        $berita = character_limiter($b->isi_news, 300); ?>
-                        <article class="blog_item">
-                            <div class="blog_details">
-                                <a class="d-inline-block" href="single-blog.html">
-                                    <h2><?= $b->judul_news ?></h2>
-                                </a>
-                                <p><?= $berita ?></p>
-                                <div class="button-group-area read">
-                                    <a href="<?= base_url('user/detail_berita') ?>?id=<?= $b->id_news ?>" class="genric-btn danger circle">Lihat Berita Selengkapnya ...</a>
+                    <?php if ($total == '0') {  ?>
+                        <div class="null">
+                            <img src="<?= $null; ?>" alt="" width="20%"><br>
+                            <p>Tidak Ada Hasil</p>
+                        </div>
+                        <?php
+                    } else {
+                        foreach ($data_berita as $b) {
+                            $berita = character_limiter($b->isi_news, 300); ?>
+                            <article class="blog_item">
+                                <div class="blog_details">
+                                    <a class="d-inline-block" href="single-blog.html">
+                                        <h2><?= $b->judul_news ?></h2>
+                                    </a>
+                                    <p><?= $berita ?></p>
+                                    <div class="button-group-area read">
+                                        <a href="<?= base_url('user/detail_berita') ?>?id=<?= $b->id_news ?>" class="genric-btn danger circle">Lihat Berita Selengkapnya ...</a>
+                                    </div>
                                 </div>
-                            </div>
-                        </article>
-                    <?php } ?>
+                            </article>
+                    <?php }
+                    } ?>
                     <nav class="blog-pagination justify-content-center d-flex">
                         <!-- <div class="blog-pagination justify-content-center d-flex"> -->
                         <?php echo $this->pagination->create_links(); ?>
